@@ -636,3 +636,259 @@ textarea {
   }
 }
 
+/* Work items */
+.work-items-page {
+  max-width: 860px;
+}
+
+.work-items-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin: 0 0 var(--space-28);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+}
+
+.work-items-summary {
+  display: flex;
+  height: 56px;
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+.work-items-summary-item {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: var(--space-8) var(--space-12);
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.work-items-summary-label {
+  color: var(--color-content-hover);
+  font-size: var(--font-size-12);
+  font-weight: 300;
+}
+
+.work-items-summary-value {
+  color: var(--color-content-primary);
+  font-size: var(--font-size-20);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.work-items-filters {
+  display: flex;
+  height: 28px;
+  align-items: center;
+  gap: var(--space-28);
+  margin-top: var(--space-20);
+}
+
+.work-items-search {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-8);
+  border-bottom: 1px solid transparent;
+  color: var(--color-content-hover);
+}
+
+.work-items-search:focus-within {
+  border-bottom-color: var(--color-content-primary);
+}
+
+.work-items-search-input {
+  width: 100%;
+  min-width: 0;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-content-primary);
+  font-size: var(--font-size-12);
+}
+
+.work-items-search-input::placeholder {
+  color: var(--color-content-hover);
+}
+
+.work-items-search-input:focus-visible {
+  outline: none;
+}
+
+.work-items-filter {
+  position: relative;
+  display: inline-flex;
+  height: 28px;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.work-items-filter:nth-of-type(1) {
+  width: 70px;
+}
+
+.work-items-filter:nth-of-type(2) {
+  width: 120px;
+}
+
+.work-items-filter:nth-of-type(3) {
+  width: 110px;
+}
+
+.work-items-filter:nth-of-type(4) {
+  width: 80px;
+}
+
+.work-items-filter-select {
+  width: 100%;
+  height: 28px;
+  padding: 0 18px 0 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  color: var(--color-content-hover);
+  cursor: pointer;
+  font-size: var(--font-size-12);
+}
+
+.work-items-filter .icon {
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+}
+
+.work-items-truncated {
+  margin: var(--space-8) 0 0;
+}
+
+.work-items-empty {
+  margin: var(--space-20) 0 0;
+}
+
+.work-items-table-scroll {
+  height: 188px;
+  margin-top: var(--space-16);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.work-items-table-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.work-items-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.work-items-table .col-id,
+.work-items-table .col-type,
+.work-items-table .col-sprint,
+.work-items-table .col-access {
+  width: 9.09%;
+}
+
+.work-items-table .col-title {
+  width: 45.46%;
+}
+
+.work-items-table .col-status {
+  width: 18.18%;
+}
+
+.work-items-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 47px;
+  padding: 0 var(--space-8) 0 0;
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-content-hover);
+  font-size: var(--font-size-12);
+  font-weight: 700;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.work-items-table tbody tr {
+  height: 47px;
+}
+
+.work-items-table tbody td {
+  height: 47px;
+  padding: 0 var(--space-8) 0 0;
+  border: 0;
+  color: var(--color-content-primary);
+  font-size: var(--font-size-12);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.work-items-table tbody td:last-child {
+  padding-right: 0;
+}
+
+.work-item-id {
+  font-weight: 600;
+}
+
+.work-item-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 14px;
+  overflow-wrap: anywhere;
+}
+
+.work-item-status {
+  font-weight: 400;
+}
+
+.status-backlog,
+.status-other {
+  color: var(--color-content-hover);
+}
+
+.status-inProgress {
+  color: var(--color-tag-info);
+}
+
+.status-done {
+  color: var(--color-tag-success);
+}
+
+.work-items-access {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-4);
+  background: transparent;
+  color: var(--color-content-hover);
+  cursor: pointer;
+}
+
+.work-items-access:hover {
+  background: var(--color-border-subtle);
+}
+
+.work-items-access:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+

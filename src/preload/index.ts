@@ -14,6 +14,9 @@ const api: IpcApi = {
   overview: {
     load: (input) => ipcRenderer.invoke('overview:load', input),
   },
+  workItems: {
+    load: (input) => ipcRenderer.invoke('workItems:load', input),
+  },
   session: {
     select: (input) => ipcRenderer.invoke('session:select', input),
   },

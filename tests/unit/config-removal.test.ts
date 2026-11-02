@@ -9,11 +9,19 @@ describe('removeConfiguration', () => {
       cache: { clear: vi.fn(async () => void calls.push('cache')) },
       cacheKey: { clear: vi.fn(async () => void calls.push('cacheKey')) },
       overviewCache: { clear: vi.fn(async () => void calls.push('overviewCache')) },
+      workItemsCache: { clear: vi.fn(async () => void calls.push('workItemsCache')) },
       config: { reset: vi.fn(async () => void calls.push('config')) },
     };
 
     await removeConfiguration(deps);
 
-    expect(calls).toEqual(['credentials', 'cache', 'cacheKey', 'overviewCache', 'config']);
+    expect(calls).toEqual([
+      'credentials',
+      'cache',
+      'cacheKey',
+      'overviewCache',
+      'workItemsCache',
+      'config',
+    ]);
   });
 });

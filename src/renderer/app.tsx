@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { ConfigView } from '@shared/contracts';
 import { ConfigModal } from './features/config/config-modal';
 import { FirstRun } from './features/config/first-run';
-import { OverviewPage } from './features/overview/overview-page';
+import { ConfiguredApp } from './features/shell/configured-app';
 import { ptBR } from './i18n/pt-BR';
 
 export function App() {
@@ -53,7 +53,7 @@ export function App() {
   if (configured) {
     return (
       <>
-        <OverviewPage
+        <ConfiguredApp
           key={config.organization ?? 'organization'}
           config={config}
           onConfigure={() => setModalOpen(true)}

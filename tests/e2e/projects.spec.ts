@@ -90,6 +90,35 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
           stale: false,
         },
       }));
+      ipcMain.removeHandler('workItems:load');
+      ipcMain.handle('workItems:load', async () => ({
+        ok: true,
+        data: {
+          context: {
+            organization: 'demo',
+            projectId: 'p1',
+            projectName: 'Projeto Um',
+            teamId: 't1',
+            teamName: 'Time A',
+          },
+          items: [
+            {
+              id: 145672,
+              type: 'Bug',
+              title: 'Item do projeto',
+              state: 'Active',
+              sprint: 'Sprint 1',
+              assignedTo: 'Ericles',
+              changedAt: '2026-11-02T10:00:00.000Z',
+              url: 'https://dev.azure.com/demo/Projeto%20Um/_workitems/edit/145672',
+            },
+          ],
+          summary: { total: 1, backlog: 0, inProgress: 1, done: 0 },
+          truncated: false,
+          fetchedAt: new Date().toISOString(),
+          stale: false,
+        },
+      }));
     });
 
     const window = await app.firstWindow();
@@ -100,6 +129,14 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
     await expect(window.getByLabel('Time')).toBeVisible();
     await window.getByLabel('Time').selectOption('t1');
 
+    await expect(window.getByText('#145672')).toBeVisible();
+
+    await window.getByRole('tab', { name: 'Overview' }).click();
+    await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
+    await expect(window.getByLabel('Projeto')).toHaveValue('p1');
+    await expect(window.getByLabel('Time')).toHaveValue('t1');
+
+    await window.getByRole('tab', { name: 'Work items' }).click();
     await expect(window.getByText('#145672')).toBeVisible();
   } finally {
     await app.close();

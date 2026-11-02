@@ -36,6 +36,7 @@ export function useProjectContext(config: ConfigView): ProjectContextState {
       return result;
     },
     enabled: config.status === 'configured',
+    staleTime: 5 * 60 * 1000,
   });
 
   const teamsQuery = useQuery({
@@ -46,6 +47,7 @@ export function useProjectContext(config: ConfigView): ProjectContextState {
       return result;
     },
     enabled: Boolean(selectedProjectId),
+    staleTime: 5 * 60 * 1000,
   });
 
   const projects = projectsQuery.data?.items ?? [];

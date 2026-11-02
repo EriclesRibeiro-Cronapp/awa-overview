@@ -31,6 +31,8 @@ sobre blocos `fe:auto` defasados.
 | G-22 | Limite de itens por card não documentado | Cards podem transbordar ou esconder itens | Adotar o conteúdo do Figma: até 3 work items, 1 PR e 1 pipeline | `screens.md` | Resolvido na 002 |
 | G-23 | Estados de loading/erro dos cards não desenhados | Cards podem ficar em branco ou bloquear a tela | Estados independentes por card, com retry e preservação dos demais | `screens.md` | Resolvido na 002 |
 | G-24 | PAT sem escopo de Work Items/Build retorna 401 nesses endpoints | Cards falham mesmo com token válido | Distinguir identidade válida de falta de escopo e orientar o usuário | Overview | Resolvido na 002 |
+| G-25 | Export `19:237` da tela Work items sem título/abas, divergente da análise manual | Layout da tela pode ficar ambíguo | Seguir a análise manual revisada em 01/11 (título, resumo, filtros e tabela) | `screens.md`, `assets` | Resolvido na 003 |
+| G-26 | Larguras fixas dos filtros (46/92/57/54) truncam valores longos | “Concluído”/“Em andamento” ficam cortados no select | Ampliar os selects para 70/120/110/80 e validar no Figma | `screens.md` | Resolvido na 003 |
 
 ## Regras
 

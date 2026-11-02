@@ -1,12 +1,20 @@
 import { TabList } from '../../components';
 
-export function ProductTabs() {
+export type ProductTabId = 'overview' | 'work-items';
+
+interface ProductTabsProps {
+  activeId: ProductTabId;
+  onSelect: (id: ProductTabId) => void;
+}
+
+export function ProductTabs({ activeId, onSelect }: ProductTabsProps) {
   return (
     <TabList
-      activeId="overview"
+      activeId={activeId}
+      onSelect={(id) => onSelect(id as ProductTabId)}
       items={[
         { id: 'overview', label: 'Overview', available: true },
-        { id: 'work-items', label: 'Work items', available: false },
+        { id: 'work-items', label: 'Work items', available: true },
         { id: 'pull-requests', label: 'Pull requests', available: false },
         { id: 'pipelines', label: 'Pipelines', available: false },
       ]}

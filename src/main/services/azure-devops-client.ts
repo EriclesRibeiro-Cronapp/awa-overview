@@ -7,6 +7,7 @@ import type {
   PullRequestSummary,
   Team,
   WorkItemSummary,
+  WorkItemTableRow,
 } from '@shared/contracts';
 
 type FetchLike = (input: string | URL, init?: RequestInit) => Promise<Response>;
@@ -87,6 +88,8 @@ const CONNECTION_DATA_API_VERSION = '7.1-preview.1';
 const MAX_PAGES = 20;
 const MAX_TEAMS = 100;
 const WORK_ITEM_LIMIT = 3;
+const WORK_ITEM_TABLE_LIMIT = 2_000;
+const WORK_ITEM_BATCH = 200;
 const WORK_ITEM_FIELDS = [
   'System.Id',
   'System.WorkItemType',
@@ -95,6 +98,10 @@ const WORK_ITEM_FIELDS = [
   'System.TeamProject',
   'System.AssignedTo',
   'System.ChangedDate',
+].join(',');
+const WORK_ITEM_TABLE_FIELDS = [
+  ...WORK_ITEM_FIELDS.split(','),
+  'System.IterationPath',
 ].join(',');
 
 export class AzureDevOpsClient {
@@ -233,6 +240,50 @@ export class AzureDevOpsClient {
     return ids
       .map((id) => mapWorkItem(byId.get(id), organization, projectId))
       .filter((item): item is WorkItemSummary => item !== null);
+  }
+
+  async listWorkItems(
+    organization: string,
+    pat: string,
+    projectId: string,
+    teamId: string | null,
+  ): Promise<{ items: WorkItemTableRow[]; truncated: boolean }> {
+    const areaPath = teamId
+      ? await this.getTeamAreaPath(organization, pat, projectId, teamId).catch(() => null)
+      : null;
+
+    const query = buildAllWorkItemsQuery(areaPath);
+    const wiql = await this.request<WiqlResponse>(
+      organization,
+      `/${encodeURIComponent(projectId)}/_apis/wit/wiql`,
+      pat,
+      {},
+      API_VERSION,
+      { absolute: true, method: 'POST', body: { query } },
+    );
+
+    const allIds = (wiql.workItems ?? [])
+      .map((item) => item.id)
+      .filter((id): id is number => typeof id === 'number');
+    const truncated = allIds.length > WORK_ITEM_TABLE_LIMIT;
+    const ids = allIds.slice(0, WORK_ITEM_TABLE_LIMIT);
+    const items: WorkItemTableRow[] = [];
+
+    for (let start = 0; start < ids.length; start += WORK_ITEM_BATCH) {
+      const chunk = ids.slice(start, start + WORK_ITEM_BATCH);
+      const { body } = await this.requestWithResponse<WorkItemsResponse>(
+        organization,
+        '/wit/workitems',
+        pat,
+        { ids: chunk.join(','), fields: WORK_ITEM_TABLE_FIELDS },
+      );
+      for (const item of body.value ?? []) {
+        const mapped = mapWorkItemRow(item, organization, projectId);
+        if (mapped) items.push(mapped);
+      }
+    }
+
+    return { items, truncated };
   }
 
   async getPullRequestNeedingAttention(
@@ -477,6 +528,51 @@ function buildWorkItemQuery(areaPath: { value: string; includeChildren: boolean 
   return `SELECT [System.Id] FROM WorkItems WHERE ${clauses.join(' AND ')} ORDER BY [System.ChangedDate] DESC`;
 }
 
+function buildAllWorkItemsQuery(
+  areaPath: { value: string; includeChildren: boolean } | null,
+): string {
+  const clauses = ['[System.TeamProject] = @project'];
+  if (areaPath) {
+    const operator = areaPath.includeChildren ? 'UNDER' : '=';
+    clauses.push(`[System.AreaPath] ${operator} '${areaPath.value.replace(/'/g, "''")}'`);
+  }
+  return `SELECT [System.Id] FROM WorkItems WHERE ${clauses.join(' AND ')} ORDER BY [System.ChangedDate] DESC`;
+}
+
+function mapWorkItemRow(
+  item: { id?: number; fields?: Record<string, unknown> } | undefined,
+  organization: string,
+  fallbackProject: string,
+): WorkItemTableRow | null {
+  if (!item?.id) return null;
+  const fields = item.fields ?? {};
+  const title = readString(fields['System.Title']);
+  if (!title) return null;
+
+  const project = readString(fields['System.TeamProject']) ?? fallbackProject;
+  const iteration = readString(fields['System.IterationPath']);
+  const sprint = iteration ? (iteration.split('\\').pop() ?? iteration) : null;
+
+  return {
+    id: item.id,
+    type: readString(fields['System.WorkItemType']) ?? 'Work item',
+    title,
+    state: readString(fields['System.State']) ?? 'Desconhecido',
+    sprint,
+    assignedTo: readAssignedTo(fields['System.AssignedTo']),
+    changedAt: readString(fields['System.ChangedDate']) ?? '',
+    url: `https://dev.azure.com/${encodeURIComponent(organization)}/${encodeURIComponent(project)}/_workitems/edit/${item.id}`,
+  };
+}
+
+function readAssignedTo(value: unknown): string | null {
+  return typeof value === 'string'
+    ? value
+    : isRecord(value) && typeof value.displayName === 'string'
+      ? value.displayName
+      : null;
+}
+
 function mapWorkItem(
   item: { id?: number; fields?: Record<string, unknown> } | undefined,
   organization: string,
@@ -488,13 +584,7 @@ function mapWorkItem(
   if (!title) return null;
 
   const project = readString(fields['System.TeamProject']) ?? fallbackProject;
-  const assigned = fields['System.AssignedTo'];
-  const assignedTo =
-    typeof assigned === 'string'
-      ? assigned
-      : isRecord(assigned) && typeof assigned.displayName === 'string'
-        ? assigned.displayName
-        : null;
+  const assignedTo = readAssignedTo(fields['System.AssignedTo']);
 
   return {
     id: item.id,

@@ -8,12 +8,21 @@ import type { ProjectContextState } from './use-project-context';
 
 interface ProductShellProps {
   context: ProjectContextState;
+  activeId: 'overview' | 'work-items';
+  onSelect: (id: 'overview' | 'work-items') => void;
   onConfigure: () => void;
   footer: ReactNode;
   children: ReactNode;
 }
 
-export function ProductShell({ context, onConfigure, footer, children }: ProductShellProps) {
+export function ProductShell({
+  context,
+  activeId,
+  onSelect,
+  onConfigure,
+  footer,
+  children,
+}: ProductShellProps) {
   return (
     <div className="product-shell">
       <header className="product-header">
@@ -49,7 +58,7 @@ export function ProductShell({ context, onConfigure, footer, children }: Product
 
       <div className="product-divider" />
 
-      <ProductTabs />
+      <ProductTabs activeId={activeId} onSelect={onSelect} />
 
       <main className="product-content">{children}</main>
 

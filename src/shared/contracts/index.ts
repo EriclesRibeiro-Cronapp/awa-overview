@@ -114,6 +114,42 @@ export interface OverviewView {
   stale: boolean;
 }
 
+export interface WorkItemTableRow {
+  id: number;
+  type: string;
+  title: string;
+  state: string;
+  sprint: string | null;
+  assignedTo: string | null;
+  changedAt: string;
+  url: string;
+}
+
+export interface WorkItemsSummary {
+  total: number;
+  backlog: number;
+  inProgress: number;
+  done: number;
+}
+
+export interface WorkItemsView {
+  context: OverviewContext | null;
+  items: WorkItemTableRow[];
+  summary: WorkItemsSummary;
+  truncated: boolean;
+  fetchedAt: string | null;
+  stale: boolean;
+}
+
+export interface WorkItemsLoadInput {
+  force?: boolean;
+}
+
+export type WorkItemsLoadResult =
+  | { ok: true; data: WorkItemsView }
+  | { ok: false; error: AppError };
+
+
 export interface OverviewLoadInput {
   force?: boolean;
 }
@@ -146,6 +182,9 @@ export interface IpcApi {
   };
   overview: {
     load(input?: OverviewLoadInput): Promise<OverviewLoadResult>;
+  };
+  workItems: {
+    load(input?: WorkItemsLoadInput): Promise<WorkItemsLoadResult>;
   };
   session: {
     select(input: SessionSelection): Promise<{ ok: boolean; error?: AppError }>;

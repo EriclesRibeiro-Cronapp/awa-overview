@@ -1,16 +1,23 @@
 import type { ConfigView } from '@shared/contracts';
+import { ProductFooter } from '../shell/product-footer';
 import { ProductShell } from '../shell/product-shell';
-import { useProjectContext } from '../shell/use-project-context';
-import { OverviewFooter, OverviewScreen } from './overview-screen';
+import type { ProjectContextState } from '../shell/use-project-context';
+import { OverviewScreen } from './overview-screen';
 import { useOverview } from './use-overview';
 
 interface OverviewPageProps {
   config: ConfigView;
+  context: ProjectContextState;
   onConfigure: () => void;
+  onSelect: (id: 'overview' | 'work-items') => void;
 }
 
-export function OverviewPage({ config, onConfigure }: OverviewPageProps) {
-  const context = useProjectContext(config);
+export function OverviewPage({
+  config,
+  context,
+  onConfigure,
+  onSelect,
+}: OverviewPageProps) {
   const overview = useOverview({
     organization: config.organization ?? '',
     projectId: context.selectedProjectId,
@@ -20,9 +27,11 @@ export function OverviewPage({ config, onConfigure }: OverviewPageProps) {
   return (
     <ProductShell
       context={context}
+      activeId="overview"
+      onSelect={onSelect}
       onConfigure={onConfigure}
       footer={
-        <OverviewFooter
+        <ProductFooter
           fetchedAt={overview.data?.fetchedAt}
           stale={overview.data?.stale ?? false}
           refreshing={overview.isFetching}

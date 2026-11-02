@@ -10,6 +10,8 @@ import { initLogger, logFilePath } from './services/logger';
 import { OverviewCacheService } from './services/overview-cache-service';
 import { OverviewService } from './services/overview-service';
 import { ProjectsService } from './services/projects-service';
+import { WorkItemsCacheService } from './services/work-items-cache-service';
+import { WorkItemsService } from './services/work-items-service';
 import { registerIpcHandlers } from './ipc/handlers';
 import { applyContentSecurityPolicy } from './security/csp';
 
@@ -46,9 +48,11 @@ async function bootstrap(): Promise<void> {
   const cacheKey = new FileCacheKeyProvider(dataDir, electronSafeStorage);
   const cache = new CacheService(dataDir, cacheKey);
   const overviewCache = new OverviewCacheService(dataDir, cacheKey);
+  const workItemsCache = new WorkItemsCacheService(dataDir, cacheKey);
   const client = new AzureDevOpsClient();
   const projects = new ProjectsService(client, cache);
   const overview = new OverviewService(client, overviewCache);
+  const workItems = new WorkItemsService(client, workItemsCache);
   const diagnostics = new DiagnosticsService(dataDir, logFilePath(logsDir), async () => {
     const current = await config.get();
     return {
@@ -66,9 +70,11 @@ async function bootstrap(): Promise<void> {
     cache,
     cacheKey,
     overviewCache,
+    workItemsCache,
     client,
     projects,
     overview,
+    workItems,
     diagnostics,
     appVersion: app.getVersion(),
   });

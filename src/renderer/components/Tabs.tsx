@@ -9,9 +9,10 @@ export interface TabItem {
 interface TabListProps {
   items: TabItem[];
   activeId: string;
+  onSelect?: (id: string) => void;
 }
 
-export function TabList({ items, activeId }: TabListProps) {
+export function TabList({ items, activeId, onSelect }: TabListProps) {
   return (
     <div className="tabs" role="tablist" aria-label={ptBR.overview.tabsLabel}>
       {items.map((item) => {
@@ -27,6 +28,7 @@ export function TabList({ items, activeId }: TabListProps) {
             aria-disabled={!available}
             tabIndex={selected ? 0 : -1}
             title={available ? undefined : ptBR.overview.comingSoon}
+            onClick={available ? () => onSelect?.(item.id) : undefined}
           >
             {item.label}
           </button>
