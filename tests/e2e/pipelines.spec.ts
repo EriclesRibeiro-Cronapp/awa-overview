@@ -126,6 +126,7 @@ test('abre Pipelines, mostra status, duração e busca', async ({}, testInfo) =>
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await window.getByRole('tab', { name: 'Pipelines' }).click();
     await expect(window.getByRole('heading', { name: 'Pipelines' })).toBeVisible();
 

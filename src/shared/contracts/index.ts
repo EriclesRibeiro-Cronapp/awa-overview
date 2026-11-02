@@ -216,6 +216,11 @@ export type OverviewLoadResult =
 
 export type OpenExternalResult = { ok: true } | { ok: false; error: AppError };
 
+export interface WindowControls {
+  minimize(): void;
+  close(): void;
+}
+
 export interface SessionSelection {
   projectId?: string | null;
   teamId?: string | null;
@@ -257,5 +262,9 @@ export interface IpcApi {
   app: {
     version(): Promise<{ version: string }>;
     openExternal(input: { url: string }): Promise<OpenExternalResult>;
+  };
+  windowControls: {
+    minimize(): Promise<{ ok: boolean; error?: AppError }>;
+    close(): Promise<{ ok: boolean; error?: AppError }>;
   };
 }

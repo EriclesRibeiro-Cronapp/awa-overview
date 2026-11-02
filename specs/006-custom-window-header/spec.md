@@ -175,6 +175,24 @@ verificar que o conteúdo vai até a margem direita de 20px.
 - **SC-007**: A tela não apresenta violações críticas/sérias de acessibilidade.
 - **SC-008**: As suítes das features 001–005 continuam passando sem regressões.
 
+## Implementation Notes
+
+- `BrowserWindow` criado com `frame: false`, `width: 900`, `height: 700`,
+  `resizable: false`, `maximizable: false` e `fullscreenable: false`.
+- Header customizado `WindowTitleBar` com logo local `awa-logo.png` em 95×12px,
+  configurações, minimizar e fechar.
+- Região `-webkit-app-region: drag` no header; controles com `no-drag`.
+- IPC `window:minimize` e `window:close` expostos no preload como
+  `window.api.windowControls`; o main usa apenas a janela principal.
+- Seletores de projeto/time movidos para o footer; `ProductFooter` agora recebe o
+  contexto e separa status (esquerda) de seleção (direita).
+- Layout fixo em 900×700, com 20px de margem, `overflow: hidden` no body e conteúdo
+  preenchendo os 860px úteis.
+- Primeira execução também usa o titlebar customizado; o overlay da modal fica abaixo
+  dos controles da janela.
+- Cobertura e2e: frame/controles, dimensões, logo, drag CSS, minimizar/fechar,
+  seletores no footer e configurações no header.
+
 ## Assumptions
 
 - O segundo seletor do footer é o **Time (equipe)** já existente; não há seletor de

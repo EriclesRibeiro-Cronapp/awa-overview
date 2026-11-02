@@ -113,6 +113,7 @@ test('Overview preenchido não tem violações de acessibilidade', async ({}, te
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
 
     await window.evaluate(axe.source);

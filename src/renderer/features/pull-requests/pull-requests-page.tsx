@@ -41,12 +41,12 @@ export function PullRequestsPage({
 
   return (
     <ProductShell
-      context={context}
       activeId="pull-requests"
       onSelect={onSelect}
       onConfigure={onConfigure}
       footer={
         <ProductFooter
+          context={context}
           fetchedAt={pullRequests.data?.fetchedAt}
           stale={pullRequests.data?.stale ?? false}
           refreshing={pullRequests.isFetching}

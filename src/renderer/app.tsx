@@ -3,6 +3,7 @@ import type { ConfigView } from '@shared/contracts';
 import { ConfigModal } from './features/config/config-modal';
 import { FirstRun } from './features/config/first-run';
 import { ConfiguredApp } from './features/shell/configured-app';
+import { WindowTitleBar } from './features/shell/window-title-bar';
 import { ptBR } from './i18n/pt-BR';
 
 export function App() {
@@ -42,6 +43,7 @@ export function App() {
   if (config === null) {
     return (
       <div className="app-shell">
+        <WindowTitleBar />
         <main className="app-content">
           <p>{ptBR.app.loading}</p>
         </main>
@@ -65,11 +67,7 @@ export function App() {
 
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <h1 className="app-brand">
-          AWA <span>{ptBR.app.brandSuffix}</span>
-        </h1>
-      </header>
+      <WindowTitleBar />
 
       <main className="app-content">
         <FirstRun onConfigure={() => setModalOpen(true)} />

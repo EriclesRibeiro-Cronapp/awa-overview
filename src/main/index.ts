@@ -61,6 +61,10 @@ async function bootstrap(): Promise<void> {
   const workItems = new WorkItemsService(client, workItemsCache);
   const pullRequests = new PullRequestsService(client, pullRequestsCache);
   const pipelines = new PipelinesService(client, pipelinesCache);
+  const windowControls = {
+    minimize: () => mainWindow?.minimize(),
+    close: () => mainWindow?.close(),
+  };
   const diagnostics = new DiagnosticsService(dataDir, logFilePath(logsDir), async () => {
     const current = await config.get();
     return {
@@ -87,6 +91,7 @@ async function bootstrap(): Promise<void> {
     workItems,
     pullRequests,
     pipelines,
+    windowControls,
     diagnostics,
     appVersion: app.getVersion(),
   });
@@ -97,10 +102,12 @@ async function bootstrap(): Promise<void> {
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
-    width: 1100,
-    height: 800,
-    minWidth: 900,
-    minHeight: 700,
+    width: 900,
+    height: 700,
+    resizable: false,
+    maximizable: false,
+    fullscreenable: false,
+    frame: false,
     show: false,
     backgroundColor: '#FBFBFB',
     webPreferences: {

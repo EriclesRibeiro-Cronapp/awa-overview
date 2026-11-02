@@ -33,6 +33,10 @@ const api: IpcApi = {
     version: () => ipcRenderer.invoke('app:version'),
     openExternal: (input) => ipcRenderer.invoke('app:openExternal', input),
   },
+  windowControls: {
+    minimize: () => ipcRenderer.invoke('window:minimize'),
+    close: () => ipcRenderer.invoke('window:close'),
+  },
 };
 
 contextBridge.exposeInMainWorld('api', api);

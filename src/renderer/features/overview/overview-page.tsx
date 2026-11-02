@@ -26,12 +26,12 @@ export function OverviewPage({
 
   return (
     <ProductShell
-      context={context}
       activeId="overview"
       onSelect={onSelect}
       onConfigure={onConfigure}
       footer={
         <ProductFooter
+          context={context}
           fetchedAt={overview.data?.fetchedAt}
           stale={overview.data?.stale ?? false}
           refreshing={overview.isFetching}

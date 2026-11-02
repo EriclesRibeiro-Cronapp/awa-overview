@@ -14,6 +14,7 @@ test('primeira execução fica pronta dentro do orçamento', async ({}, testInfo
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByLabel('Organização')).toBeVisible({ timeout: 10_000 });
     expect(Date.now() - start).toBeLessThan(10_000);
   } finally {
@@ -62,6 +63,7 @@ test('renderiza 100 projetos em menos de 5 segundos', async ({}, testInfo) => {
     }, projects);
 
     const window = await app.firstWindow();
+    await window.reload();
     const start = Date.now();
     await expect(window.getByLabel('Projeto')).toBeVisible({ timeout: 10_000 });
     await expect(window.getByLabel('Projeto').locator('option')).toHaveCount(101);

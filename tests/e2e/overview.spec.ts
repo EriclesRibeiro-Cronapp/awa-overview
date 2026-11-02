@@ -127,6 +127,7 @@ test('mostra os três cards, atualiza e exibe staleness', async ({}, testInfo) =
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
     expect(Date.now() - start).toBeLessThan(5_000);
     await expect(window.getByText('#145672')).toBeVisible();
@@ -182,6 +183,7 @@ test('mostra as mensagens vazias documentadas', async ({}, testInfo) => {
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await expect(
       window.getByText('No work items are assigned to you in this view.'),
     ).toBeVisible();
@@ -203,6 +205,7 @@ test('orienta a selecionar um projeto quando não há contexto', async ({}, test
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     await expect(
       window.getByRole('heading', { name: 'Selecione um projeto' }),
     ).toBeVisible();

@@ -41,12 +41,12 @@ export function PipelinesPage({
 
   return (
     <ProductShell
-      context={context}
       activeId="pipelines"
       onSelect={onSelect}
       onConfigure={onConfigure}
       footer={
         <ProductFooter
+          context={context}
           fetchedAt={pipelines.data?.fetchedAt}
           stale={pipelines.data?.stale ?? false}
           refreshing={pipelines.isFetching}

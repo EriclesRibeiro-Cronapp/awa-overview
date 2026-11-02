@@ -114,6 +114,7 @@ test('abre Pull requests, mostra tabela e filtros', async ({}, testInfo) => {
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await window.getByRole('tab', { name: 'Pull requests' }).click();
     await expect(window.getByRole('heading', { name: 'Pull requests' })).toBeVisible();
 

@@ -4,6 +4,7 @@ import type {
   ConfigView,
   IpcApi,
   SessionSelection,
+  WindowControls,
 } from '@shared/contracts';
 import { AppErrorException, ErrorCode, toAppError } from '@shared/errors';
 import type { AzureDevOpsClient } from '../services/azure-devops-client';
@@ -42,6 +43,7 @@ export interface IpcDependencies {
   workItems: WorkItemsService;
   pullRequests: PullRequestsService;
   pipelines: PipelinesService;
+  windowControls: WindowControls;
   diagnostics: DiagnosticsService;
   appVersion: string;
 }
@@ -242,6 +244,16 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       await shell.openExternal(input.url);
       return { ok: true as const };
     }, 'app:openExternal');
+  });
+
+  ipcMain.handle('window:minimize', async () => {
+    deps.windowControls.minimize();
+    return { ok: true };
+  });
+
+  ipcMain.handle('window:close', async () => {
+    deps.windowControls.close();
+    return { ok: true };
   });
 
   ipcMain.handle('session:select', async (_event, raw: unknown) => {

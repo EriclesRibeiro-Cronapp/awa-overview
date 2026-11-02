@@ -5,6 +5,10 @@ export const ptBR = {
     loading: 'Carregando…',
     updatedAt: 'Atualizado em',
   },
+  window: {
+    minimize: 'Minimizar',
+    close: 'Fechar',
+  },
   config: {
     title: 'Configurações',
     organization: 'Organização',

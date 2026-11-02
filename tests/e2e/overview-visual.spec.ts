@@ -103,6 +103,7 @@ test('Overview preenchido mantém o layout de referência', async ({}, testInfo)
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
     await expect(window).toHaveScreenshot('overview-filled.png', {
       maxDiffPixelRatio: 0.02,

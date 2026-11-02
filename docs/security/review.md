@@ -1,8 +1,8 @@
 # Revisão de segurança — 2026-11-02
 
 Escopo: features 001 (configuração e conexão), 002 (Overview), 003 (Work items),
-004 (Pull requests) e 005 (Pipelines), aplicação Electron 45, Windows, instância
-única, read-only.
+004 (Pull requests), 005 (Pipelines) e 006 (header/janela), aplicação Electron 45,
+Windows, instância única, read-only.
 
 ## Checklist
 
@@ -22,6 +22,9 @@ Escopo: features 001 (configuração e conexão), 002 (Overview), 003 (Work item
 | Links externos restritos | `app:openExternal` aceita apenas HTTPS em `dev.azure.com`/`*.visualstudio.com`; teste de contrato | OK |
 | Escopos insuficientes não confundem com token inválido | identidade válida + 401 nos endpoints de dados → `CFG-004` com orientação de escopos | OK |
 | Sem escrita no cache/DB por terceiros | Arquivos no `userData`; cache autenticado (GCM) | OK |
+| Controles de janela restritos | `window:minimize`/`window:close` no main; preload expõe apenas essas operações | OK |
+| Janela sem frame nativo | `frame:false`, 900×700 não redimensionável, sem maximizar; controles próprios | OK |
+| Logo e ícones locais | `awa-logo.png` e SVGs empacotados; nenhuma imagem remota | OK |
 
 ## Riscos residuais
 

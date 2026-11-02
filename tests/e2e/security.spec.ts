@@ -12,6 +12,7 @@ test('renderer roda com isolamento e sem Node', async ({}, testInfo) => {
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     const preferences = await app.evaluate(({ BrowserWindow }) => {
       const [window] = BrowserWindow.getAllWindows();
       const contents = window.webContents as unknown as {

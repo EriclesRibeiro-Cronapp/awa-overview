@@ -28,6 +28,7 @@ describe('preload IPC contract', () => {
       'projects',
       'pullRequests',
       'session',
+      'windowControls',
       'workItems',
     ]);
     expect(typeof api.config.get).toBe('function');
@@ -39,6 +40,8 @@ describe('preload IPC contract', () => {
     expect(typeof api.workItems.load).toBe('function');
     expect(typeof api.pullRequests.load).toBe('function');
     expect(typeof api.pipelines.load).toBe('function');
+    expect(typeof api.windowControls.minimize).toBe('function');
+    expect(typeof api.windowControls.close).toBe('function');
     expect(typeof api.session.select).toBe('function');
     expect(typeof api.diagnostics.export).toBe('function');
     expect(typeof api.app.version).toBe('function');

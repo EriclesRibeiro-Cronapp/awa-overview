@@ -124,6 +124,7 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByRole('button', { name: 'Configurações' })).toBeVisible();
 
     await expect(window.getByLabel('Projeto')).toBeVisible();

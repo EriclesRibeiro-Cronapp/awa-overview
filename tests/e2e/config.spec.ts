@@ -13,6 +13,7 @@ test('primeira execução mostra configuração e ajuda do PAT', async ({}, test
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     await expect(window.getByRole('dialog')).toBeVisible();
     await expect(window.getByText('Configuração necessária')).toBeVisible();
 
@@ -44,6 +45,7 @@ test('mostra erro de PAT inválido sem fechar a modal', async ({}, testInfo) => 
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await window.getByLabel('Organização').fill('demo');
     await window.getByLabel('Personal Access Token').fill('bad');
     await window.getByRole('dialog').getByRole('button', { name: 'Salvar' }).click();
@@ -68,6 +70,7 @@ test('salva configuração válida quando credenciais de teste são fornecidas',
 
   try {
     const window = await app.firstWindow();
+    await window.reload();
     await window.getByLabel('Organização').fill(organization as string);
     await window.getByLabel('Personal Access Token').fill(pat as string);
     await window.getByRole('dialog').getByRole('button', { name: 'Salvar' }).click();

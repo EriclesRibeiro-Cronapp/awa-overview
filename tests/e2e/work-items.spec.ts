@@ -131,6 +131,7 @@ test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) =>
     });
 
     const window = await app.firstWindow();
+    await window.reload();
     await window.getByRole('tab', { name: 'Work items' }).click();
     await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
 

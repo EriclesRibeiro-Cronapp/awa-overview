@@ -43,12 +43,12 @@ export function WorkItemsPage({
 
   return (
     <ProductShell
-      context={context}
       activeId="work-items"
       onSelect={onSelect}
       onConfigure={onConfigure}
       footer={
         <ProductFooter
+          context={context}
           fetchedAt={workItems.data?.fetchedAt}
           stale={workItems.data?.stale ?? false}
           refreshing={workItems.isFetching}
