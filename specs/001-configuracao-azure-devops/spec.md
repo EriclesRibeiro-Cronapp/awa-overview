@@ -38,6 +38,8 @@ os projetos foram carregados.
    correção, sem gravar a configuração.
 5. **Given** uma configuração já salva, **When** o usuário reabre a modal, **Then**
    a organização é exibida e o PAT aparece apenas mascarado.
+6. **Given** a modal aberta, **When** o usuário consulta a ajuda do PAT, **Then** vê
+   como criar o token, quais escopos usar e como revogá-lo.
 
 ---
 
@@ -152,7 +154,8 @@ verificar que o PAT não está mais no cofre, o cache foi limpo e a aplicação 
 - **FR-019**: A organização DEVE ser normalizada (espaços removidos e formato
   validado) antes da chamada ao Azure DevOps.
 - **FR-020**: Eventos de configuração, validação e remoção DEVEM ser registrados com
-  códigos estáveis, sem dados sensíveis.
+  códigos estáveis e contexto operacional suficiente para diagnóstico, excluindo
+  credenciais e conteúdo de dados.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -187,8 +190,8 @@ verificar que o PAT não está mais no cofre, o cache foi limpo e a aplicação 
   e acionável, sem apagar a configuração quando ela ainda for válida.
 - **SC-003**: Após salvar, o PAT nunca é exibido por inteiro; apenas os 4 últimos
   caracteres aparecem, em 100% das reaberturas da modal.
-- **SC-004**: Em rede normal, a lista de até 100 projetos é exibida em menos de 5
-  segundos após a validação.
+- **SC-004**: Em rede corporativa estável (latência ≤ 100 ms), a lista de até 100
+  projetos é exibida em menos de 5 segundos após a validação.
 - **SC-005**: Após remover a configuração, nenhuma credencial permanece no cofre e
   nenhum dado da organização permanece em cache, verificado por inspeção e teste.
 - **SC-006**: Com configuração salva e sem rede, a aplicação inicia e exibe dados em

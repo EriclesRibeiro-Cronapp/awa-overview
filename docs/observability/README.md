@@ -40,6 +40,7 @@ Prefira IDs (`projectId`, `workItemId`) a títulos e nomes.
 | `CFG-006` | Rate limit (429) | "O Azure DevOps limitou as requisições. Aguarde e tente novamente." | sim, respeitando `Retry-After` |
 | `CFG-007` | Erro do servidor (5xx) | "O Azure DevOps está indisponível no momento." | sim, limitado |
 | `CFG-008` | Erro inesperado | "Ocorreu um erro inesperado. Consulte o diagnóstico." | não |
+| `CFG-009` | Organização não encontrada (404) | "Organização não encontrada. Verifique o nome e tente novamente." | não |
 | `DATA-001` | Cache local corrompido | "Os dados locais precisam ser recriados." | recriar cache |
 | `DATA-002` | Migração de dados falhou | "Não foi possível atualizar os dados locais." | não; oferecer reset |
 | `UI-001` | Falha de renderização de uma seção | "Não foi possível exibir esta seção." | recarregar seção |
