@@ -54,6 +54,76 @@ export type ListResult<T> =
   | { ok: true; items: T[]; stale: boolean; fetchedAt: string }
   | { ok: false; error: AppError };
 
+export interface WorkItemSummary {
+  id: number;
+  type: string;
+  title: string;
+  state: string;
+  project: string;
+  assignedTo: string | null;
+  changedAt: string;
+  url: string;
+}
+
+export interface PullRequestSummary {
+  id: number;
+  title: string;
+  status: string;
+  project: string;
+  createdAt: string;
+  url: string;
+}
+
+export type PipelineResult =
+  | 'succeeded'
+  | 'failed'
+  | 'partiallySucceeded'
+  | 'canceled'
+  | 'unknown';
+
+export type PipelineStatus = 'completed' | 'inProgress' | 'notStarted' | 'unknown';
+
+export interface PipelineRunSummary {
+  id: number;
+  name: string;
+  result: PipelineResult;
+  status: PipelineStatus;
+  project: string;
+  startedAt: string | null;
+  url: string;
+}
+
+export interface OverviewContext {
+  organization: string;
+  projectId: string;
+  projectName: string;
+  teamId: string | null;
+  teamName: string | null;
+}
+
+export type CardResult<T> =
+  | { ok: true; data: T; stale: boolean; fetchedAt: string }
+  | { ok: false; error: AppError; stale?: boolean; fetchedAt?: string };
+
+export interface OverviewView {
+  context: OverviewContext | null;
+  workItems: CardResult<WorkItemSummary[]>;
+  pullRequest: CardResult<PullRequestSummary | null>;
+  pipeline: CardResult<PipelineRunSummary | null>;
+  fetchedAt: string | null;
+  stale: boolean;
+}
+
+export interface OverviewLoadInput {
+  force?: boolean;
+}
+
+export type OverviewLoadResult =
+  | { ok: true; data: OverviewView }
+  | { ok: false; error: AppError };
+
+export type OpenExternalResult = { ok: true } | { ok: false; error: AppError };
+
 export interface SessionSelection {
   projectId?: string | null;
   teamId?: string | null;
@@ -74,6 +144,9 @@ export interface IpcApi {
     list(input?: { force?: boolean }): Promise<ListResult<Project>>;
     teams(input: { projectId: string; force?: boolean }): Promise<ListResult<Team>>;
   };
+  overview: {
+    load(input?: OverviewLoadInput): Promise<OverviewLoadResult>;
+  };
   session: {
     select(input: SessionSelection): Promise<{ ok: boolean; error?: AppError }>;
   };
@@ -82,5 +155,6 @@ export interface IpcApi {
   };
   app: {
     version(): Promise<{ version: string }>;
+    openExternal(input: { url: string }): Promise<OpenExternalResult>;
   };
 }

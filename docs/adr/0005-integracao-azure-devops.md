@@ -14,14 +14,17 @@ projeto. O Azure DevOps expõe REST com versões e limites próprios.
 ## Decisão
 
 - Usar **REST** em `https://dev.azure.com/{organization}/_apis`.
-- Fixar `api-version=7.1` (revisar 7.2 antes da implementação).
+- Fixar `api-version=7.1` para projetos, times, work items, PRs e builds;
+  `connectionData` usa `7.1-preview.1` (preview obrigatório).
 - Autenticar com `Authorization: Basic base64(":" + PAT)`; o token nunca vai na URL.
+- Enviar `X-TFS-FedAuthRedirect: Suppress` para receber 401 em vez de HTML.
 - Validar com `GET /connectionData` e `GET /projects?$top=1`.
 - Listar projetos com `GET /projects?$top=100` e continuação.
 - Listar times com `GET /projects/{projectId}/teams`.
 - Paginação obrigatória; limite de páginas; respeito a `Retry-After`; timeout de
   15s; retry máximo de 3 em 429/5xx.
-- Nenhum método de escrita no client.
+- Nenhuma chamada que altere dados. `POST` é permitido apenas para WIQL de consulta,
+  conforme ADR-0011.
 
 ## Alternativas consideradas
 

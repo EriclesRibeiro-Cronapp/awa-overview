@@ -11,6 +11,9 @@ const api: IpcApi = {
     list: (input) => ipcRenderer.invoke('projects:list', input),
     teams: (input) => ipcRenderer.invoke('teams:list', input),
   },
+  overview: {
+    load: (input) => ipcRenderer.invoke('overview:load', input),
+  },
   session: {
     select: (input) => ipcRenderer.invoke('session:select', input),
   },
@@ -19,6 +22,7 @@ const api: IpcApi = {
   },
   app: {
     version: () => ipcRenderer.invoke('app:version'),
+    openExternal: (input) => ipcRenderer.invoke('app:openExternal', input),
   },
 };
 

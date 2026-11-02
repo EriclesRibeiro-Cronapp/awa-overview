@@ -21,7 +21,8 @@ const MESSAGES: Record<ErrorCodeValue, string> = {
   'CFG-001': 'Informe o nome da organização.',
   'CFG-002': 'Informe o Personal Access Token.',
   'CFG-003': 'O token é inválido ou expirou. Gere um novo PAT com escopos de leitura.',
-  'CFG-004': 'O token não tem permissão para acessar este recurso.',
+  'CFG-004':
+    'O token não tem permissão para acessar este recurso. Verifique os escopos de leitura (Project and Team, Work Items, Code e Build).',
   'CFG-005': 'Não foi possível conectar. Verifique a rede e tente novamente.',
   'CFG-006': 'O Azure DevOps limitou as requisições. Aguarde e tente novamente.',
   'CFG-007': 'O Azure DevOps está indisponível no momento.',

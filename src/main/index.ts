@@ -7,6 +7,8 @@ import { CredentialsService } from './services/credentials-service';
 import { DiagnosticsService } from './services/diagnostics-service';
 import { electronSafeStorage } from './services/electron-safe-storage';
 import { initLogger, logFilePath } from './services/logger';
+import { OverviewCacheService } from './services/overview-cache-service';
+import { OverviewService } from './services/overview-service';
 import { ProjectsService } from './services/projects-service';
 import { registerIpcHandlers } from './ipc/handlers';
 import { applyContentSecurityPolicy } from './security/csp';
@@ -43,8 +45,10 @@ async function bootstrap(): Promise<void> {
   const credentials = new CredentialsService(dataDir, electronSafeStorage);
   const cacheKey = new FileCacheKeyProvider(dataDir, electronSafeStorage);
   const cache = new CacheService(dataDir, cacheKey);
+  const overviewCache = new OverviewCacheService(dataDir, cacheKey);
   const client = new AzureDevOpsClient();
   const projects = new ProjectsService(client, cache);
+  const overview = new OverviewService(client, overviewCache);
   const diagnostics = new DiagnosticsService(dataDir, logFilePath(logsDir), async () => {
     const current = await config.get();
     return {
@@ -61,8 +65,10 @@ async function bootstrap(): Promise<void> {
     credentials,
     cache,
     cacheKey,
+    overviewCache,
     client,
     projects,
+    overview,
     diagnostics,
     appVersion: app.getVersion(),
   });

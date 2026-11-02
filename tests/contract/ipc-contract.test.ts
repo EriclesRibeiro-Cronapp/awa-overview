@@ -23,6 +23,7 @@ describe('preload IPC contract', () => {
       'app',
       'config',
       'diagnostics',
+      'overview',
       'projects',
       'session',
     ]);
@@ -31,8 +32,10 @@ describe('preload IPC contract', () => {
     expect(typeof api.config.remove).toBe('function');
     expect(typeof api.projects.list).toBe('function');
     expect(typeof api.projects.teams).toBe('function');
+    expect(typeof api.overview.load).toBe('function');
     expect(typeof api.session.select).toBe('function');
     expect(typeof api.diagnostics.export).toBe('function');
     expect(typeof api.app.version).toBe('function');
+    expect(typeof api.app.openExternal).toBe('function');
   });
 });

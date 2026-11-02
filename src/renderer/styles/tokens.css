@@ -19,6 +19,16 @@
   --color-warning: #e5d13a;
   --color-warning-hover: #d9c000;
   --color-on-accent: #fbfbfb;
+  --color-tag-success: #4f7a00;
+  --color-tag-success-hover: #3f6200;
+  --color-tag-danger: #b00020;
+  --color-tag-danger-hover: #8a0018;
+  --color-tag-warning: #6b5a00;
+  --color-tag-warning-hover: #554700;
+  --color-tag-info: #005a9e;
+  --color-tag-info-hover: #004a82;
+  --color-tag-inactive: #386089;
+  --color-tag-inactive-hover: #2c4c6d;
 
   /* espaçamento */
   --space-4: 4px;

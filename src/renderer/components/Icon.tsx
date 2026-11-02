@@ -1,3 +1,5 @@
+import { getIconSvg } from '../assets/icons';
+
 interface IconProps {
   name: string;
   size?: number;
@@ -5,6 +7,9 @@ interface IconProps {
 }
 
 export function Icon({ name, size = 24, label }: IconProps) {
+  const svg = getIconSvg(name);
+  if (!svg) return null;
+
   return (
     <span
       className="icon"
@@ -13,6 +18,7 @@ export function Icon({ name, size = 24, label }: IconProps) {
       role={label ? 'img' : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
+      dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 }

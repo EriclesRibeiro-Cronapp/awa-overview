@@ -12,6 +12,9 @@ vi.mock('electron', () => ({
       handlers.set(channel, listener);
     },
   },
+  shell: {
+    openExternal: vi.fn(async () => undefined),
+  },
 }));
 
 import { registerIpcHandlers, type IpcDependencies } from '../../src/main/ipc/handlers';
@@ -52,6 +55,7 @@ function buildDeps(overrides: Partial<IpcDependencies> = {}) {
     },
     cache: { clear: vi.fn(async () => undefined) },
     cacheKey: { clear: vi.fn(async () => undefined) },
+    overviewCache: { clear: vi.fn(async () => undefined) },
     client: {
       validateAccess: vi.fn(async () => ({ displayName: 'Tester' })),
     },
@@ -65,6 +69,26 @@ function buildDeps(overrides: Partial<IpcDependencies> = {}) {
         items: [],
         stale: false,
         fetchedAt: '2026-11-02T00:00:00.000Z',
+      })),
+    },
+    overview: {
+      load: vi.fn(async () => ({
+        context: null,
+        workItems: { ok: true, data: [], stale: false, fetchedAt: '2026-11-02T00:00:00.000Z' },
+        pullRequest: {
+          ok: true,
+          data: null,
+          stale: false,
+          fetchedAt: '2026-11-02T00:00:00.000Z',
+        },
+        pipeline: {
+          ok: true,
+          data: null,
+          stale: false,
+          fetchedAt: '2026-11-02T00:00:00.000Z',
+        },
+        fetchedAt: null,
+        stale: false,
       })),
     },
     diagnostics: { export: vi.fn(async () => 'diag.json') },
@@ -153,6 +177,18 @@ describe('config IPC contract', () => {
     expect(deps.client.validateAccess).not.toHaveBeenCalled();
   });
 
+  it('limpa os caches ao trocar de organização', async () => {
+    const deps = buildDeps();
+    registerIpcHandlers(deps);
+
+    const result = await handlers.get('config:save')!({}, { organization: 'other', pat: 'figd_x' });
+
+    expect(result).toMatchObject({ ok: true });
+    expect(deps.cache.clear).toHaveBeenCalledOnce();
+    expect(deps.cacheKey.clear).toHaveBeenCalledOnce();
+    expect(deps.overviewCache.clear).toHaveBeenCalledOnce();
+  });
+
   it('remove credenciais, cache, chave e configuração', async () => {
     const deps = buildDeps();
     registerIpcHandlers(deps);
@@ -163,6 +199,7 @@ describe('config IPC contract', () => {
     expect(deps.credentials.clear).toHaveBeenCalledOnce();
     expect(deps.cache.clear).toHaveBeenCalledOnce();
     expect(deps.cacheKey.clear).toHaveBeenCalledOnce();
+    expect(deps.overviewCache.clear).toHaveBeenCalledOnce();
     expect(deps.config.reset).toHaveBeenCalledOnce();
   });
 });

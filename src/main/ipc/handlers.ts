@@ -1,6 +1,10 @@
-import { ipcMain } from 'electron';
+import { ipcMain, shell } from 'electron';
 import { z } from 'zod';
-import type { ConfigView, IpcApi, SessionSelection } from '@shared/contracts';
+import type {
+  ConfigView,
+  IpcApi,
+  SessionSelection,
+} from '@shared/contracts';
 import { AppErrorException, ErrorCode, toAppError } from '@shared/errors';
 import type { AzureDevOpsClient } from '../services/azure-devops-client';
 import type { CacheKeyProvider, CacheService } from '../services/cache-service';
@@ -10,6 +14,8 @@ import { removeConfiguration } from '../services/config-removal';
 import type { CredentialsService } from '../services/credentials-service';
 import type { DiagnosticsService } from '../services/diagnostics-service';
 import { logError, logEvent } from '../services/logger';
+import type { OverviewCacheService } from '../services/overview-cache-service';
+import { emptyOverviewView, type OverviewService } from '../services/overview-service';
 import type { ProjectsService } from '../services/projects-service';
 
 export interface IpcDependencies {
@@ -17,8 +23,10 @@ export interface IpcDependencies {
   credentials: CredentialsService;
   cache: CacheService;
   cacheKey: CacheKeyProvider;
+  overviewCache: OverviewCacheService;
   client: AzureDevOpsClient;
   projects: ProjectsService;
+  overview: OverviewService;
   diagnostics: DiagnosticsService;
   appVersion: string;
 }
@@ -36,6 +44,16 @@ const SelectionSchema = z.object({
 const ProjectIdSchema = z.object({
   projectId: z.string().min(1),
   force: z.boolean().optional(),
+});
+
+const OverviewLoadSchema = z
+  .object({
+    force: z.boolean().optional(),
+  })
+  .optional();
+
+const OpenExternalSchema = z.object({
+  url: z.string().url(),
 });
 
 export function registerIpcHandlers(deps: IpcDependencies): void {
@@ -77,6 +95,7 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       if (previous.normalizedOrganization && previous.normalizedOrganization !== organization) {
         await deps.cache.clear();
         await deps.cacheKey.clear();
+        await deps.overviewCache.clear();
         logEvent('config.organizationChanged', {
           from: previous.normalizedOrganization,
           to: organization,
@@ -113,6 +132,61 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       const result = await deps.projects.listTeams(organization, pat, input.projectId, input.force);
       return { ok: true, items: result.items, stale: result.stale, fetchedAt: result.fetchedAt };
     }, 'teams:list');
+  });
+
+  ipcMain.handle('overview:load', async (_event, raw?: unknown) => {
+    return runSafely(async () => {
+      const input = OverviewLoadSchema.parse(raw);
+      const current = await deps.config.get();
+      if (!current.normalizedOrganization) {
+        throw new AppErrorException(ErrorCode.CONFIG_ORG_MISSING);
+      }
+
+      const projectId = current.selectedProjectId;
+      if (!projectId) return { ok: true, data: emptyOverviewView() };
+
+      const pat = await deps.credentials.readPat();
+      const organization = current.normalizedOrganization;
+
+      const projects = await deps.projects
+        .listProjects(organization, pat)
+        .catch(() => null);
+      const projectName =
+        projects?.items.find((project) => project.id === projectId)?.name ?? projectId;
+
+      let teamName: string | null = null;
+      if (current.selectedTeamId) {
+        const teams = await deps.projects
+          .listTeams(organization, pat, projectId)
+          .catch(() => null);
+        teamName = teams?.items.find((team) => team.id === current.selectedTeamId)?.name ?? null;
+      }
+
+      const data = await deps.overview.load({
+        organization,
+        pat,
+        projectId,
+        projectName,
+        teamId: current.selectedTeamId,
+        teamName,
+        force: input?.force ?? false,
+      });
+      return { ok: true, data };
+    }, 'overview:load');
+  });
+
+  ipcMain.handle('app:openExternal', async (_event, raw: unknown) => {
+    return runSafely(async () => {
+      const input = OpenExternalSchema.parse(raw);
+      if (!isAllowedExternalUrl(input.url)) {
+        throw new AppErrorException(
+          ErrorCode.CONFIG_UNEXPECTED,
+          'Somente links do Azure DevOps podem ser abertos.',
+        );
+      }
+      await shell.openExternal(input.url);
+      return { ok: true as const };
+    }, 'app:openExternal');
   });
 
   ipcMain.handle('session:select', async (_event, raw: unknown) => {
@@ -170,6 +244,16 @@ async function runSafely<T>(
       ...(appError.details ? { details: appError.details } : {}),
     });
     return { ok: false, error: appError };
+  }
+}
+
+function isAllowedExternalUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:') return false;
+    return url.hostname === 'dev.azure.com' || url.hostname.endsWith('.visualstudio.com');
+  } catch {
+    return false;
   }
 }
 

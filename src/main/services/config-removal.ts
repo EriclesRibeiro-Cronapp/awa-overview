@@ -14,16 +14,22 @@ export interface RemovableCacheKey {
   clear(): Promise<void>;
 }
 
+export interface RemovableOverviewCache {
+  clear(): Promise<void>;
+}
+
 export interface RemovalDependencies {
   config: RemovableConfig;
   credentials: RemovableCredentials;
   cache: RemovableCache;
   cacheKey: RemovableCacheKey;
+  overviewCache: RemovableOverviewCache;
 }
 
 export async function removeConfiguration(deps: RemovalDependencies): Promise<void> {
   await deps.credentials.clear();
   await deps.cache.clear();
   await deps.cacheKey.clear();
+  await deps.overviewCache.clear();
   await deps.config.reset();
 }

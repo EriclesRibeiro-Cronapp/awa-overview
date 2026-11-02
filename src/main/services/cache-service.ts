@@ -1,83 +1,32 @@
-import { createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
-import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
+import { randomBytes } from 'node:crypto';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { AppErrorException, ErrorCode } from '@shared/errors';
 import type { CacheSnapshot } from '@shared/contracts';
+import { EncryptedJsonStore, type CacheKeyProvider } from './encrypted-json-store';
 
-export interface CacheKeyProvider {
-  getKey(): Promise<Buffer>;
-  clear(): Promise<void>;
-}
-
-interface EncryptedPayload {
-  schemaVersion: 1;
-  iv: string;
-  tag: string;
-  data: string;
-}
+export type { CacheKeyProvider };
 
 export class CacheService {
-  private readonly filePath: string;
+  private readonly store: EncryptedJsonStore<CacheSnapshot>;
 
   constructor(
-    private readonly dataDir: string,
-    private readonly keyProvider: CacheKeyProvider,
+    dataDir: string,
+    keyProvider: CacheKeyProvider,
   ) {
-    this.filePath = join(dataDir, 'cache.json.enc');
+    this.store = new EncryptedJsonStore(join(dataDir, 'cache.json.enc'), keyProvider);
   }
 
   async read(): Promise<CacheSnapshot | null> {
-    let raw: string;
-    try {
-      raw = await readFile(this.filePath, 'utf8');
-    } catch {
-      return null;
-    }
-
-    try {
-      const payload = JSON.parse(raw) as EncryptedPayload;
-      if (payload.schemaVersion !== 1) return null;
-      const key = await this.keyProvider.getKey();
-      const decipher = createDecipheriv('aes-256-gcm', key, Buffer.from(payload.iv, 'base64'));
-      decipher.setAuthTag(Buffer.from(payload.tag, 'base64'));
-      const decrypted = Buffer.concat([
-        decipher.update(Buffer.from(payload.data, 'base64')),
-        decipher.final(),
-      ]);
-      return JSON.parse(decrypted.toString('utf8')) as CacheSnapshot;
-    } catch {
-      return null;
-    }
+    return this.store.read();
   }
 
   async write(snapshot: CacheSnapshot): Promise<void> {
-    const key = await this.keyProvider.getKey();
-    const iv = randomBytes(12);
-    const cipher = createCipheriv('aes-256-gcm', key, iv);
-    const encrypted = Buffer.concat([
-      cipher.update(Buffer.from(JSON.stringify(snapshot), 'utf8')),
-      cipher.final(),
-    ]);
-    const payload: EncryptedPayload = {
-      schemaVersion: 1,
-      iv: iv.toString('base64'),
-      tag: cipher.getAuthTag().toString('base64'),
-      data: encrypted.toString('base64'),
-    };
-
-    await mkdir(this.dataDir, { recursive: true });
-    const temp = `${this.filePath}.tmp`;
-    await writeFile(temp, `${JSON.stringify(payload)}\n`, 'utf8');
-    try {
-      await rename(temp, this.filePath);
-    } catch {
-      await rm(this.filePath, { force: true });
-      await rename(temp, this.filePath);
-    }
+    await this.store.write(snapshot);
   }
 
   async clear(): Promise<void> {
-    await rm(this.filePath, { force: true }).catch(() => undefined);
+    await this.store.clear();
   }
 
   isFresh(snapshot: CacheSnapshot, now = Date.now()): boolean {

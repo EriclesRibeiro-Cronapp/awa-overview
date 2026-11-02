@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
-test('seleciona projeto, carrega times e mostra staleness', async ({}, testInfo) => {
+test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
   const userData = testInfo.outputPath('user-data-projects');
   await mkdir(userData, { recursive: true });
   await writeFile(
@@ -34,7 +34,7 @@ test('seleciona projeto, carrega times e mostra staleness', async ({}, testInfo)
           { id: 'p1', name: 'Projeto Um', state: 'wellFormed' },
           { id: 'p2', name: 'Projeto Dois', state: 'wellFormed' },
         ],
-        stale: true,
+        stale: false,
         fetchedAt: new Date().toISOString(),
       }));
 
@@ -45,20 +45,62 @@ test('seleciona projeto, carrega times e mostra staleness', async ({}, testInfo)
         stale: false,
         fetchedAt: new Date().toISOString(),
       }));
+
+      ipcMain.removeHandler('overview:load');
+      ipcMain.handle('overview:load', async () => ({
+        ok: true,
+        data: {
+          context: {
+            organization: 'demo',
+            projectId: 'p1',
+            projectName: 'Projeto Um',
+            teamId: 't1',
+            teamName: 'Time A',
+          },
+          workItems: {
+            ok: true,
+            stale: false,
+            fetchedAt: new Date().toISOString(),
+            data: [
+              {
+                id: 145672,
+                type: 'Bug',
+                title: 'Item do projeto',
+                state: 'Active',
+                project: 'Projeto Um',
+                assignedTo: 'Ericles',
+                changedAt: '2026-11-02T10:00:00.000Z',
+                url: 'https://dev.azure.com/demo/Projeto%20Um/_workitems/edit/145672',
+              },
+            ],
+          },
+          pullRequest: {
+            ok: true,
+            stale: false,
+            fetchedAt: new Date().toISOString(),
+            data: null,
+          },
+          pipeline: {
+            ok: true,
+            stale: false,
+            fetchedAt: new Date().toISOString(),
+            data: null,
+          },
+          fetchedAt: new Date().toISOString(),
+          stale: false,
+        },
+      }));
     });
 
     const window = await app.firstWindow();
     await expect(window.getByRole('button', { name: 'Configurações' })).toBeVisible();
-
-    const retry = window.getByRole('button', { name: 'Tentar novamente' });
-    if ((await retry.count()) > 0) await retry.click();
 
     await expect(window.getByLabel('Projeto')).toBeVisible();
     await window.getByLabel('Projeto').selectOption('p1');
     await expect(window.getByLabel('Time')).toBeVisible();
     await window.getByLabel('Time').selectOption('t1');
 
-    await expect(window.getByText('Dados desatualizados')).toBeVisible();
+    await expect(window.getByText('#145672')).toBeVisible();
   } finally {
     await app.close();
   }

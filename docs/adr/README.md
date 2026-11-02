@@ -29,6 +29,7 @@ análise; até lá, o item permanece como proposta.
 | 0008 | Idiomas e acessibilidade | Proposto | Primeiro release |
 | [0009](0009-so-e-atualizacao.md) | Sistemas operacionais e atualização | Aceito | Empacotamento |
 | [0010](0010-armazenamento-pat.md) | Armazenamento seguro do PAT | Aceito | Configuração |
+| [0011](0011-wiql-read-only.md) | Consultas somente leitura com WIQL | Aceito | Overview |
 
 ## Como criar uma ADR
 

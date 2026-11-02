@@ -3,8 +3,9 @@
 ## Base e autenticação
 
 - Base: `https://dev.azure.com/{organization}/_apis`
-- Versão: `api-version=7.1` (revisar 7.2 antes da implementação)
+- Versão: `api-version=7.1`; `connectionData` usa `7.1-preview.1` (preview obrigatório)
 - Autenticação: `Authorization: Basic base64(":" + PAT)`
+- `X-TFS-FedAuthRedirect: Suppress` para receber 401 em vez de HTML de login.
 - O PAT nunca vai para URL, query string ou log.
 - HTTPS obrigatório com validação de certificado.
 - Timeout padrão: 15s; retry apenas em 429 e 5xx.
@@ -13,7 +14,7 @@
 
 ### 1. Identidade
 
-`GET /connectionData?api-version=7.1`
+`GET /connectionData?api-version=7.1-preview.1`
 
 Retorna o usuário autenticado. Usado para validar o PAT e exibir "Conectado como"
 quando disponível.

@@ -7,6 +7,7 @@ import { CacheService, FileCacheKeyProvider } from '../../src/main/services/cach
 import { ConfigService } from '../../src/main/services/config-service';
 import { removeConfiguration } from '../../src/main/services/config-removal';
 import { CredentialsService } from '../../src/main/services/credentials-service';
+import { OverviewCacheService } from '../../src/main/services/overview-cache-service';
 
 const storage = {
   isAvailable: () => true,
@@ -38,17 +39,33 @@ describe('removal integration', () => {
     const credentials = new CredentialsService(dir, storage);
     const cacheKey = new FileCacheKeyProvider(dir, storage);
     const cache = new CacheService(dir, cacheKey);
+    const overviewCache = new OverviewCacheService(dir, cacheKey);
 
     await config.setOrganization('demo');
     await credentials.save('figd_secret_1234');
     await cache.write(snapshot);
+    await overviewCache.write({
+      schemaVersion: 1,
+      contextKey: 'demo|p1|',
+      organization: 'demo',
+      projectId: 'p1',
+      projectName: 'Projeto',
+      teamId: null,
+      teamName: null,
+      fetchedAt: new Date().toISOString(),
+      ttlSeconds: 300,
+      workItems: [],
+      pullRequest: null,
+      pipeline: null,
+    });
     await cacheKey.getKey();
 
-    await removeConfiguration({ config, credentials, cache, cacheKey });
+    await removeConfiguration({ config, credentials, cache, cacheKey, overviewCache });
 
     expect((await config.get()).status).toBe('unconfigured');
     expect(await credentials.has()).toBe(false);
     expect(await cache.read()).toBeNull();
+    expect(await overviewCache.read()).toBeNull();
     await expect(access(join(dir, 'cache.key'))).rejects.toBeTruthy();
   });
 });

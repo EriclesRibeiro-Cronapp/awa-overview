@@ -8,11 +8,12 @@ describe('removeConfiguration', () => {
       credentials: { clear: vi.fn(async () => void calls.push('credentials')) },
       cache: { clear: vi.fn(async () => void calls.push('cache')) },
       cacheKey: { clear: vi.fn(async () => void calls.push('cacheKey')) },
+      overviewCache: { clear: vi.fn(async () => void calls.push('overviewCache')) },
       config: { reset: vi.fn(async () => void calls.push('config')) },
     };
 
     await removeConfiguration(deps);
 
-    expect(calls).toEqual(['credentials', 'cache', 'cacheKey', 'config']);
+    expect(calls).toEqual(['credentials', 'cache', 'cacheKey', 'overviewCache', 'config']);
   });
 });
