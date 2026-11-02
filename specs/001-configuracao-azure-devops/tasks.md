@@ -134,16 +134,16 @@ limpo e tela inicial exibida.
 
 ### Tests for User Story 3
 
-- [ ] T055 [P] [US3] Testar remoção de cofre, chave e cache em `tests/unit/config-removal.test.ts`
-- [ ] T056 [P] [US3] Testar e2e de remoção e troca de organização em `tests/e2e/config-removal.spec.ts`
+- [X] T055 [P] [US3] Testar remoção de cofre, chave e cache em `tests/unit/config-removal.test.ts`
+- [X] T056 [P] [US3] Testar e2e de remoção e troca de organização em `tests/e2e/config-removal.spec.ts`
 
 ### Implementation for User Story 3
 
-- [ ] T057 [US3] Implementar `config:remove` limpando cofre, chave e cache em `src/main/ipc/handlers.ts`
-- [ ] T058 [US3] Implementar troca de organização com limpeza do cache anterior em `src/main/services/config-service.ts`
-- [ ] T059 [US3] Implementar confirmação de remoção em `src/renderer/features/config/remove-config-dialog.tsx`
-- [ ] T060 [US3] Registrar remoção/troca sem segredos em `src/main/services/config-service.ts`
-- [ ] T061 [US3] Verificar ausência de PAT/cache residual em `tests/integration/removal.test.ts`
+- [X] T057 [US3] Implementar `config:remove` limpando cofre, chave e cache em `src/main/ipc/handlers.ts`
+- [X] T058 [US3] Implementar troca de organização com limpeza do cache anterior em `src/main/services/config-service.ts`
+- [X] T059 [US3] Implementar confirmação de remoção em `src/renderer/features/config/remove-config-dialog.tsx`
+- [X] T060 [US3] Registrar remoção/troca sem segredos em `src/main/services/config-service.ts`
+- [X] T061 [US3] Verificar ausência de PAT/cache residual em `tests/integration/removal.test.ts`
 
 **Checkpoint**: as três histórias funcionam de forma independente.
 
@@ -151,17 +151,17 @@ limpo e tela inicial exibida.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T062 [P] Rodar auditoria de acessibilidade com axe em `tests/e2e/a11y.spec.ts`
-- [ ] T063 [P] Comparar telas com screenshots em `tests/e2e/visual.spec.ts`
-- [ ] T064 [P] Validar performance (startup, 100 projetos e startup offline) em `tests/e2e/performance.spec.ts`
-- [ ] T065 [P] Testar redaction da exportação de diagnóstico em `tests/unit/diagnostics.test.ts`
-- [ ] T066 [P] Executar o fluxo do quickstart e registrar em `specs/001-configuracao-azure-devops/quickstart.md`
-- [ ] T067 [P] Revisar CSP, ausência de autenticação, read-only, instância única e ausência de Node no renderer em `src/main/security/csp.ts`
-- [ ] T068 [P] Medir o tempo de configuração (< 2 min) em `tests/e2e/config-time.spec.ts`
-- [ ] T069 [P] Auditar ausência de requisições de escrita no Azure DevOps em `tests/integration/read-only.test.ts`
-- [ ] T070 [P] Testar segunda instância e foco da janela em `tests/e2e/single-instance.spec.ts`
-- [ ] T071 Rodar lint, typecheck, testes e build via scripts em `package.json`
-- [ ] T072 Atualizar `docs/design/gaps.md` e ADRs afetadas após a implementação em `docs/`
+- [X] T062 [P] Rodar auditoria de acessibilidade com axe em `tests/e2e/a11y.spec.ts`
+- [X] T063 [P] Comparar telas com screenshots em `tests/e2e/visual.spec.ts`
+- [X] T064 [P] Validar performance (startup, 100 projetos e startup offline) em `tests/e2e/performance.spec.ts`
+- [X] T065 [P] Testar redaction da exportação de diagnóstico em `tests/unit/diagnostics.test.ts`
+- [X] T066 [P] Executar o fluxo do quickstart e registrar em `specs/001-configuracao-azure-devops/quickstart.md`
+- [X] T067 [P] Revisar CSP, ausência de autenticação, read-only, instância única e ausência de Node no renderer em `src/main/security/csp.ts`
+- [X] T068 [P] Medir o tempo de configuração (< 2 min) em `tests/e2e/config-time.spec.ts`
+- [X] T069 [P] Auditar ausência de requisições de escrita no Azure DevOps em `tests/integration/read-only.test.ts`
+- [X] T070 [P] Testar segunda instância e foco da janela em `tests/e2e/single-instance.spec.ts`
+- [X] T071 Rodar lint, typecheck, testes e build via scripts em `package.json`
+- [X] T072 Atualizar `docs/design/gaps.md` e ADRs afetadas após a implementação em `docs/`
 
 ---
 

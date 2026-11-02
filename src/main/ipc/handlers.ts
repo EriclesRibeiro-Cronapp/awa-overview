@@ -6,6 +6,7 @@ import type { AzureDevOpsClient } from '../services/azure-devops-client';
 import type { CacheKeyProvider, CacheService } from '../services/cache-service';
 import type { ConfigService } from '../services/config-service';
 import { normalizeOrganization } from '../services/config-service';
+import { removeConfiguration } from '../services/config-removal';
 import type { CredentialsService } from '../services/credentials-service';
 import type { DiagnosticsService } from '../services/diagnostics-service';
 import { logError, logEvent } from '../services/logger';
@@ -63,7 +64,18 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       if (!pat) throw new AppErrorException(ErrorCode.CONFIG_PAT_MISSING);
 
       const user = await deps.client.validateAccess(organization, pat);
+      const previous = await deps.config.get();
       const { patLast4 } = await deps.credentials.save(pat);
+
+      if (previous.normalizedOrganization && previous.normalizedOrganization !== organization) {
+        await deps.cache.clear();
+        await deps.cacheKey.clear();
+        logEvent('config.organizationChanged', {
+          from: previous.normalizedOrganization,
+          to: organization,
+        });
+      }
+
       await deps.config.setOrganization(organization, 'configured');
       logEvent('config.saved', { organization });
       return { ok: true, patLast4, ...(user.displayName ? { user } : {}) };
@@ -72,10 +84,7 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
 
   ipcMain.handle('config:remove', async () => {
     return runSafely(async () => {
-      await deps.credentials.clear();
-      await deps.cache.clear();
-      await deps.cacheKey.clear();
-      await deps.config.reset();
+      await removeConfiguration(deps);
       logEvent('config.removed');
       return { ok: true };
     }, 'config:remove');

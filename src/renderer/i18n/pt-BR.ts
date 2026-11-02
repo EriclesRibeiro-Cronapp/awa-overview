@@ -14,6 +14,11 @@ export const ptBR = {
     save: 'Salvar',
     saving: 'Validando…',
     remove: 'Remover configuração',
+    removeTitle: 'Remover configuração',
+    removeConfirm:
+      'Tem certeza? O PAT, o cache e a seleção serão apagados desta instalação.',
+    removeAction: 'Remover',
+    removing: 'Removendo…',
     help: 'Como criar e revogar o PAT',
     requiredTitle: 'Configuração necessária',
     requiredBody:

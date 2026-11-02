@@ -92,3 +92,19 @@ primeiro release (ADR 0009).
 | 429 | Aguardar e tentar novamente; reduzir refresh |
 | Cache corrompido | Remover configuração e reconfigurar |
 | Segunda instância não abre | Verificar lock de instância e logs |
+
+## Status de validação (2026-11-02)
+
+| Verificação | Resultado |
+|---|---|
+| `npm run lint` | OK |
+| `npm run typecheck` | OK |
+| `npm test` | 62 testes |
+| `npm run test:coverage` | 87,39% statements · 90,78% lines |
+| `npm run build` | OK |
+| `npm run test:e2e` | 10 passaram · 1 skip (caminho feliz exige `AWA_E2E_ORG`/`AWA_E2E_PAT`) |
+
+Testes e2e cobrem primeira execução, ajuda do PAT, erro de token, remoção,
+seletores, staleness, acessibilidade, performance, segurança, instância única e
+snapshot visual.
+

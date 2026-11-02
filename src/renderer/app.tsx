@@ -53,7 +53,7 @@ export function App() {
       <footer className="app-footer">AWA Overview</footer>
 
       <ConfigModal
-        key={modalOpen ? 'open' : 'closed'}
+        key={`${modalOpen ? 'open' : 'closed'}-${config?.organization ?? 'none'}-${config?.status ?? 'none'}`}
         open={modalOpen}
         config={config}
         onClose={() => setModalOpen(false)}

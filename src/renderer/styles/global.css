@@ -53,7 +53,7 @@ textarea {
 }
 
 .app-brand span {
-  color: var(--color-icon-accent);
+  color: var(--color-content-hover);
   font-weight: 400;
 }
 
@@ -65,7 +65,7 @@ textarea {
 .app-footer {
   padding: var(--space-12) var(--space-20);
   border-top: 1px solid var(--color-border-subtle);
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .status-card {
@@ -83,7 +83,7 @@ textarea {
 
 .status-card p {
   margin: 0 0 var(--space-16);
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .btn {
@@ -105,12 +105,12 @@ textarea {
 }
 
 .btn-primary {
-  background: var(--color-info);
+  background: var(--color-content-primary);
   color: var(--color-on-accent);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--color-info-hover);
+  background: var(--color-content-hover);
 }
 
 .btn-secondary {
@@ -121,7 +121,7 @@ textarea {
 
 .btn-ghost {
   background: transparent;
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .field {
@@ -136,7 +136,7 @@ textarea {
 }
 
 .field .hint {
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .field .error {
@@ -199,6 +199,12 @@ textarea {
 }
 
 .modal-footer {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.remove-action {
+  margin-top: var(--space-16);
+  padding-top: var(--space-12);
   border-top: 1px solid var(--color-border-subtle);
 }
 
@@ -270,7 +276,7 @@ textarea {
   padding: var(--space-20);
   border: 1px dashed var(--color-border-subtle);
   border-radius: var(--radius-4);
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .selector-row {
@@ -307,7 +313,7 @@ textarea {
 }
 
 .muted {
-  color: var(--color-content-secondary);
+  color: var(--color-content-hover);
 }
 
 .error-text {
