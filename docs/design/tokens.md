@@ -3,24 +3,26 @@
 > Conteúdo entre marcadores `fe:auto` é gerado e sobrescrito. Escreva análises em **Análise** e notas livres em **Anotações**.
 
 <!-- fe:auto:start:summary -->
-**27** tokens derivados (0 de estilos, 0 de variáveis, 27 inferidos).
+**29** tokens derivados (0 de estilos, 0 de variáveis, 26 inferidos).
 <!-- fe:auto:end:summary -->
 
 <!-- fe:auto:start:table -->
 | Token | Tipo | Valor | Origem | Usos |
 | --- | --- | --- | --- | --- |
-| color.inferido-7f91a4 | color | #7F91A4 | inferido | 81 |
-| color.inferido-103053 | color | #103053 | inferido | 80 |
-| color.inferido-7ea426 | color | #7EA426 | inferido | 24 |
-| color.inferido-fbfbfb | color | #FBFBFB | inferido | 21 |
-| color.inferido-9fccd9 | color | #9FCCD9 | inferido | 18 |
-| color.inferido-103053-a10 | color | #1030531A | inferido | 16 |
-| color.inferido-418bda | color | #418BDA | inferido | 11 |
-| color.inferido-091624 | color | #091624 | inferido | 4 |
-| color.inferido-df4444 | color | #DF4444 | inferido | 3 |
-| color.inferido-8a38f5 | color | #8A38F5 | inferido | 2 |
-| color.inferido-e5d13a | color | #E5D13A | inferido | 2 |
-| color.inferido-ffffff | color | #FFFFFF | inferido | 1 |
+| color.content-secondary | color | #7F91A4 | inferido | 81 |
+| color.icon-muted | color | #7F91A4 | alias | 81 |
+| color.content-primary | color | #103053 | inferido | 80 |
+| color.success | color | #7EA426 | inferido | 24 |
+| color.surface | color | #FBFBFB | inferido | 21 |
+| color.on-accent | color | #FBFBFB | alias | 21 |
+| color.icon-accent | color | #9FCCD9 | inferido | 18 |
+| color.border-subtle | color | #1030531A | inferido | 16 |
+| color.info | color | #418BDA | inferido | 11 |
+| color.link | color | #418BDA | alias | 11 |
+| color.brand | color | #091624 | inferido | 4 |
+| color.danger | color | #DF4444 | inferido | 3 |
+| color.warning | color | #E5D13A | inferido | 2 |
+| color.surface-raised | color | #FFFFFF | inferido | 1 |
 | space.4 | space | 4px | inferido | 50 |
 | space.8 | space | 8px | inferido | 140 |
 | space.10 | space | 10px | inferido | 32 |
@@ -31,11 +33,11 @@
 | radius.4 | radius | 4px | inferido | 26 |
 | radius.5 | radius | 5px | inferido | 2 |
 | radius.8 | radius | 8px | inferido | 4 |
-| text.12 | font-size | 12px | inferido | 145 |
-| text.16 | font-size | 16px | inferido | 9 |
-| text.20 | font-size | 20px | inferido | 4 |
-| font.inter | font-family | 'Inter', sans-serif | inferido | 158 |
-| shadow.lg | shadow | 0px 4px 4px 0px #00000040 | inferido | 4 |
+| font.size.12 | font-size | 12px | inferido | 145 |
+| font.size.16 | font-size | 16px | inferido | 9 |
+| font.size.20 | font-size | 20px | inferido | 4 |
+| font.family.inter | font-family | 'Inter', sans-serif | inferido | 158 |
+| shadow.overlay | shadow | 0px 4px 4px 0px #00000040 | inferido | 4 |
 <!-- fe:auto:end:table -->
 
 <!-- fe:auto:start:mapping -->
@@ -43,18 +45,20 @@
 
 ```css
 :root {
-  --color-inferido-7f91a4: #7F91A4;
-  --color-inferido-103053: #103053;
-  --color-inferido-7ea426: #7EA426;
-  --color-inferido-fbfbfb: #FBFBFB;
-  --color-inferido-9fccd9: #9FCCD9;
-  --color-inferido-103053-a10: #1030531A;
-  --color-inferido-418bda: #418BDA;
-  --color-inferido-091624: #091624;
-  --color-inferido-df4444: #DF4444;
-  --color-inferido-8a38f5: #8A38F5;
-  --color-inferido-e5d13a: #E5D13A;
-  --color-inferido-ffffff: #FFFFFF;
+  --color-content-secondary: #7F91A4;
+  --color-icon-muted: #7F91A4;
+  --color-content-primary: #103053;
+  --color-success: #7EA426;
+  --color-surface: #FBFBFB;
+  --color-on-accent: #FBFBFB;
+  --color-icon-accent: #9FCCD9;
+  --color-border-subtle: #1030531A;
+  --color-info: #418BDA;
+  --color-link: #418BDA;
+  --color-brand: #091624;
+  --color-danger: #DF4444;
+  --color-warning: #E5D13A;
+  --color-surface-raised: #FFFFFF;
   --space-4: 4px;
   --space-8: 8px;
   --space-10: 10px;
@@ -65,11 +69,11 @@
   --radius-4: 4px;
   --radius-5: 5px;
   --radius-8: 8px;
-  --text-12: 12px;
-  --text-16: 16px;
-  --text-20: 20px;
-  --font-inter: 'Inter', sans-serif;
-  --shadow-lg: 0px 4px 4px 0px #00000040;
+  --font-size-12: 12px;
+  --font-size-16: 16px;
+  --font-size-20: 20px;
+  --font-family-inter: 'Inter', sans-serif;
+  --shadow-overlay: 0px 4px 4px 0px #00000040;
 }
 ```
 
@@ -80,18 +84,20 @@ Arquivo completo: `tokens.css`.
 ```js
 // tailwind.config.js (theme.extend)
 colors: {
-  "inferido-7f91a4": "#7F91A4",
-  "inferido-103053": "#103053",
-  "inferido-7ea426": "#7EA426",
-  "inferido-fbfbfb": "#FBFBFB",
-  "inferido-9fccd9": "#9FCCD9",
-  "inferido-103053-a10": "#1030531A",
-  "inferido-418bda": "#418BDA",
-  "inferido-091624": "#091624",
-  "inferido-df4444": "#DF4444",
-  "inferido-8a38f5": "#8A38F5",
-  "inferido-e5d13a": "#E5D13A",
-  "inferido-ffffff": "#FFFFFF"
+  "content-secondary": "#7F91A4",
+  "icon-muted": "#7F91A4",
+  "content-primary": "#103053",
+  "success": "#7EA426",
+  "surface": "#FBFBFB",
+  "on-accent": "#FBFBFB",
+  "icon-accent": "#9FCCD9",
+  "border-subtle": "#1030531A",
+  "info": "#418BDA",
+  "link": "#418BDA",
+  "brand": "#091624",
+  "danger": "#DF4444",
+  "warning": "#E5D13A",
+  "surface-raised": "#FFFFFF"
 }
 ```
 
@@ -100,39 +106,64 @@ Arquivo completo: `tailwind.config.js`.
 
 ## Análise
 
-**Todos os 27 tokens são inferidos** — não há estilos nem variáveis acessíveis no arquivo. Trate os nomes como provisórios; o valor é confiável, o nome não.
+**Os valores são inferidos** — não há estilos nem variáveis acessíveis no arquivo. A nomenclatura, porém, é fixa: `docs/design/tokens.naming.json` traduz os valores para os nomes adotados, e o `build` reaplica em `tokens.md`, `tokens.css` e `tailwind.config.js`.
+
+### Convenção adotada
+
+| Tipo | Padrão | Exemplos |
+|---|---|---|
+| Cor | `color.<grupo>-<papel>[-<estado>]` | `color.content-primary`, `color.success-hover` |
+| Espaço | `space.<n>` | `space.8` |
+| Raio | `radius.<n>` / `radius.pill` | `radius.4` |
+| Família | `font.family.<família>` | `font.family.inter` |
+| Tamanho | `font.size.<n>` | `font.size.12` |
+| Sombra | `shadow.<papel>` | `shadow.overlay` |
+| Componente | `<componente>.<variante>` | `tab.selected`, `tag.success-hover` |
+| Card | `card.<tipo>` | `card.work-item` |
+| Tabela | `table.<tipo>` | `table.pull-requests` |
+| Modal | `modal.<tipo>` | `modal.configuration` |
+| Ícone | `icon.<nome>` | `icon.settings-4-line` |
+| Tela | `screen.<nome>` | `screen.work-items` |
+
+Aliases semânticos são permitidos quando o mesmo valor tem papéis diferentes: `color.surface`/`color.on-accent`, `color.info`/`color.link` e `color.content-secondary`/`color.icon-muted`.
 
 ### Cores
 
-- `#103053` e `#1030531A` são o mesmo tom em 100% e 10%. O segundo é o divisor horizontal do cabeçalho (`Line 5`, stroke de 0,5px). Nomeie como `color.text-primary` e `color.border-subtle`.
-- `#7F91A4` é o texto padrão das abas e dos ícones → `color.text-secondary`.
-- `#FBFBFB` é a superfície dos boards e o texto das tags → separe em `color.surface` e `color.on-accent` (o mesmo valor com papéis diferentes).
-- `#7EA426`, `#418BDA`, `#DF4444`, `#E5D13A` são, respectivamente, success, info, danger e warning.
-- `#9FCCD9` só aparece em ícones → `color.icon-subtle`.
-- `#8A38F5` é anotação do Figma (borda de componente set) e **não deve virar token**.
+- `#103053` → `color.content-primary`; `#1030531A` → `color.border-subtle` (divisor de 0,5px).
+- `#7F91A4` → `color.content-secondary` e `color.icon-muted`.
+- `#FBFBFB` → `color.surface` e `color.on-accent` (texto das tags).
+- `#7EA426` → `color.success`; `#7AAE00` → `color.success-hover`; `#FFCC00` → `color.success-icon`.
+- `#418BDA` → `color.info` e `color.link`; `#0064CF` → `color.info-hover`.
+- `#DF4444` → `color.danger`; `#DA0000` → `color.danger-hover`.
+- `#E5D13A` → `color.warning`; `#D9C000` → `color.warning-hover`.
+- `#9FCCD9` → `color.icon-accent`; `#091624` → `color.brand`; `#FFFFFF` → `color.surface-raised`.
+- `#8A38F5` é anotação do Figma (borda de componente set) e está **excluído**.
 
 ### Espaçamento
 
-A escala útil é `4 / 8 / 12 / 16`. `space.10` existe porque as abas usam `gap: 10px` — decida entre oficializar o 10 ou corrigir para 8/12. `space.20` é margem de board; `space.28` tem 2 usos e pode ser exceção local. `space.741` **não foi tokenizado** (é espaçador de layout).
+A escala útil é `4 / 8 / 12 / 16`. `space.10` existe porque as abas usam `gap: 10px` — decisão pendente: oficializar o 10 ou corrigir para 8/12. `space.20` é margem de board; `space.28` tem 2 usos. Espaçadores acima de 200px não são tokenizados.
 
 ### Tipografia
 
-`text.12` concentra 145 dos 158 textos. `text.16` e `text.20` são títulos. Como os tokens são por tamanho, o peso e o line-height precisam ser combinados no componente (ex.: `text.12` + `font-medium` + `leading-4`), ou o projeto adota tokens compostos (`text.body`, `text.title`).
+`font.size.12` concentra 145 dos 158 textos; `font.size.16` e `font.size.20` são títulos. Peso e line-height continuam sendo combinados no componente (ex.: `font.size.12` + `font-medium` + `leading-4`), ou podem virar tokens compostos (`font.body`, `font.title`) em uma próxima iteração.
 
 ### Sombra
 
-`shadow.lg` é `0 4px 4px rgba(0,0,0,0.25)`. Por ser a única sombra e ter 4 usos, vale confirmar se é o popover "Aviso" antes de tratá-la como elevação padrão.
+`shadow.overlay` é `0 4px 4px rgba(0,0,0,0.25)`. Por ser a única sombra e ter 4 usos, confirme se é o popover "Aviso" antes de tratá-la como elevação padrão.
 
 ### Como usar
 
-`tokens.css` e `tailwind.config.js` são pontos de partida gerados. Antes de commitar:
-1. Renomeie os tokens inferidos para os papéis acima.
-2. Remova `space.10`, `space.28`, `radius.5` e `radius.8` se forem exceções locais.
-3. Confirme se a nomenclatura será `--color-*`/`--space-*` ou se o time usa outra convenção.
+`tokens.css` e `tailwind.config.js` são gerados. Para mudar um nome:
+
+1. Edite `tokens.naming.json` (mapa valor → nome).
+2. Rode o `build`.
+3. Não edite manualmente os blocos `fe:auto`.
+
+Exceções ainda em aberto: `space.10`, `space.28`, `radius.5` (anotação do Figma) e `radius.8` (boards).
 
 ### Pendente de sincronização
 
-A extração REST é anterior às telas novas. Ainda não estão em `tokens.css`: as 5 cores de hover (`#DA0000`, `#7AAE00`, `#386089`, `#D9C000`, `#0064CF`) e o amarelo de status dos pipelines (`#FFCC00`). Elas estão documentadas em `foundations.md` e entram automaticamente no próximo `fetch`.
+A extração REST é anterior às telas novas. Os nomes já estão definidos, mas ainda não aparecem em `tokens.css`: `color.content-hover`, `color.success-hover`, `color.info-hover`, `color.danger-hover`, `color.warning-hover` e `color.success-icon`. Entram automaticamente no próximo `fetch`.
 
 ## Anotações
 

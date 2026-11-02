@@ -5,18 +5,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-      "inferido-7f91a4": "#7F91A4",
-      "inferido-103053": "#103053",
-      "inferido-7ea426": "#7EA426",
-      "inferido-fbfbfb": "#FBFBFB",
-      "inferido-9fccd9": "#9FCCD9",
-      "inferido-103053-a10": "#1030531A",
-      "inferido-418bda": "#418BDA",
-      "inferido-091624": "#091624",
-      "inferido-df4444": "#DF4444",
-      "inferido-8a38f5": "#8A38F5",
-      "inferido-e5d13a": "#E5D13A",
-      "inferido-ffffff": "#FFFFFF"
+      "content-secondary": "#7F91A4",
+      "icon-muted": "#7F91A4",
+      "content-primary": "#103053",
+      "success": "#7EA426",
+      "surface": "#FBFBFB",
+      "on-accent": "#FBFBFB",
+      "icon-accent": "#9FCCD9",
+      "border-subtle": "#1030531A",
+      "info": "#418BDA",
+      "link": "#418BDA",
+      "brand": "#091624",
+      "danger": "#DF4444",
+      "warning": "#E5D13A",
+      "surface-raised": "#FFFFFF"
 },
       spacing: {
       "4": "4px",
@@ -50,7 +52,7 @@ module.exports = {
       ]
 },
       boxShadow: {
-      "lg": "0px 4px 4px 0px #00000040"
+      "overlay": "0px 4px 4px 0px #00000040"
 },
     },
   },

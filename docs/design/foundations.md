@@ -101,7 +101,35 @@ Os papéis abaixo são **inferidos dos contextos de uso**, não de estilos (não
 
 `#8A38F5` (2 usos) é a borda roxa dos conjuntos de componentes no canvas — **anotação do Figma, não faz parte do produto**. Não tokenizar.
 
-Como não há estilos, os nomes atuais (`color.inferido-*`) são placeholders. Sugestão: `color.text-primary`, `color.text-secondary`, `color.surface`, `color.brand`, `color.success`, `color.warning`, `color.danger`, `color.info`.
+### Nomenclatura adotada
+
+Cores seguem `color.<grupo>-<papel>[-<estado>]`, com grupos `content`, `surface`,
+`border`, `icon`, `brand` e os semânticos `success`, `info`, `danger`, `warning`.
+
+| Token | Valor | Uso |
+|---|---|---|
+| `color.content-primary` | `#103053` | texto e bordas fortes |
+| `color.content-secondary` | `#7F91A4` | texto e ícones secundários |
+| `color.content-hover` | `#386089` | texto em hover |
+| `color.surface` | `#FBFBFB` | fundo do board e das tags |
+| `color.surface-raised` | `#FFFFFF` | superfície elevada (folha de componentes) |
+| `color.border-subtle` | `#1030531A` | divisor e bordas de item |
+| `color.icon-accent` | `#9FCCD9` | ícones de título |
+| `color.brand` | `#091624` | marca "AWA" |
+| `color.success` | `#7EA426` | sucesso e aba selecionada |
+| `color.success-hover` | `#7AAE00` | hover de sucesso e aba |
+| `color.success-icon` | `#FFCC00` | ícone de sucesso dos pipelines |
+| `color.info` | `#418BDA` | informação e links |
+| `color.info-hover` | `#0064CF` | hover de informação |
+| `color.danger` | `#DF4444` | erro/perigo |
+| `color.danger-hover` | `#DA0000` | hover de perigo |
+| `color.warning` | `#E5D13A` | alerta |
+| `color.warning-hover` | `#D9C000` | hover de alerta |
+
+O `#8A38F5` (borda roxa dos conjuntos de componentes) é anotação do Figma e foi
+**excluído** dos tokens de produto. Os nomes são aplicados automaticamente por
+`docs/design/tokens.naming.json`; valores ainda ausentes do `tokens.css` entram no
+próximo `fetch`.
 
 ### Cores de estado (confirmadas via MCP)
 

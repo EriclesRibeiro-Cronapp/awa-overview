@@ -1,17 +1,19 @@
 <!--
 Sync Impact Report
 ==================
-Version change: (nenhuma) -> 1.0.0
-Bump rationale: adoção inicial da constituição, com 10 princípios e governança.
-Modified principles: N/A (documento inicial).
-Added sections: Princípios Fundamentais (I–X), Restrições Adicionais,
-  Fluxo de Desenvolvimento e Qualidade, Governança.
+Version change: 1.0.0 -> 1.1.0
+Bump rationale: MINOR — torna explícita a adoção da interface documentada como
+  especificação visual oficial do projeto (Princípio V) e registra a convenção
+  de nomenclatura de tokens e componentes.
+Modified principles: V. Fidelidade Visual ao Design System (adoção explícita).
+Added sections: nenhuma.
 Removed sections: nenhuma.
 Templates: não alterados (leem a constituição em tempo de execução).
 Deferred TODOs: nenhum placeholder pendente. Decisões técnicas ainda não
   tomadas estão listadas em "Decisões Técnicas Pendentes" e devem ser
   registradas em ADR antes da implementação correspondente.
-Ratification: assumida como 2026-11-02 (data desta adoção inicial).
+Ratification: 2026-11-02 (adoção inicial).
+Last amended: 2026-11-02.
 -->
 
 # Constituição do AWA Overview
@@ -22,10 +24,13 @@ O AWA Overview é uma aplicação desktop que centraliza informações do Azure 
 em uma única interface. Esta constituição estabelece os princípios técnicos e
 arquiteturais que orientam todo o ciclo de desenvolvimento.
 
-As telas, componentes, tokens, ícones e referências visuais extraídos do Figma são
-fontes oficiais para a implementação da interface. Nenhum princípio abaixo presume
-tecnologia, framework ou padrão arquitetural ainda não decidido; essas escolhas
-devem ser registradas conforme a seção de governança.
+A interface documentada em `docs/design/` É a interface oficial adotada pelo
+projeto. As telas, componentes, tokens, ícones e referências visuais extraídos do
+Figma definem o resultado esperado; a implementação DEVE reproduzi-la, e redesenhar
+telas, fluxos ou componentes não está no escopo.
+
+Nenhum princípio abaixo presume tecnologia, framework ou padrão arquitetural ainda
+não decidido; essas escolhas devem ser registradas conforme a seção de governança.
 
 ## Princípios Fundamentais
 
@@ -92,6 +97,9 @@ de componentes reutilizáveis, não de implementações paralelas.
 
 ### V. Fidelidade Visual ao Design System
 
+- A interface documentada em `docs/design/` É a interface oficial adotada pelo
+  projeto; a implementação DEVE reproduzi-la, não redesenhar telas, fluxos ou
+  componentes.
 - `docs/design/` é a fonte oficial de verdade para telas, medidas, cores,
   tipografia, espaçamentos, componentes, ícones e estados.
 - A implementação DEVE corresponder às medidas, cores, tipografia e espaçamentos
@@ -180,6 +188,8 @@ logs úteis e seguros encurtam o diagnóstico.
 
 ### Fontes Oficiais de Design
 
+- A interface documentada é adotada como especificação visual oficial; divergências
+  exigem aprovação registrada.
 - `docs/design/README.md` descreve escopo, cobertura e lacunas.
 - `docs/design/foundations.md`, `tokens.md`, `components.md`, `screens.md`,
   `assets.md` e `behavior.md` são as referências de implementação.
@@ -278,4 +288,4 @@ aprovada pelo responsável do projeto e registrada com a nova versão.
 - A constituição DEVE ser revisada sempre que uma decisão pendente for resolvida e,
   no mínimo, a cada ciclo de release.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-02 | **Last Amended**: 2026-11-02
+**Version**: 1.1.0 | **Ratified**: 2026-11-02 | **Last Amended**: 2026-11-02

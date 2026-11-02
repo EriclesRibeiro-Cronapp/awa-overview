@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "colors": {
+    "#103053|1": "color.content-primary",
+    "#103053|0.1": "color.border-subtle",
+    "#7F91A4|1": "color.content-secondary",
+    "#386089|1": "color.content-hover",
+    "#FBFBFB|1": "color.surface",
+    "#FFFFFF|1": "color.surface-raised",
+    "#9FCCD9|1": "color.icon-accent",
+    "#091624|1": "color.brand",
+    "#7EA426|1": "color.success",
+    "#7AAE00|1": "color.success-hover",
+    "#418BDA|1": "color.info",
+    "#0064CF|1": "color.info-hover",
+    "#DF4444|1": "color.danger",
+    "#DA0000|1": "color.danger-hover",
+    "#E5D13A|1": "color.warning",
+    "#D9C000|1": "color.warning-hover",
+    "#FFCC00|1": "color.success-icon"
+  },
+  "excludeColors": ["#8A38F5"],
+  "aliases": {
+    "#FBFBFB|1": ["color.on-accent"],
+    "#418BDA|1": ["color.link"],
+    "#7F91A4|1": ["color.icon-muted"]
+  },
+  "spaces": {},
+  "fontSizes": {
+    "12": "font.size.12",
+    "16": "font.size.16",
+    "20": "font.size.20"
+  },
+  "fontFamilies": {
+    "Inter": "font.family.inter"
+  },
+  "radii": {
+    "999": "radius.pill"
+  },
+  "shadows": {
+    "0px 4px 4px 0px #00000040": "shadow.overlay"
+  }
+}

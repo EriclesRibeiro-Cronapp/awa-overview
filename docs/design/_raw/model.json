@@ -3266,144 +3266,168 @@
   "warnings": [],
   "tokens": [
     {
-      "name": "color.inferido-7f91a4",
+      "name": "color.content-secondary",
       "type": "color",
       "value": "#7F91A4",
       "usage": 81,
       "source": "inferido",
-      "cssVar": "--color-inferido-7f91a4",
+      "cssVar": "--color-content-secondary",
       "meta": {
         "hex": "#7F91A4",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-103053",
+      "name": "color.icon-muted",
+      "type": "color",
+      "value": "#7F91A4",
+      "usage": 81,
+      "source": "alias",
+      "cssVar": "--color-icon-muted",
+      "meta": {
+        "hex": "#7F91A4",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.content-primary",
       "type": "color",
       "value": "#103053",
       "usage": 80,
       "source": "inferido",
-      "cssVar": "--color-inferido-103053",
+      "cssVar": "--color-content-primary",
       "meta": {
         "hex": "#103053",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-7ea426",
+      "name": "color.success",
       "type": "color",
       "value": "#7EA426",
       "usage": 24,
       "source": "inferido",
-      "cssVar": "--color-inferido-7ea426",
+      "cssVar": "--color-success",
       "meta": {
         "hex": "#7EA426",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-fbfbfb",
+      "name": "color.surface",
       "type": "color",
       "value": "#FBFBFB",
       "usage": 21,
       "source": "inferido",
-      "cssVar": "--color-inferido-fbfbfb",
+      "cssVar": "--color-surface",
       "meta": {
         "hex": "#FBFBFB",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-9fccd9",
+      "name": "color.on-accent",
+      "type": "color",
+      "value": "#FBFBFB",
+      "usage": 21,
+      "source": "alias",
+      "cssVar": "--color-on-accent",
+      "meta": {
+        "hex": "#FBFBFB",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.icon-accent",
       "type": "color",
       "value": "#9FCCD9",
       "usage": 18,
       "source": "inferido",
-      "cssVar": "--color-inferido-9fccd9",
+      "cssVar": "--color-icon-accent",
       "meta": {
         "hex": "#9FCCD9",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-103053-a10",
+      "name": "color.border-subtle",
       "type": "color",
       "value": "#1030531A",
       "usage": 16,
       "source": "inferido",
-      "cssVar": "--color-inferido-103053-a10",
+      "cssVar": "--color-border-subtle",
       "meta": {
         "hex": "#103053",
         "alpha": 0.1
       }
     },
     {
-      "name": "color.inferido-418bda",
+      "name": "color.info",
       "type": "color",
       "value": "#418BDA",
       "usage": 11,
       "source": "inferido",
-      "cssVar": "--color-inferido-418bda",
+      "cssVar": "--color-info",
       "meta": {
         "hex": "#418BDA",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-091624",
+      "name": "color.link",
+      "type": "color",
+      "value": "#418BDA",
+      "usage": 11,
+      "source": "alias",
+      "cssVar": "--color-link",
+      "meta": {
+        "hex": "#418BDA",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.brand",
       "type": "color",
       "value": "#091624",
       "usage": 4,
       "source": "inferido",
-      "cssVar": "--color-inferido-091624",
+      "cssVar": "--color-brand",
       "meta": {
         "hex": "#091624",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-df4444",
+      "name": "color.danger",
       "type": "color",
       "value": "#DF4444",
       "usage": 3,
       "source": "inferido",
-      "cssVar": "--color-inferido-df4444",
+      "cssVar": "--color-danger",
       "meta": {
         "hex": "#DF4444",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-8a38f5",
-      "type": "color",
-      "value": "#8A38F5",
-      "usage": 2,
-      "source": "inferido",
-      "cssVar": "--color-inferido-8a38f5",
-      "meta": {
-        "hex": "#8A38F5",
-        "alpha": 1
-      }
-    },
-    {
-      "name": "color.inferido-e5d13a",
+      "name": "color.warning",
       "type": "color",
       "value": "#E5D13A",
       "usage": 2,
       "source": "inferido",
-      "cssVar": "--color-inferido-e5d13a",
+      "cssVar": "--color-warning",
       "meta": {
         "hex": "#E5D13A",
         "alpha": 1
       }
     },
     {
-      "name": "color.inferido-ffffff",
+      "name": "color.surface-raised",
       "type": "color",
       "value": "#FFFFFF",
       "usage": 1,
       "source": "inferido",
-      "cssVar": "--color-inferido-ffffff",
+      "cssVar": "--color-surface-raised",
       "meta": {
         "hex": "#FFFFFF",
         "alpha": 1
@@ -3532,12 +3556,12 @@
       "meta": {}
     },
     {
-      "name": "text.12",
+      "name": "font.size.12",
       "type": "font-size",
       "value": "12px",
       "usage": 145,
       "source": "inferido",
-      "cssVar": "--text-12",
+      "cssVar": "--font-size-12",
       "meta": {
         "lineHeights": [
           12,
@@ -3546,12 +3570,12 @@
       }
     },
     {
-      "name": "text.16",
+      "name": "font.size.16",
       "type": "font-size",
       "value": "16px",
       "usage": 9,
       "source": "inferido",
-      "cssVar": "--text-16",
+      "cssVar": "--font-size-16",
       "meta": {
         "lineHeights": [
           24
@@ -3559,12 +3583,12 @@
       }
     },
     {
-      "name": "text.20",
+      "name": "font.size.20",
       "type": "font-size",
       "value": "20px",
       "usage": 4,
       "source": "inferido",
-      "cssVar": "--text-20",
+      "cssVar": "--font-size-20",
       "meta": {
         "lineHeights": [
           20
@@ -3572,23 +3596,23 @@
       }
     },
     {
-      "name": "font.inter",
+      "name": "font.family.inter",
       "type": "font-family",
       "value": "'Inter', sans-serif",
       "usage": 158,
       "source": "inferido",
-      "cssVar": "--font-inter",
+      "cssVar": "--font-family-inter",
       "meta": {
         "family": "Inter"
       }
     },
     {
-      "name": "shadow.lg",
+      "name": "shadow.overlay",
       "type": "shadow",
       "value": "0px 4px 4px 0px #00000040",
       "usage": 4,
       "source": "inferido",
-      "cssVar": "--shadow-lg",
+      "cssVar": "--shadow-overlay",
       "meta": {
         "shadow": {
           "signature": "DROP_SHADOW|0|4|4|0|#000000|0.25",

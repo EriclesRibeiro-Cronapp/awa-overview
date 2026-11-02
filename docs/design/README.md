@@ -41,6 +41,8 @@
 
 **Cobertura.** Extração REST: 498 nós, 158 textos e 8 telas. Via MCP (01/11): mais 3 telas (`Pull requests`, `Pipelines` e `Modal de configuração`), **16 ícones em SVG**, 27 tokens, 8 screenshots e 8 exports.
 
+**Nomenclatura.** Cores, tipografia, espaçamento, componentes, tabelas, modais e telas seguem o padrão definido em `tokens.md` e aplicado por `docs/design/tokens.naming.json`.
+
 **Atualização de 01/11 (via MCP).** O arquivo ganhou as telas de Pull requests e Pipelines, o modal de configuração e 4 ícones (`checkbox-circle-line`, `close-circle-line`, `calendar-2-line`, `timer-line`). As especificações estão em `screens.md` e `components.md`. O Tab foi corrigido: no Selected+Hover, texto e borda passam para `#7AAE00`. A tela **Work items** foi reorganizada: título próprio, resumo com separadores em `y=150`, filtros em `y=226` e tabela em grid a partir de `y=270`.
 
 **O que ainda impede precisão total:** comportamento responsivo, navegação entre abas, ação de salvar do modal e estados de carregamento/erro — nenhum existe no arquivo. Fora isso, a documentação cobre estrutura, medidas, cores e tipografia em nível de implementação.
@@ -59,7 +61,7 @@
 3. Estados de carregamento/erro dos três cards e comportamento de scroll das listas.
 4. Ação de salvar do modal de configuração (hoje só existe o "X" de fechar).
 
-**Para melhorar a extração:** adicione o escopo `library_content:read` ao token e rode `fetch` novamente. Isso traz os nomes reais dos estilos publicados e o inventário oficial de componentes, substituindo os nomes inferidos (`color.inferido-*`) sem perder as análises escritas aqui.
+**Para melhorar a extração:** adicione o escopo `library_content:read` ao token e rode `fetch` novamente. Isso traz os nomes reais dos estilos publicados e o inventário oficial de componentes; a nomenclatura adotada continua sendo aplicada por `tokens.naming.json`, sem perder as análises escritas aqui.
 
 ## Anotações
 
@@ -76,6 +78,12 @@ node "<skill-dir>/scripts/figma.mjs" build --out "<esta pasta>"
 ## Changelog
 
 <!-- fe:auto:start:changelog -->
+- **2026-11-02 16:22** · tokens.md » summary (1 linhas)
+- **2026-11-02 16:22** · tokens.md » table (29 linhas de dados)
+- **2026-11-02 16:22** · tokens.md » mapping (56 linhas)
+- **2026-11-02 16:21** · tokens.md » summary (1 linhas)
+- **2026-11-02 16:21** · tokens.md » table (26 linhas de dados)
+- **2026-11-02 16:21** · tokens.md » mapping (50 linhas)
 - **2026-10-31 23:24** · components.md » list (25 linhas de dados)
 - **2026-10-31 20:56** · README.md » scope (5 linhas de dados)
 - **2026-10-31 20:56** · README.md » index (10 linhas de dados)

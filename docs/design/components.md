@@ -232,6 +232,24 @@ Os quatro últimos são usados na tabela de **Pipelines**: status de sucesso/fal
 
 O card **Pipelines** agora usa `rocket-2-line` no título — o uso incorreto de `git-pull-request-line` foi corrigido.
 
+### Convenção de nomenclatura
+
+Componentes seguem `<componente>.<variante>`; cards, tabelas e telas usam um segundo
+nível semântico:
+
+| Escopo | Padrão | Exemplos |
+|---|---|---|
+| Componente | `<componente>.<variante>` | `tab.default`, `tab.selected-hover`, `tag.success-hover` |
+| Card | `card.<tipo>` | `card.work-item`, `card.pull-request`, `card.pipeline` |
+| Tabela | `table.<tipo>` | `table.work-items`, `table.pull-requests`, `table.pipelines` |
+| Modal | `modal.<tipo>` | `modal.configuration` |
+| Ícone | `icon.<nome>` | `icon.settings-4-line`, `icon.rocket-2-line` |
+| Tela | `screen.<nome>` | `screen.board-empty`, `screen.work-items`, `screen.pipelines` |
+
+As variantes de `tab` são `default`, `hover`, `selected` e `selected-hover`. As de
+`tag` são `<tipo>` e `<tipo>-hover`, com tipos `danger`, `success`, `inactive`,
+`alert` e `info`.
+
 ### O que falta componentizar
 
 Os blocos mais importantes da tela **não são componentes**: `Workitem - Card` (326×550), `PR - Card` e `Pipeline - Card` (526×271), o popover `Aviso` (4 conteúdos diferentes) e a linha da tabela de work items. Hoje são frames copiados entre os quatro boards, o que explica diferenças pequenas de medida entre eles.

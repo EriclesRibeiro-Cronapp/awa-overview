@@ -66,9 +66,9 @@
     "foundations.md#shadows": "67e818fb0061c442",
     "foundations.md#grids": "a9957f8afba2594b",
     "foundations.md#breakpoints": "636d8861b3e0c584",
-    "tokens.md#summary": "bbf5f68834318192",
-    "tokens.md#table": "c86d30c71bc8fb85",
-    "tokens.md#mapping": "ee70ccc03b51c4cf",
+    "tokens.md#summary": "39e782c907d75234",
+    "tokens.md#table": "eac5bba191ab7471",
+    "tokens.md#mapping": "783dacacfa05db68",
     "components.md#summary": "a92dbdcc3ff247c9",
     "components.md#inventory": "b1489688118bb32c",
     "components.md#list": "a4c7cd5358d2542d",
@@ -83,9 +83,9 @@
     "behavior.md#interactions": "5942f3a1ba7e0339",
     "behavior.md#responsive": "1add27bd5b94c877",
     "behavior.md#a11y": "0b286933ffbd2455",
-    "README.md#changelog": "f02bfa93c204422f"
+    "README.md#changelog": "f646be27ff0d4b76"
   },
-  "lastBuild": "2026-11-02T15:22:03.500Z",
+  "lastBuild": "2026-11-02T16:24:47.915Z",
   "screenNames": {
     "13:27": "Board vazio",
     "19:237": "Board - Work items",
