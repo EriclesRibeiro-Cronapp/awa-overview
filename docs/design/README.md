@@ -59,7 +59,7 @@
 1. Nomes definitivos dos tokens (cores/escala) e se serão variáveis do Figma ou CSS vars.
 2. Comportamento responsivo: qual largura mínima, o que empilha, o que some.
 3. Estados de carregamento/erro dos três cards e comportamento de scroll das listas.
-4. Ação de salvar do modal de configuração (hoje só existe o "X" de fechar).
+4. Proteção visual e substituição do cofre do PAT (feature futura; o botão de salvar já existe).
 
 **Para melhorar a extração:** adicione o escopo `library_content:read` ao token e rode `fetch` novamente. Isso traz os nomes reais dos estilos publicados e o inventário oficial de componentes; a nomenclatura adotada continua sendo aplicada por `tokens.naming.json`, sem perder as análises escritas aqui.
 

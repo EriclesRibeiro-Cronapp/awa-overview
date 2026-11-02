@@ -441,7 +441,7 @@ Sobreposição sobre o board preenchido:
 - **Campo "Organização":** rótulo 12px `#103053`, `gap: 4px`; input de **560×28**, borda 1px `#7F91A4`, raio 4px, `padding-left: 8px`, placeholder 12px `#7F91A4`.
 - **Campo "Personal Access Token":** rótulo 12px; textarea de **560×72**, borda 1px `#7F91A4`, raio 4px, `padding: 8px`.
 
-**Lacuna:** o modal não tem botões de salvar/cancelar — só o "X" de fechar. A ação de confirmar a configuração precisa ser definida.
+**Ação de salvar:** o modal possui botão de salvar (adicionado no Figma). Ao salvar, organização e PAT são persistidos em cofre seguro; o PAT não é reexibido. A proteção visual/substituição do cofre será tratada em feature futura. Validação e estados de erro continuam em aberto (G-10).
 
 ### O que não é tela de produto
 
@@ -452,7 +452,7 @@ Sobreposição sobre o board preenchido:
 1. Shell (header + divisor + abas + rodapé) reutilizável, com a aba correta selecionada por tela.
 2. Boards de cards (vazio, preenchido, "+").
 3. Três tabelas: Work items, Pull requests e Pipelines (mesmo componente, colunas diferentes).
-4. Modal de configuração (overlay + formulário + ação de salvar a definir).
+4. Modal de configuração (overlay + formulário + salvar em cofre seguro).
 5. Popover `Aviso` como camada, não como tela.
 6. Estados por card: vazio, carregando, com dados.
 
