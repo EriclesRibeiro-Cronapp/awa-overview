@@ -19,16 +19,16 @@ análise; até lá, o item permanece como proposta.
 
 | ADR | Decisão | Status | Bloqueia |
 |---|---|---|---|
-| 0001 | Stack e linguagem | Proposto | Primeira implementação |
-| 0002 | Runtime e empacotamento desktop | Proposto | Primeira implementação |
+| [0001](0001-stack-e-linguagem.md) | Stack e linguagem | Aceito | Primeira implementação |
+| [0002](0002-runtime-e-empacotamento.md) | Runtime e empacotamento desktop | Aceito | Primeira implementação |
 | 0003 | Estado e navegação | Proposto | Primeira tela |
-| 0004 | Persistência, cache e offline | Proposto | Primeira integração |
-| 0005 | API, paginação e rate limit | Proposto | Integração |
-| 0006 | Testes, cobertura e CI | Proposto | Primeira entrega |
+| [0004](0004-persistencia-cache-offline.md) | Persistência, cache e offline | Aceito | Primeira integração |
+| [0005](0005-integracao-azure-devops.md) | API, paginação e rate limit | Aceito | Integração |
+| [0006](0006-testes-ci.md) | Testes, cobertura e CI | Aceito | Primeira entrega |
 | 0007 | Logs, métricas e telemetria | Proposto | Primeiro release |
 | 0008 | Idiomas e acessibilidade | Proposto | Primeiro release |
-| 0009 | Sistemas operacionais e atualização | Proposto | Empacotamento |
-| 0010 | Armazenamento seguro do PAT | Proposto | Configuração |
+| [0009](0009-so-e-atualizacao.md) | Sistemas operacionais e atualização | Aceito | Empacotamento |
+| [0010](0010-armazenamento-pat.md) | Armazenamento seguro do PAT | Aceito | Configuração |
 
 ## Como criar uma ADR
 
