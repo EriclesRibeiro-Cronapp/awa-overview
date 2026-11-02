@@ -21,16 +21,16 @@ verificações de SC.
 
 **Purpose**: Inicialização do projeto Electron + TypeScript + React e tooling.
 
-- [ ] T001 Criar a estrutura `src/main`, `src/preload`, `src/renderer`, `src/shared` e `tests/` conforme o plano em `src/`
-- [ ] T002 Inicializar `package.json` com Electron 42, React 19, TypeScript, electron-vite, electron-builder, electron-store, electron-log, TanStack Query, Zod, Vitest, RTL, Playwright, MSW e axe-core em `package.json`
-- [ ] T003 [P] Configurar TypeScript strict e aliases em `tsconfig.json`
-- [ ] T004 [P] Configurar ESLint e Prettier em `eslint.config.js` e `.prettierrc`
-- [ ] T005 [P] Configurar Vitest, RTL e thresholds de cobertura (80% em `src/main/services` e `src/shared`) em `vitest.config.ts` e `tests/setup.ts`
-- [ ] T006 [P] Configurar Playwright para Electron em `playwright.config.ts`
-- [ ] T007 [P] Configurar electron-builder NSIS em `electron-builder.yml`
-- [ ] T008 [P] Configurar CI do GitHub Actions com gate de cobertura em `.github/workflows/ci.yml`
-- [ ] T009 [P] Configurar CSP e defaults de segurança em `src/main/security/csp.ts`
-- [ ] T010 Criar bootstrap do app com instância única em `src/main/index.ts`
+- [X] T001 Criar a estrutura `src/main`, `src/preload`, `src/renderer`, `src/shared` e `tests/` conforme o plano em `src/`
+- [X] T002 Inicializar `package.json` com Electron 45, React 19, TypeScript, electron-vite, electron-builder, electron-log, TanStack Query, Zod, Vitest, RTL, Playwright, MSW e axe-core em `package.json`
+- [X] T003 [P] Configurar TypeScript strict e aliases em `tsconfig.json`
+- [X] T004 [P] Configurar ESLint e Prettier em `eslint.config.js` e `.prettierrc`
+- [X] T005 [P] Configurar Vitest, RTL e thresholds de cobertura (80% em `src/main/services` e `src/shared`) em `vitest.config.ts` e `tests/setup.ts`
+- [X] T006 [P] Configurar Playwright para Electron em `playwright.config.ts`
+- [X] T007 [P] Configurar electron-builder NSIS em `electron-builder.yml`
+- [X] T008 [P] Configurar CI do GitHub Actions com gate de cobertura em `.github/workflows/ci.yml`
+- [X] T009 [P] Configurar CSP e defaults de segurança em `src/main/security/csp.ts`
+- [X] T010 Criar bootstrap do app com instância única em `src/main/index.ts`
 
 ---
 
@@ -40,23 +40,23 @@ verificações de SC.
 
 **CRITICAL**: nenhuma user story começa antes desta fase.
 
-- [ ] T011 Definir tipos e contratos compartilhados (`ConfigView`, `Project`, `Team`, `AppError`) em `src/shared/contracts/index.ts`
-- [ ] T012 Definir catálogo de códigos e mensagens de erro, incluindo `CFG-009`, em `src/shared/errors.ts`
-- [ ] T013 [P] Implementar logger estruturado com redaction em `src/main/services/logger.ts` e `src/main/security/redaction.ts`
-- [ ] T014 [P] Implementar store de configuração (organização e preferências) em `src/main/services/config-service.ts`
-- [ ] T015 Implementar serviço de credenciais com `safeStorage` e falha fechada em `src/main/services/credentials-service.ts`
-- [ ] T016 Implementar cache cifrado AES-256-GCM com chave no cofre em `src/main/services/cache-service.ts`
-- [ ] T017 Implementar client HTTP base do Azure DevOps (auth, timeout, retry, paginação) em `src/main/services/azure-devops-client.ts`
-- [ ] T018 Implementar registro de canais IPC e handlers base em `src/main/ipc/handlers.ts`
-- [ ] T019 Implementar ponte `contextBridge` tipada em `src/preload/index.ts`
-- [ ] T020 [P] Criar componentes base (Button, Input, Modal, Tag, Icon, EmptyState) em `src/renderer/components/`
-- [ ] T021 [P] Importar tokens e estilos do design em `src/renderer/styles/tokens.css`
-- [ ] T022 [P] Criar dicionário PT-BR em `src/renderer/i18n/pt-BR.ts`
-- [ ] T023 Escrever testes de contrato de IPC e Azure DevOps em `tests/contract/`
-- [ ] T024 Escrever testes unitários de credenciais e cache em `tests/unit/`
-- [ ] T025 Implementar serviço e canal `diagnostics:export` sem segredos em `src/main/services/diagnostics-service.ts` e `src/main/ipc/handlers.ts`
-- [ ] T026 Implementar canal `app:version` em `src/main/ipc/handlers.ts`
-- [ ] T027 Configurar rotação e retenção de logs em `src/main/services/logger.ts`
+- [X] T011 Definir tipos e contratos compartilhados (`ConfigView`, `Project`, `Team`, `AppError`) em `src/shared/contracts/index.ts`
+- [X] T012 Definir catálogo de códigos e mensagens de erro, incluindo `CFG-009`, em `src/shared/errors.ts`
+- [X] T013 [P] Implementar logger estruturado com redaction em `src/main/services/logger.ts` e `src/main/security/redaction.ts`
+- [X] T014 [P] Implementar store de configuração (organização e preferências) em `src/main/services/config-service.ts`
+- [X] T015 Implementar serviço de credenciais com `safeStorage` e falha fechada em `src/main/services/credentials-service.ts`
+- [X] T016 Implementar cache cifrado AES-256-GCM com chave no cofre em `src/main/services/cache-service.ts`
+- [X] T017 Implementar client HTTP base do Azure DevOps (auth, timeout, retry, paginação) em `src/main/services/azure-devops-client.ts`
+- [X] T018 Implementar registro de canais IPC e handlers base em `src/main/ipc/handlers.ts`
+- [X] T019 Implementar ponte `contextBridge` tipada em `src/preload/index.ts`
+- [X] T020 [P] Criar componentes base (Button, Input, Modal, Tag, Icon, EmptyState) em `src/renderer/components/`
+- [X] T021 [P] Importar tokens e estilos do design em `src/renderer/styles/tokens.css`
+- [X] T022 [P] Criar dicionário PT-BR em `src/renderer/i18n/pt-BR.ts`
+- [X] T023 Escrever testes de contrato de IPC e Azure DevOps em `tests/contract/`
+- [X] T024 Escrever testes unitários de credenciais e cache em `tests/unit/`
+- [X] T025 Implementar serviço e canal `diagnostics:export` sem segredos em `src/main/services/diagnostics-service.ts` e `src/main/ipc/handlers.ts`
+- [X] T026 Implementar canal `app:version` em `src/main/ipc/handlers.ts`
+- [X] T027 Configurar rotação e retenção de logs em `src/main/services/logger.ts`
 
 **Checkpoint**: fundação pronta; histórias podem começar.
 

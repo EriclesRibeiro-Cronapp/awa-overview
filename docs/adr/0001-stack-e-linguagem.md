@@ -1,4 +1,4 @@
-# ADR-0001: Stack — Electron 42 + TypeScript + React 19
+# ADR-0001: Stack — Electron 45 + TypeScript + React 19
 
 - **Status:** Aceito
 - **Data:** 2026-11-02
@@ -14,7 +14,7 @@ distribuição futura para Windows.
 
 ## Decisão
 
-Usar **Electron 42** (linha estável atual), **Node.js 24** embutido,
+Usar **Electron 45** (linha estável atual), **Node.js 24** embutido,
 **TypeScript 5.x**, **React 19** e **electron-vite** para build. O processo
 principal concentra credenciais, API e cache; o preload expõe IPC mínimo; o
 renderer não tem acesso a Node.

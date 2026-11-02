@@ -12,19 +12,19 @@ operacional, listagem de projetos e times por projeto, remoção da configuraç�
 tratamento consistente de erros. A aplicação é desktop, read-only, de instância
 única, sem autenticação própria e com uma organização ativa.
 
-A stack adotada é **Electron 42 + TypeScript + React 19**, com processo principal
+A stack adotada é **Electron 45 + TypeScript + React 19**, com processo principal
 responsável por credenciais, API e cache, preload expondo uma API IPC mínima e
 renderer sem acesso a Node. O PAT nunca retorna ao renderer após ser salvo.
 
 ## Technical Context
 
-**Language/Version**: TypeScript 5.x; Node.js 24 (embutido no Electron 42); React 19
+**Language/Version**: TypeScript 5.x; Node.js 24 (embutido no Electron 45); React 19
 
-**Primary Dependencies**: Electron 42, electron-vite, React, TanStack Query, Zod,
-electron-store, electron-log, electron-builder, electron-updater, Vitest, React
+**Primary Dependencies**: Electron 45, electron-vite, React, TanStack Query, Zod,
+electron-log, electron-builder, electron-updater, Vitest, React
 Testing Library, Playwright, MSW, axe-core
 
-**Storage**: configuração não sensível em `electron-store`; PAT cifrado com
+**Storage**: configuração não sensível em arquivo JSON atômico; PAT cifrado com
 `safeStorage` (DPAPI/Keychain/libsecret) e persistido como blob; cache de projetos
 e times em JSON cifrado com AES-256-GCM, chave aleatória guardada no `safeStorage`.
 SQLite/SQLCipher será reavaliado quando o volume de dados crescer (work items, PRs,

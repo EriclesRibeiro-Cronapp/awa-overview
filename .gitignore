@@ -3,6 +3,14 @@ node_modules/
 dist/
 build/
 out/
+release/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Testes
+playwright-report/
+test-results/
 
 # Segredos e configuração local
 .env

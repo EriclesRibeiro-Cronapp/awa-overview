@@ -13,7 +13,7 @@ times precisam de cache para uso offline. Nesta feature o volume é pequeno.
 
 ## Decisão
 
-- **Configuração não sensível:** `electron-store` (organização, seleção, versão).
+- **Configuração não sensível:** arquivo JSON atômico no `userData` (organização, seleção, versão).
 - **PAT:** blob cifrado pelo `safeStorage`, nunca em texto plano.
 - **Cache:** arquivo JSON cifrado com **AES-256-GCM**; chave aleatória de 32 bytes
   no `safeStorage`; arquivo em `app.getPath('userData')`.

@@ -1,0 +1,10 @@
+node_modules/
+out/
+dist/
+release/
+coverage/
+playwright-report/
+test-results/
+docs/design/_raw/
+specs/
+.specify/

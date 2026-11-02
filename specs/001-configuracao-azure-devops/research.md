@@ -1,11 +1,11 @@
 # Research — Configuração e conexão com Azure DevOps
 
-## Decisão 1: Electron 42 + TypeScript + React 19
+## Decisão 1: Electron 45 + TypeScript + React 19
 
 **Contexto:** aplicação desktop, read-only, com forte fidelidade visual ao Figma,
 time TS/React, uma organização e PAT.
 
-**Decisão:** Electron 42 (linha estável atual), Node 24 embutido, TypeScript 5.x,
+**Decisão:** Electron 45 (linha estável atual), Node 24 embutido, TypeScript 5.x,
 React 19 e electron-vite.
 
 **Alternativas:**

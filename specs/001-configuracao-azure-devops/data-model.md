@@ -114,7 +114,7 @@ configured
 
 | Dado | Local | Proteção |
 |---|---|---|
-| Organização, preferências, seleção | `electron-store` | Sem segredo |
+| Organização, preferências, seleção | arquivo JSON atômico | Sem segredo |
 | PAT cifrado | arquivo/blob no `userData` | `safeStorage` (DPAPI/Keychain/libsecret) |
 | Chave do cache | `safeStorage` | Cofre do SO |
 | Cache de projetos/times | arquivo no `userData` | AES-256-GCM |
