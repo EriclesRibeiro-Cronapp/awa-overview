@@ -1,0 +1,47 @@
+{
+  "skill": "figma-design-analysis",
+  "stateVersion": 1,
+  "fileKey": "XBNU4UZFkOEezETFxSMALm",
+  "fileName": "AWA - Overview",
+  "url": "https://www.figma.com/design/XBNU4UZFkOEezETFxSMALm/AWA---Overview?node-id=0-1",
+  "scope": {
+    "type": "page",
+    "rootIds": [
+      "0:1"
+    ],
+    "pageIds": [
+      "0:1"
+    ],
+    "frameName": "Page 1",
+    "nodeType": "CANVAS"
+  },
+  "figmaVersion": "2416580233686232225",
+  "lastFetch": "2026-10-31T20:38:46.507Z",
+  "fetchedAt": "2026-10-31T20:38:46.507Z",
+  "screens": {
+    "13:27": "e8b0e600cb6e8d86",
+    "19:237": "43249106cce99df3",
+    "15:136": "935f2db3ab8a7915",
+    "15:283": "81a51fa8da84f28c",
+    "29:486": "fa3bfed114008bb2",
+    "29:537": "c394f0aac961c120",
+    "29:547": "ecb80b20a071a777",
+    "29:557": "d5ca8b8743ec64f3"
+  },
+  "components": {
+    "29:505": "2696cc90779b401d",
+    "29:507": "a7fc3a54d75bb1e6"
+  },
+  "stats": {
+    "nodes": 498,
+    "textNodes": 158,
+    "screens": 8,
+    "components": 2,
+    "componentSets": 2,
+    "instances": 66,
+    "images": 0,
+    "exports": 8,
+    "interactions": 0
+  },
+  "blocks": {}
+}

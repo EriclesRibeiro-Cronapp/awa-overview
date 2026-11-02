@@ -1,0 +1,27 @@
+{
+  "fileName": "AWA - Overview",
+  "fileKey": "XBNU4UZFkOEezETFxSMALm",
+  "version": "2416580233686232225",
+  "lastModified": "2026-10-31T20:06:06Z",
+  "url": "https://www.figma.com/design/XBNU4UZFkOEezETFxSMALm/AWA---Overview?node-id=0-1",
+  "kind": "design",
+  "editorType": "figma",
+  "pages": [
+    {
+      "id": "0:1",
+      "name": "Page 1"
+    }
+  ],
+  "scope": {
+    "type": "page",
+    "rootIds": [
+      "0:1"
+    ],
+    "pageIds": [
+      "0:1"
+    ],
+    "frameName": "Page 1",
+    "nodeType": "CANVAS"
+  },
+  "fetchedAt": "2026-10-31T20:38:46.495Z"
+}

@@ -1,0 +1,15 @@
+# Dependências e artefatos de build
+node_modules/
+dist/
+build/
+out/
+
+# Segredos e configuração local
+.env
+.env.*
+*.local
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,41 @@
+:root {
+  /* cores */
+  --color-inferido-7f91a4: #7F91A4;
+  --color-inferido-103053: #103053;
+  --color-inferido-7ea426: #7EA426;
+  --color-inferido-fbfbfb: #FBFBFB;
+  --color-inferido-9fccd9: #9FCCD9;
+  --color-inferido-103053-a10: #1030531A;
+  --color-inferido-418bda: #418BDA;
+  --color-inferido-091624: #091624;
+  --color-inferido-df4444: #DF4444;
+  --color-inferido-8a38f5: #8A38F5;
+  --color-inferido-e5d13a: #E5D13A;
+  --color-inferido-ffffff: #FFFFFF;
+
+  /* espaçamento */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-28: 28px;
+
+  /* raios */
+  --radius-4: 4px;
+  --radius-5: 5px;
+  --radius-8: 8px;
+
+  /* tipografia */
+  --font-inter: 'Inter', sans-serif;
+
+  /* tamanhos de texto */
+  --text-12: 12px;
+  --text-16: 16px;
+  --text-20: 20px;
+
+  /* sombras */
+  --shadow-lg: 0px 4px 4px 0px #00000040;
+
+}

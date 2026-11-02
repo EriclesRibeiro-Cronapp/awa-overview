@@ -1,0 +1,3718 @@
+{
+  "skill": "figma-design-analysis",
+  "generatedAt": "2026-10-31T20:38:46.495Z",
+  "source": {
+    "fileKey": "XBNU4UZFkOEezETFxSMALm",
+    "fileName": "AWA - Overview",
+    "url": "https://www.figma.com/design/XBNU4UZFkOEezETFxSMALm/AWA---Overview?node-id=0-1",
+    "kind": "design",
+    "version": "2416580233686232225",
+    "lastModified": "2026-10-31T20:06:06Z",
+    "editorType": "figma"
+  },
+  "scope": {
+    "type": "page",
+    "frameName": "Page 1",
+    "rootIds": [
+      "0:1"
+    ],
+    "pages": [
+      {
+        "id": "0:1",
+        "name": "Page 1"
+      }
+    ],
+    "description": "Página \"Page 1\""
+  },
+  "stats": {
+    "nodes": 498,
+    "textNodes": 158,
+    "screens": 8,
+    "components": 13,
+    "componentSets": 2,
+    "instances": 66,
+    "images": 0,
+    "exports": 8,
+    "interactions": 0
+  },
+  "screens": [
+    {
+      "id": "13:27",
+      "name": "Board vazio",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 900,
+      "height": 700,
+      "x": 32,
+      "y": 0,
+      "layout": "livre",
+      "padding": "—",
+      "gap": null,
+      "bg": "#FBFBFB",
+      "sections": [
+        {
+          "name": "Cabeçalho",
+          "type": "FRAME",
+          "x": 20,
+          "y": 16,
+          "w": 860,
+          "h": 24,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 741,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Line 5",
+          "type": "LINE",
+          "x": 0,
+          "y": 48,
+          "w": 900,
+          "h": 0,
+          "layout": "—",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "0.5px #103053",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 12",
+          "type": "FRAME",
+          "x": 702,
+          "y": 664,
+          "w": 117,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 11",
+          "type": "FRAME",
+          "x": 832,
+          "y": 664,
+          "w": 48,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Workitem - Card",
+          "type": "FRAME",
+          "x": 20,
+          "y": 98,
+          "w": 326,
+          "h": 550,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "PR - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 377,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Pipeline - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 98,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tabs",
+          "type": "FRAME",
+          "x": 20,
+          "y": 60,
+          "w": 860,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 13",
+          "type": "FRAME",
+          "x": 20,
+          "y": 664,
+          "w": 231,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Cabeçalho",
+          "text": "AWA • Overview",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 12",
+          "text": "Project products",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 11",
+          "text": "Time",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Work items",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "No work items are assigned to you in this view.",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Pull requests",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "PR - Card",
+          "text": "No open pull requests need your attention.",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Pipelines",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "No recent pipeline runs were found for your projects.",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tabs",
+          "text": "Overview",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Tabs",
+          "text": "Work items",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tabs",
+          "text": "Pull requests",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tabs",
+          "text": "Pipelines",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 13",
+          "text": "Atualizado em 31/10/2026 às 10:04h",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 14,
+      "instanceCount": 14,
+      "nodeCount": 83,
+      "hash": "e8b0e600cb6e8d86",
+      "slug": "board-vazio",
+      "devStatus": null
+    },
+    {
+      "id": "19:237",
+      "name": "Board - Work items",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 900,
+      "height": 700,
+      "x": 32,
+      "y": 780,
+      "layout": "livre",
+      "padding": "—",
+      "gap": null,
+      "bg": "#FBFBFB",
+      "sections": [
+        {
+          "name": "Cabeçalho",
+          "type": "FRAME",
+          "x": 20,
+          "y": 16,
+          "w": 860,
+          "h": 24,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 741,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Line 5",
+          "type": "LINE",
+          "x": 0,
+          "y": 48,
+          "w": 900,
+          "h": 0,
+          "layout": "—",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "0.5px #103053",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 12",
+          "type": "FRAME",
+          "x": 702,
+          "y": 664,
+          "w": 117,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 11",
+          "type": "FRAME",
+          "x": 832,
+          "y": 664,
+          "w": 48,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 13",
+          "type": "FRAME",
+          "x": 20,
+          "y": 664,
+          "w": 231,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 18",
+          "type": "FRAME",
+          "x": 20,
+          "y": 98,
+          "w": 860,
+          "h": 56,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 16,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Filtros",
+          "type": "FRAME",
+          "x": 20,
+          "y": 174,
+          "w": 860,
+          "h": 28,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 28,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 23",
+          "type": "FRAME",
+          "x": 20,
+          "y": 222,
+          "w": 860,
+          "h": 188,
+          "layout": "livre",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Cabeçalho",
+          "text": "AWA • Overview",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 12",
+          "text": "Project products",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 11",
+          "text": "Time",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 13",
+          "text": "Atualizado em 31/10/2026 às 10:04h",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 18",
+          "text": "Total",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 18",
+          "text": "1.234",
+          "size": 20,
+          "weight": 700
+        },
+        {
+          "section": "Frame 18",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 18",
+          "text": "56",
+          "size": 20,
+          "weight": 700
+        },
+        {
+          "section": "Frame 18",
+          "text": "Em andamento",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 18",
+          "text": "10",
+          "size": 20,
+          "weight": 700
+        },
+        {
+          "section": "Frame 18",
+          "text": "Concluído",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 18",
+          "text": "12",
+          "size": 20,
+          "weight": 700
+        },
+        {
+          "section": "Filtros",
+          "text": "Buscar...",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Filtros",
+          "text": "Tipo",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Filtros",
+          "text": "Responsável",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Filtros",
+          "text": "Status",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Filtros",
+          "text": "Sprint",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "ID",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "Tipo",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "Título",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "Status",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "Sprint",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "Acessar",
+          "size": 12,
+          "weight": 700
+        },
+        {
+          "section": "Frame 23",
+          "text": "#213456",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "PBI",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Nightly regression suite across all supported browsers and locales",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Em andamento",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "Sprint 1",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "#213456",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "PBI",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Nightly regression suite across all supported browsers and locales",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "Sprint 1",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "#213456",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "PBI",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Nightly regression suite across all supported browsers and locales",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Frame 23",
+          "text": "Concluído",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 23",
+          "text": "Sprint 1",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 38,
+      "instanceCount": 11,
+      "nodeCount": 114,
+      "hash": "43249106cce99df3",
+      "slug": "board-work-items",
+      "devStatus": null
+    },
+    {
+      "id": "15:136",
+      "name": "Board preenchido",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 900,
+      "height": 700,
+      "x": 952,
+      "y": 0,
+      "layout": "livre",
+      "padding": "—",
+      "gap": null,
+      "bg": "#FBFBFB",
+      "sections": [
+        {
+          "name": "Cabeçalho",
+          "type": "FRAME",
+          "x": 20,
+          "y": 16,
+          "w": 860,
+          "h": 24,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 741,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Line 5",
+          "type": "LINE",
+          "x": 0,
+          "y": 48,
+          "w": 900,
+          "h": 0,
+          "layout": "—",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "0.5px #103053",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 12",
+          "type": "FRAME",
+          "x": 702,
+          "y": 664,
+          "w": 117,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 11",
+          "type": "FRAME",
+          "x": 832,
+          "y": 664,
+          "w": 48,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Workitem - Card",
+          "type": "FRAME",
+          "x": 20,
+          "y": 98,
+          "w": 326,
+          "h": 550,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "PR - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 377,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Pipeline - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 98,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 13",
+          "type": "FRAME",
+          "x": 20,
+          "y": 664,
+          "w": 231,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Cabeçalho",
+          "text": "AWA • Overview",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 12",
+          "text": "Project products",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 11",
+          "text": "Time",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Work items",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Bug",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "#145672 - Título do Work Item",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Resp.",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Ericles Ribeiro",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "PBI",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "#145672 - Título do Work Item",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Resp.",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Ericles Ribeiro",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Task",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "#145672 - Título do Work Item",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Resp.",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Ericles Ribeiro",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "PR - Card",
+          "text": "Pull requests",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "PR - Card",
+          "text": "!5378",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "PR - Card",
+          "text": "Refactor the Azure DevOps client so bearer-token handling is shared by the work item, pull request and pipeline queries",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Criado em",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "18/10/2026 04:30:00",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Aguardando aprovação",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Pipelines",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Sucesso",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Nightly regression suite across all supported browsers and locales",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Iniciado em",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "18/10/2026 04:30:00",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Frame 13",
+          "text": "Atualizado em 31/10/2026 às 10:04h",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 50,
+      "instanceCount": 17,
+      "nodeCount": 134,
+      "hash": "935f2db3ab8a7915",
+      "slug": "board-preenchido",
+      "devStatus": null
+    },
+    {
+      "id": "15:283",
+      "name": "Board +",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 900,
+      "height": 700,
+      "x": 1872,
+      "y": 0,
+      "layout": "livre",
+      "padding": "—",
+      "gap": null,
+      "bg": "#FBFBFB",
+      "sections": [
+        {
+          "name": "Cabeçalho",
+          "type": "FRAME",
+          "x": 20,
+          "y": 16,
+          "w": 860,
+          "h": 24,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 741,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Line 5",
+          "type": "LINE",
+          "x": 0,
+          "y": 48,
+          "w": 900,
+          "h": 0,
+          "layout": "—",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "0.5px #103053",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 12",
+          "type": "FRAME",
+          "x": 702,
+          "y": 664,
+          "w": 117,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Frame 11",
+          "type": "FRAME",
+          "x": 832,
+          "y": 664,
+          "w": 48,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 4,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Workitem - Card",
+          "type": "FRAME",
+          "x": 20,
+          "y": 98,
+          "w": 326,
+          "h": 550,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "PR - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 377,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Pipeline - Card",
+          "type": "FRAME",
+          "x": 354,
+          "y": 98,
+          "w": 526,
+          "h": 271,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "0 8 0 8",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Atualizar",
+          "type": "FRAME",
+          "x": 20,
+          "y": 664,
+          "w": 231,
+          "h": 16,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "—",
+          "gap": 8,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Aviso",
+          "type": "FRAME",
+          "x": 628,
+          "y": 602,
+          "w": 180,
+          "h": 54,
+          "layout": "flex-col",
+          "sizing": "fixo×fixo",
+          "padding": "8 8 8 8",
+          "gap": 4,
+          "bg": "#FBFBFB",
+          "border": "—",
+          "radius": "4px",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Cabeçalho",
+          "text": "AWA • Overview",
+          "size": 12,
+          "weight": 300
+        },
+        {
+          "section": "Frame 12",
+          "text": "Project products",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Frame 11",
+          "text": "Time",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Work items",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Tipo",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "#145672 - Título do Work Item",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Resp.",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Backlog",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Ericles Ribeiro",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Workitem - Card",
+          "text": "Últimos 10 work items associados a você por prioridade",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Pull requests",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "PR - Card",
+          "text": "ID",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "PR - Card",
+          "text": "Refactor the Azure DevOps client so bearer-token handling is shared by the work item, pull request and pipeline queries",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Últimos 10 pull requests relacionados a você.",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Criado em",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "PR - Card",
+          "text": "18/10/2026 04:30:00",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Aguardando aprovação",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "PR - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Pipelines",
+          "size": 16,
+          "weight": 700
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Status",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Nightly regression suite across all supported browsers and locales",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Iniciado em",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Projeto",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "18/10/2026 04:30:00",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Projeto Teste",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Abrir no Azure DevOps",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Pipeline - Card",
+          "text": "Últimos 10 pipelines ordenado por data de inicialização.",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Atualizar",
+          "text": "Atualizado em 31/10/2026 às 10:04h",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Aviso",
+          "text": "Project products",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Aviso",
+          "text": "Projeto Test",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 37,
+      "instanceCount": 12,
+      "nodeCount": 122,
+      "hash": "81a51fa8da84f28c",
+      "slug": "board",
+      "devStatus": null
+    },
+    {
+      "id": "29:486",
+      "name": "Componentes",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 417,
+      "height": 282,
+      "x": 32,
+      "y": -296,
+      "layout": "livre",
+      "padding": "—",
+      "gap": null,
+      "bg": "#FFFFFF",
+      "sections": [
+        {
+          "name": "Tab",
+          "type": "COMPONENT_SET",
+          "x": 8,
+          "y": 10,
+          "w": 128,
+          "h": 104,
+          "layout": "livre",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "1px #8A38F5",
+          "radius": "5px",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tag",
+          "type": "COMPONENT_SET",
+          "x": 146,
+          "y": 10,
+          "w": 82,
+          "h": 240,
+          "layout": "livre",
+          "sizing": "LEFT/TOP",
+          "padding": "—",
+          "gap": null,
+          "bg": "—",
+          "border": "1px #8A38F5",
+          "radius": "5px",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Tab",
+          "text": "Text",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Tab",
+          "text": "Text",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tag",
+          "text": "Text",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Tag",
+          "text": "Text",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Tag",
+          "text": "Text",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Tag",
+          "text": "Text",
+          "size": 12,
+          "weight": 500
+        },
+        {
+          "section": "Tag",
+          "text": "Text",
+          "size": 12,
+          "weight": 500
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 7,
+      "instanceCount": 0,
+      "nodeCount": 17,
+      "hash": "fa3bfed114008bb2",
+      "slug": "componentes",
+      "devStatus": null
+    },
+    {
+      "id": "29:537",
+      "name": "Tabs",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 860,
+      "height": 22,
+      "x": 972,
+      "y": 60,
+      "layout": "flex-row",
+      "padding": "—",
+      "gap": null,
+      "bg": "—",
+      "sections": [
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 0,
+          "y": 0,
+          "w": 80,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "1px #7EA426",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 80,
+          "y": 0,
+          "w": 88,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 168,
+          "y": 0,
+          "w": 97,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 265,
+          "y": 0,
+          "w": 75,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Tab",
+          "text": "Overview",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Tab",
+          "text": "Work items",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Pull requests",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Pipelines",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 4,
+      "instanceCount": 4,
+      "nodeCount": 9,
+      "hash": "c394f0aac961c120",
+      "slug": "tabs",
+      "devStatus": null
+    },
+    {
+      "id": "29:547",
+      "name": "Tabs",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 860,
+      "height": 22,
+      "x": 1892,
+      "y": 60,
+      "layout": "flex-row",
+      "padding": "—",
+      "gap": null,
+      "bg": "—",
+      "sections": [
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 0,
+          "y": 0,
+          "w": 80,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "1px #7EA426",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 80,
+          "y": 0,
+          "w": 88,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 168,
+          "y": 0,
+          "w": 97,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 265,
+          "y": 0,
+          "w": 75,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Tab",
+          "text": "Overview",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Tab",
+          "text": "Work items",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Pull requests",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Pipelines",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 4,
+      "instanceCount": 4,
+      "nodeCount": 9,
+      "hash": "ecb80b20a071a777",
+      "slug": "tabs-2",
+      "devStatus": null
+    },
+    {
+      "id": "29:557",
+      "name": "Tabs",
+      "page": "Page 1",
+      "type": "FRAME",
+      "width": 860,
+      "height": 22,
+      "x": 52,
+      "y": 840,
+      "layout": "flex-row",
+      "padding": "—",
+      "gap": null,
+      "bg": "—",
+      "sections": [
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 0,
+          "y": 0,
+          "w": 78,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 78,
+          "y": 0,
+          "w": 90,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "1px #7EA426",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 168,
+          "y": 0,
+          "w": 97,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        },
+        {
+          "name": "Tab",
+          "type": "INSTANCE",
+          "x": 265,
+          "y": 0,
+          "w": 75,
+          "h": 22,
+          "layout": "flex-row",
+          "sizing": "fixo×fixo",
+          "padding": "4 12 4 12",
+          "gap": 10,
+          "bg": "—",
+          "border": "—",
+          "radius": "—",
+          "opacity": null,
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "section": "Tab",
+          "text": "Overview",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Work items",
+          "size": 12,
+          "weight": 600
+        },
+        {
+          "section": "Tab",
+          "text": "Pull requests",
+          "size": 12,
+          "weight": 400
+        },
+        {
+          "section": "Tab",
+          "text": "Pipelines",
+          "size": 12,
+          "weight": 400
+        }
+      ],
+      "truncatedTexts": 0,
+      "truncatedSections": 0,
+      "textCount": 4,
+      "instanceCount": 4,
+      "nodeCount": 9,
+      "hash": "d5ca8b8743ec64f3",
+      "slug": "tabs-3",
+      "devStatus": null
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#7F91A4",
+      "alpha": 1,
+      "count": 81,
+      "contexts": [
+        "fill",
+        "text"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "VECTOR",
+        "TEXT",
+        "INSTANCE",
+        "FRAME",
+        "COMPONENT"
+      ],
+      "sample": {
+        "nodeId": "I21:471;21:469",
+        "name": "Vector"
+      }
+    },
+    {
+      "hex": "#103053",
+      "alpha": 1,
+      "count": 80,
+      "contexts": [
+        "text",
+        "fill",
+        "stroke"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "TEXT",
+        "VECTOR",
+        "LINE"
+      ],
+      "sample": {
+        "nodeId": "13:35",
+        "name": "Project products"
+      }
+    },
+    {
+      "hex": "#7EA426",
+      "alpha": 1,
+      "count": 24,
+      "contexts": [
+        "fill",
+        "stroke",
+        "text"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "VECTOR",
+        "INSTANCE",
+        "TEXT",
+        "FRAME",
+        "COMPONENT"
+      ],
+      "sample": {
+        "nodeId": "I13:31;10:57",
+        "name": "Vector"
+      }
+    },
+    {
+      "hex": "#FBFBFB",
+      "alpha": 1,
+      "count": 21,
+      "contexts": [
+        "fill",
+        "text"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "FRAME",
+        "TEXT"
+      ],
+      "sample": {
+        "nodeId": "13:27",
+        "name": "Board vazio"
+      }
+    },
+    {
+      "hex": "#9FCCD9",
+      "alpha": 1,
+      "count": 18,
+      "contexts": [
+        "fill"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "VECTOR"
+      ],
+      "sample": {
+        "nodeId": "I13:42;10:122",
+        "name": "Vector"
+      }
+    },
+    {
+      "hex": "#103053",
+      "alpha": 0.1,
+      "count": 16,
+      "contexts": [
+        "stroke"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "LINE",
+        "FRAME"
+      ],
+      "sample": {
+        "nodeId": "13:33",
+        "name": "Line 5"
+      }
+    },
+    {
+      "hex": "#418BDA",
+      "alpha": 1,
+      "count": 11,
+      "contexts": [
+        "text",
+        "fill"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "TEXT",
+        "INSTANCE",
+        "COMPONENT"
+      ],
+      "sample": {
+        "nodeId": "20:437",
+        "name": "Em andamento"
+      }
+    },
+    {
+      "hex": "#091624",
+      "alpha": 1,
+      "count": 4,
+      "contexts": [
+        "text"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "TEXT"
+      ],
+      "sample": {
+        "nodeId": "13:29",
+        "name": "AWA • Overview"
+      }
+    },
+    {
+      "hex": "#DF4444",
+      "alpha": 1,
+      "count": 3,
+      "contexts": [
+        "fill"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "INSTANCE",
+        "FRAME",
+        "COMPONENT"
+      ],
+      "sample": {
+        "nodeId": "29:588",
+        "name": "Tag"
+      }
+    },
+    {
+      "hex": "#8A38F5",
+      "alpha": 1,
+      "count": 2,
+      "contexts": [
+        "stroke"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "COMPONENT_SET"
+      ],
+      "sample": {
+        "nodeId": "29:506",
+        "name": "Tab"
+      }
+    },
+    {
+      "hex": "#E5D13A",
+      "alpha": 1,
+      "count": 2,
+      "contexts": [
+        "fill"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "INSTANCE",
+        "COMPONENT"
+      ],
+      "sample": {
+        "nodeId": "29:618",
+        "name": "Tag"
+      }
+    },
+    {
+      "hex": "#FFFFFF",
+      "alpha": 1,
+      "count": 1,
+      "contexts": [
+        "fill"
+      ],
+      "styleNames": [],
+      "variableNames": [],
+      "nodeTypes": [
+        "FRAME"
+      ],
+      "sample": {
+        "nodeId": "29:486",
+        "name": "Componentes"
+      }
+    }
+  ],
+  "gradients": [],
+  "typography": [
+    {
+      "family": "Inter",
+      "weight": 700,
+      "size": 20,
+      "lineHeightPx": 20,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 4,
+      "sample": "1.234"
+    },
+    {
+      "family": "Inter",
+      "weight": 700,
+      "size": 16,
+      "lineHeightPx": 24,
+      "lineHeightPercent": 150,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 9,
+      "sample": "Work items"
+    },
+    {
+      "family": "Inter",
+      "weight": 300,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 8,
+      "sample": "AWA • Overview"
+    },
+    {
+      "family": "Inter",
+      "weight": 600,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 37,
+      "sample": "Project products"
+    },
+    {
+      "family": "Inter",
+      "weight": 400,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 57,
+      "sample": "Time"
+    },
+    {
+      "family": "Inter",
+      "weight": 400,
+      "size": 12,
+      "lineHeightPx": 14,
+      "lineHeightPercent": 116.7,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 8,
+      "sample": "No work items are assigned to you in thi"
+    },
+    {
+      "family": "Inter",
+      "weight": 700,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 6,
+      "sample": "ID"
+    },
+    {
+      "family": "Inter",
+      "weight": 500,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 13,
+      "sample": "Bug"
+    },
+    {
+      "family": "Inter",
+      "weight": 600,
+      "size": 12,
+      "lineHeightPx": 14,
+      "lineHeightPercent": 116.7,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": null,
+      "styleNames": [],
+      "count": 8,
+      "sample": "#145672 - Título do Work Item"
+    },
+    {
+      "family": "Inter",
+      "weight": 500,
+      "size": 12,
+      "lineHeightPx": 12,
+      "lineHeightPercent": 100,
+      "letterSpacing": 0,
+      "textCase": null,
+      "decoration": "UNDERLINE",
+      "styleNames": [],
+      "count": 8,
+      "sample": "Abrir no Azure DevOps"
+    }
+  ],
+  "spacing": {
+    "values": [
+      {
+        "value": 4,
+        "count": 50,
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      },
+      {
+        "value": 8,
+        "count": 140,
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      },
+      {
+        "value": 10,
+        "count": 32,
+        "kinds": [
+          "gap",
+          "gap-manual"
+        ]
+      },
+      {
+        "value": 12,
+        "count": 54,
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      },
+      {
+        "value": 16,
+        "count": 9,
+        "kinds": [
+          "gap"
+        ]
+      },
+      {
+        "value": 20,
+        "count": 5,
+        "kinds": [
+          "gap-manual"
+        ]
+      },
+      {
+        "value": 28,
+        "count": 2,
+        "kinds": [
+          "gap"
+        ]
+      },
+      {
+        "value": 741,
+        "count": 4,
+        "kinds": [
+          "gap"
+        ]
+      }
+    ],
+    "outliers": [
+      {
+        "value": 10,
+        "count": 32,
+        "kinds": [
+          "gap",
+          "gap-manual"
+        ]
+      }
+    ]
+  },
+  "radii": [
+    {
+      "value": 4,
+      "count": 26
+    },
+    {
+      "value": 5,
+      "count": 2
+    },
+    {
+      "value": 8,
+      "count": 4
+    }
+  ],
+  "shadows": [
+    {
+      "signature": "DROP_SHADOW|0|4|4|0|#000000|0.25",
+      "type": "DROP_SHADOW",
+      "x": 0,
+      "y": 4,
+      "blur": 4,
+      "spread": 0,
+      "hex": "#000000",
+      "alpha": 0.25,
+      "count": 4
+    }
+  ],
+  "grids": [],
+  "breakpoints": [
+    {
+      "width": 417,
+      "heights": [
+        282
+      ],
+      "frames": [
+        "Componentes"
+      ],
+      "inferred": false
+    },
+    {
+      "width": 860,
+      "heights": [
+        22
+      ],
+      "frames": [
+        "Tabs",
+        "Tabs",
+        "Tabs"
+      ],
+      "inferred": false
+    },
+    {
+      "width": 900,
+      "heights": [
+        700
+      ],
+      "frames": [
+        "Board vazio",
+        "Board - Work items",
+        "Board preenchido",
+        "Board +"
+      ],
+      "inferred": false
+    }
+  ],
+  "components": [
+    {
+      "id": "29:505",
+      "name": "State=Default",
+      "setName": "Tab",
+      "page": "Page 1",
+      "width": 49,
+      "height": 22,
+      "instanceCount": 12,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "options": [
+            "Default",
+            "Selected"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Default",
+            "Selected"
+          ]
+        }
+      ],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": "#7F91A4",
+      "textSize": 12,
+      "textWeight": 400,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "4 12 4 12",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "2696cc90779b401d"
+    },
+    {
+      "id": "15:223",
+      "name": "spam-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 16,
+      "height": 16,
+      "instanceCount": 8,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "d5b4bdfe91ca773e"
+    },
+    {
+      "id": "29:507",
+      "name": "State=Selected",
+      "setName": "Tab",
+      "page": "Page 1",
+      "width": 50,
+      "height": 22,
+      "instanceCount": 4,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Default",
+          "options": [
+            "Default",
+            "Selected"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Default",
+            "Selected"
+          ]
+        }
+      ],
+      "bg": "—",
+      "border": "1px #7EA426",
+      "radius": "—",
+      "textColor": "#7EA426",
+      "textSize": 12,
+      "textWeight": 600,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "4 12 4 12",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "a7fc3a54d75bb1e6"
+    },
+    {
+      "id": "15:130",
+      "name": "refresh-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 16,
+      "height": 16,
+      "instanceCount": 3,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "3e616dbc43cddac0"
+    },
+    {
+      "id": "21:466",
+      "name": "subtract-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 24,
+      "height": 24,
+      "instanceCount": 3,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "0271cb7dd53fd988"
+    },
+    {
+      "id": "20:440",
+      "name": "share-circle-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 20,
+      "height": 20,
+      "instanceCount": 2,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "4ee7f7ecbb4365da"
+    },
+    {
+      "id": "29:582",
+      "name": "State=Alert",
+      "setName": "Tag",
+      "page": "Page 1",
+      "width": 41,
+      "height": 24,
+      "instanceCount": 1,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Danger",
+          "options": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "bg": "#E5D13A",
+      "border": "—",
+      "radius": "4px",
+      "textColor": "#FBFBFB",
+      "textSize": 12,
+      "textWeight": 500,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "8 8 8 8",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "c922b2ba838eef29"
+    },
+    {
+      "id": "29:576",
+      "name": "State=Danger",
+      "setName": "Tag",
+      "page": "Page 1",
+      "width": 41,
+      "height": 24,
+      "instanceCount": 1,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Danger",
+          "options": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "bg": "#DF4444",
+      "border": "—",
+      "radius": "4px",
+      "textColor": "#FBFBFB",
+      "textSize": 12,
+      "textWeight": 500,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "8 8 8 8",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "bbab32fc04794ef6"
+    },
+    {
+      "id": "29:580",
+      "name": "State=Inactive",
+      "setName": "Tag",
+      "page": "Page 1",
+      "width": 41,
+      "height": 24,
+      "instanceCount": 1,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Danger",
+          "options": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "bg": "#7F91A4",
+      "border": "—",
+      "radius": "4px",
+      "textColor": "#FBFBFB",
+      "textSize": 12,
+      "textWeight": 500,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "8 8 8 8",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "08f020e02478e956"
+    },
+    {
+      "id": "29:613",
+      "name": "State=Info",
+      "setName": "Tag",
+      "page": "Page 1",
+      "width": 41,
+      "height": 24,
+      "instanceCount": 1,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Danger",
+          "options": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "bg": "#418BDA",
+      "border": "—",
+      "radius": "4px",
+      "textColor": "#FBFBFB",
+      "textSize": 12,
+      "textWeight": 500,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "8 8 8 8",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "775b17e10b9646f8"
+    },
+    {
+      "id": "29:578",
+      "name": "State=Success",
+      "setName": "Tag",
+      "page": "Page 1",
+      "width": 41,
+      "height": 24,
+      "instanceCount": 1,
+      "properties": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "defaultValue": "Text",
+          "options": null
+        },
+        {
+          "name": "State",
+          "type": "VARIANT",
+          "defaultValue": "Danger",
+          "options": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "name": "State",
+          "values": [
+            "Danger",
+            "Success",
+            "Inactive",
+            "Alert",
+            "Info"
+          ]
+        }
+      ],
+      "bg": "#7EA426",
+      "border": "—",
+      "radius": "4px",
+      "textColor": "#FBFBFB",
+      "textSize": 12,
+      "textWeight": 500,
+      "layout": "flex-row",
+      "sizing": "fixo×fixo",
+      "padding": "8 8 8 8",
+      "gap": 10,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Text",
+          "type": "TEXT",
+          "layout": "texto",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "dc2719e4687e1bab"
+    },
+    {
+      "id": "16:102",
+      "name": "check-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 20,
+      "height": 20,
+      "instanceCount": 0,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "13b4cce240231970"
+    },
+    {
+      "id": "20:418",
+      "name": "filter-3-line",
+      "setName": null,
+      "page": "Page 1",
+      "width": 16,
+      "height": 16,
+      "instanceCount": 0,
+      "properties": [],
+      "variants": [],
+      "bg": "—",
+      "border": "—",
+      "radius": "—",
+      "textColor": null,
+      "textSize": null,
+      "textWeight": null,
+      "layout": "livre",
+      "sizing": "LEFT/TOP",
+      "padding": "—",
+      "gap": null,
+      "devStatus": null,
+      "children": [
+        {
+          "name": "Group",
+          "type": "GROUP",
+          "layout": "livre",
+          "padding": "—",
+          "gap": null
+        }
+      ],
+      "hash": "8ee8b7d7a7d751fc"
+    }
+  ],
+  "interactions": [],
+  "exportNodes": [
+    {
+      "id": "13:27",
+      "name": "Board vazio",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "19:237",
+      "name": "Board - Work items",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "15:136",
+      "name": "Board preenchido",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "15:283",
+      "name": "Board +",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "15:398",
+      "name": "Aviso",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "15:402",
+      "name": "Aviso",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "15:400",
+      "name": "Aviso",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "16:95",
+      "name": "Aviso",
+      "type": "FRAME",
+      "page": "Page 1",
+      "settings": [
+        {
+          "suffix": "",
+          "format": "PNG",
+          "constraint": {
+            "type": "SCALE",
+            "value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "imageRefs": [],
+  "gaps": [
+    "Variáveis do Figma não acessíveis (endpoint exclusivo de organizações Enterprise). Tokens foram inferidos por estilos e frequência de uso.",
+    "Nenhum estilo publicado encontrado no arquivo; nomes de tokens são inferidos."
+  ],
+  "warnings": [],
+  "tokens": [
+    {
+      "name": "color.inferido-7f91a4",
+      "type": "color",
+      "value": "#7F91A4",
+      "usage": 81,
+      "source": "inferido",
+      "cssVar": "--color-inferido-7f91a4",
+      "meta": {
+        "hex": "#7F91A4",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-103053",
+      "type": "color",
+      "value": "#103053",
+      "usage": 80,
+      "source": "inferido",
+      "cssVar": "--color-inferido-103053",
+      "meta": {
+        "hex": "#103053",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-7ea426",
+      "type": "color",
+      "value": "#7EA426",
+      "usage": 24,
+      "source": "inferido",
+      "cssVar": "--color-inferido-7ea426",
+      "meta": {
+        "hex": "#7EA426",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-fbfbfb",
+      "type": "color",
+      "value": "#FBFBFB",
+      "usage": 21,
+      "source": "inferido",
+      "cssVar": "--color-inferido-fbfbfb",
+      "meta": {
+        "hex": "#FBFBFB",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-9fccd9",
+      "type": "color",
+      "value": "#9FCCD9",
+      "usage": 18,
+      "source": "inferido",
+      "cssVar": "--color-inferido-9fccd9",
+      "meta": {
+        "hex": "#9FCCD9",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-103053-a10",
+      "type": "color",
+      "value": "#1030531A",
+      "usage": 16,
+      "source": "inferido",
+      "cssVar": "--color-inferido-103053-a10",
+      "meta": {
+        "hex": "#103053",
+        "alpha": 0.1
+      }
+    },
+    {
+      "name": "color.inferido-418bda",
+      "type": "color",
+      "value": "#418BDA",
+      "usage": 11,
+      "source": "inferido",
+      "cssVar": "--color-inferido-418bda",
+      "meta": {
+        "hex": "#418BDA",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-091624",
+      "type": "color",
+      "value": "#091624",
+      "usage": 4,
+      "source": "inferido",
+      "cssVar": "--color-inferido-091624",
+      "meta": {
+        "hex": "#091624",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-df4444",
+      "type": "color",
+      "value": "#DF4444",
+      "usage": 3,
+      "source": "inferido",
+      "cssVar": "--color-inferido-df4444",
+      "meta": {
+        "hex": "#DF4444",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-8a38f5",
+      "type": "color",
+      "value": "#8A38F5",
+      "usage": 2,
+      "source": "inferido",
+      "cssVar": "--color-inferido-8a38f5",
+      "meta": {
+        "hex": "#8A38F5",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-e5d13a",
+      "type": "color",
+      "value": "#E5D13A",
+      "usage": 2,
+      "source": "inferido",
+      "cssVar": "--color-inferido-e5d13a",
+      "meta": {
+        "hex": "#E5D13A",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "color.inferido-ffffff",
+      "type": "color",
+      "value": "#FFFFFF",
+      "usage": 1,
+      "source": "inferido",
+      "cssVar": "--color-inferido-ffffff",
+      "meta": {
+        "hex": "#FFFFFF",
+        "alpha": 1
+      }
+    },
+    {
+      "name": "space.4",
+      "type": "space",
+      "value": "4px",
+      "usage": 50,
+      "source": "inferido",
+      "cssVar": "--space-4",
+      "meta": {
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      }
+    },
+    {
+      "name": "space.8",
+      "type": "space",
+      "value": "8px",
+      "usage": 140,
+      "source": "inferido",
+      "cssVar": "--space-8",
+      "meta": {
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      }
+    },
+    {
+      "name": "space.10",
+      "type": "space",
+      "value": "10px",
+      "usage": 32,
+      "source": "inferido",
+      "cssVar": "--space-10",
+      "meta": {
+        "kinds": [
+          "gap",
+          "gap-manual"
+        ]
+      }
+    },
+    {
+      "name": "space.12",
+      "type": "space",
+      "value": "12px",
+      "usage": 54,
+      "source": "inferido",
+      "cssVar": "--space-12",
+      "meta": {
+        "kinds": [
+          "gap",
+          "padding"
+        ]
+      }
+    },
+    {
+      "name": "space.16",
+      "type": "space",
+      "value": "16px",
+      "usage": 9,
+      "source": "inferido",
+      "cssVar": "--space-16",
+      "meta": {
+        "kinds": [
+          "gap"
+        ]
+      }
+    },
+    {
+      "name": "space.20",
+      "type": "space",
+      "value": "20px",
+      "usage": 5,
+      "source": "inferido",
+      "cssVar": "--space-20",
+      "meta": {
+        "kinds": [
+          "gap-manual"
+        ]
+      }
+    },
+    {
+      "name": "space.28",
+      "type": "space",
+      "value": "28px",
+      "usage": 2,
+      "source": "inferido",
+      "cssVar": "--space-28",
+      "meta": {
+        "kinds": [
+          "gap"
+        ]
+      }
+    },
+    {
+      "name": "radius.4",
+      "type": "radius",
+      "value": "4px",
+      "usage": 26,
+      "source": "inferido",
+      "cssVar": "--radius-4",
+      "meta": {}
+    },
+    {
+      "name": "radius.5",
+      "type": "radius",
+      "value": "5px",
+      "usage": 2,
+      "source": "inferido",
+      "cssVar": "--radius-5",
+      "meta": {}
+    },
+    {
+      "name": "radius.8",
+      "type": "radius",
+      "value": "8px",
+      "usage": 4,
+      "source": "inferido",
+      "cssVar": "--radius-8",
+      "meta": {}
+    },
+    {
+      "name": "text.12",
+      "type": "font-size",
+      "value": "12px",
+      "usage": 145,
+      "source": "inferido",
+      "cssVar": "--text-12",
+      "meta": {
+        "lineHeights": [
+          12,
+          14
+        ]
+      }
+    },
+    {
+      "name": "text.16",
+      "type": "font-size",
+      "value": "16px",
+      "usage": 9,
+      "source": "inferido",
+      "cssVar": "--text-16",
+      "meta": {
+        "lineHeights": [
+          24
+        ]
+      }
+    },
+    {
+      "name": "text.20",
+      "type": "font-size",
+      "value": "20px",
+      "usage": 4,
+      "source": "inferido",
+      "cssVar": "--text-20",
+      "meta": {
+        "lineHeights": [
+          20
+        ]
+      }
+    },
+    {
+      "name": "font.inter",
+      "type": "font-family",
+      "value": "'Inter', sans-serif",
+      "usage": 158,
+      "source": "inferido",
+      "cssVar": "--font-inter",
+      "meta": {
+        "family": "Inter"
+      }
+    },
+    {
+      "name": "shadow.lg",
+      "type": "shadow",
+      "value": "0px 4px 4px 0px #00000040",
+      "usage": 4,
+      "source": "inferido",
+      "cssVar": "--shadow-lg",
+      "meta": {
+        "shadow": {
+          "signature": "DROP_SHADOW|0|4|4|0|#000000|0.25",
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 4,
+          "blur": 4,
+          "spread": 0,
+          "hex": "#000000",
+          "alpha": 0.25,
+          "count": 4
+        }
+      }
+    }
+  ],
+  "assets": {
+    "screenshots": [
+      {
+        "id": "13:27",
+        "name": "Board vazio",
+        "file": "assets/screens/board-vazio--13-27.png"
+      },
+      {
+        "id": "19:237",
+        "name": "Board - Work items",
+        "file": "assets/screens/board-work-items--19-237.png"
+      },
+      {
+        "id": "15:136",
+        "name": "Board preenchido",
+        "file": "assets/screens/board-preenchido--15-136.png"
+      },
+      {
+        "id": "15:283",
+        "name": "Board +",
+        "file": "assets/screens/board--15-283.png"
+      },
+      {
+        "id": "29:486",
+        "name": "Componentes",
+        "file": "assets/screens/componentes--29-486.png"
+      },
+      {
+        "id": "29:537",
+        "name": "Tabs",
+        "file": "assets/screens/tabs--29-537.png"
+      },
+      {
+        "id": "29:547",
+        "name": "Tabs",
+        "file": "assets/screens/tabs-2--29-547.png"
+      },
+      {
+        "id": "29:557",
+        "name": "Tabs",
+        "file": "assets/screens/tabs-3--29-557.png"
+      }
+    ],
+    "exports": [
+      {
+        "id": "13:27",
+        "name": "Board vazio",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/board-vazio-13-27.png"
+      },
+      {
+        "id": "19:237",
+        "name": "Board - Work items",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/board-work-items-19-237.png"
+      },
+      {
+        "id": "15:136",
+        "name": "Board preenchido",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/board-preenchido-15-136.png"
+      },
+      {
+        "id": "15:283",
+        "name": "Board +",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/board-15-283.png"
+      },
+      {
+        "id": "15:398",
+        "name": "Aviso",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/aviso-15-398.png"
+      },
+      {
+        "id": "15:402",
+        "name": "Aviso",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/aviso-15-402.png"
+      },
+      {
+        "id": "15:400",
+        "name": "Aviso",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/aviso-15-400.png"
+      },
+      {
+        "id": "16:95",
+        "name": "Aviso",
+        "type": "FRAME",
+        "format": "png",
+        "scale": "1",
+        "file": "assets/exports/aviso-16-95.png"
+      }
+    ],
+    "images": []
+  }
+}
