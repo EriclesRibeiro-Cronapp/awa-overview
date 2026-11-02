@@ -140,7 +140,7 @@ textarea {
 }
 
 .field .error {
-  color: var(--color-danger);
+  color: var(--color-danger-text);
 }
 
 .input {
@@ -317,7 +317,7 @@ textarea {
 }
 
 .error-text {
-  color: var(--color-danger);
+  color: var(--color-danger-text);
 }
 
 .icon {
