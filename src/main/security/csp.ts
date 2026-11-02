@@ -4,7 +4,7 @@ const DEV = Boolean(process.env.ELECTRON_RENDERER_URL);
 
 const CSP = [
   "default-src 'self'",
-  "script-src 'self'",
+  DEV ? "script-src 'self' 'unsafe-inline'" : "script-src 'self'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self' data:",
