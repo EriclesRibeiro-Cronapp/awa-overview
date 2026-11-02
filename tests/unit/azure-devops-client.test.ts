@@ -100,6 +100,41 @@ describe('AzureDevOpsClient', () => {
     });
   });
 
+  it('usa a versão preview no connectionData e suprime o redirecionamento', async () => {
+    const calls: Array<{ url: string; headers: Headers }> = [];
+    const client = new AzureDevOpsClient(
+      async (input, init) => {
+        calls.push({ url: String(input), headers: new Headers(init?.headers) });
+        if (String(input).includes('/connectionData')) {
+          return response({ authenticatedUser: { providerDisplayName: 'Tester' } });
+        }
+        return response({ value: [] });
+      },
+      1000,
+      0,
+    );
+
+    await client.validateAccess('demo', 'pat');
+
+    expect(calls[0]?.url).toContain('/_apis/connectionData');
+    expect(calls[0]?.url).toContain('api-version=7.1-preview.1');
+    expect(calls[0]?.headers.get('x-tfs-fedauthredirect')).toBe('Suppress');
+    expect(calls[1]?.url).toContain('/_apis/projects');
+    expect(calls[1]?.url).toContain('api-version=7.1');
+  });
+
+  it('rejeita usuário anônimo como PAT inválido', async () => {
+    const client = new AzureDevOpsClient(
+      async () => response({ authenticatedUser: { providerDisplayName: 'Anonymous' } }),
+      1000,
+      0,
+    );
+
+    await expect(client.validate('demo', 'pat')).rejects.toMatchObject({
+      code: ErrorCode.CONFIG_PAT_INVALID,
+    });
+  });
+
   it('trata a página de login 203 como PAT inválido', async () => {
     const client = new AzureDevOpsClient(
       async () =>

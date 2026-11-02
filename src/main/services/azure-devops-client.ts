@@ -26,6 +26,7 @@ interface TeamsResponse {
 }
 
 const API_VERSION = '7.1';
+const CONNECTION_DATA_API_VERSION = '7.1-preview.1';
 const MAX_PAGES = 20;
 const MAX_TEAMS = 100;
 
@@ -37,14 +38,31 @@ export class AzureDevOpsClient {
   ) {}
 
   async validate(organization: string, pat: string): Promise<{ displayName?: string }> {
-    const data = await this.request<ConnectionDataResponse>(organization, '/connectionData', pat);
-    return { displayName: data.authenticatedUser?.providerDisplayName };
+    return this.requestConnectionData(organization, pat);
   }
 
   async validateAccess(organization: string, pat: string): Promise<{ displayName?: string }> {
-    const data = await this.request<ConnectionDataResponse>(organization, '/connectionData', pat);
+    const user = await this.requestConnectionData(organization, pat);
     await this.request<ProjectsResponse>(organization, '/projects', pat, { $top: '1' });
-    return { displayName: data.authenticatedUser?.providerDisplayName };
+    return user;
+  }
+
+  private async requestConnectionData(
+    organization: string,
+    pat: string,
+  ): Promise<{ displayName?: string }> {
+    const data = await this.request<ConnectionDataResponse>(
+      organization,
+      '/connectionData',
+      pat,
+      {},
+      CONNECTION_DATA_API_VERSION,
+    );
+    const displayName = data.authenticatedUser?.providerDisplayName;
+    if (!displayName || displayName === 'Anonymous') {
+      throw new AppErrorException(ErrorCode.CONFIG_PAT_INVALID);
+    }
+    return { displayName };
   }
 
   async listProjects(organization: string, pat: string): Promise<Project[]> {
@@ -104,8 +122,16 @@ export class AzureDevOpsClient {
     path: string,
     pat: string,
     query: Record<string, string> = {},
+    apiVersion = API_VERSION,
   ): Promise<T> {
-    const { body } = await this.requestWithResponse<T>(organization, path, pat, query);
+    const { body } = await this.requestWithResponse<T>(
+      organization,
+      path,
+      pat,
+      query,
+      0,
+      apiVersion,
+    );
     return body;
   }
 
@@ -115,9 +141,10 @@ export class AzureDevOpsClient {
     pat: string,
     query: Record<string, string> = {},
     attempt = 0,
+    apiVersion = API_VERSION,
   ): Promise<{ body: T; response: Response }> {
     const url = new URL(`https://dev.azure.com/${encodeURIComponent(organization)}/_apis${path}`);
-    url.searchParams.set('api-version', API_VERSION);
+    url.searchParams.set('api-version', apiVersion);
     for (const [key, value] of Object.entries(query)) url.searchParams.set(key, value);
 
     let response: Response;
@@ -127,13 +154,21 @@ export class AzureDevOpsClient {
         headers: {
           Authorization: `Basic ${Buffer.from(`:${pat}`).toString('base64')}`,
           Accept: 'application/json',
+          'X-TFS-FedAuthRedirect': 'Suppress',
         },
         signal: AbortSignal.timeout(this.timeoutMs),
       });
     } catch (error) {
       if (attempt < this.maxRetries) {
         await sleep(backoffMs(attempt));
-        return this.requestWithResponse<T>(organization, path, pat, query, attempt + 1);
+        return this.requestWithResponse<T>(
+          organization,
+          path,
+          pat,
+          query,
+          attempt + 1,
+          apiVersion,
+        );
       }
       throw new AppErrorException(
         ErrorCode.CONFIG_NETWORK,
@@ -158,22 +193,32 @@ export class AzureDevOpsClient {
         const retryAfter = Number(response.headers.get('retry-after'));
         const waitMs = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : backoffMs(attempt);
         await sleep(waitMs);
-        return this.requestWithResponse<T>(organization, path, pat, query, attempt + 1);
+        return this.requestWithResponse<T>(
+          organization,
+          path,
+          pat,
+          query,
+          attempt + 1,
+          apiVersion,
+        );
       }
       throw new AppErrorException(
         response.status === 429 ? ErrorCode.CONFIG_RATE_LIMIT : ErrorCode.CONFIG_SERVER,
-        `Status ${response.status}`,
+        `Status ${response.status} em ${path}`,
       );
     }
 
     if (!response.ok) {
-      throw new AppErrorException(ErrorCode.CONFIG_UNEXPECTED, `Status ${response.status}`);
+      throw new AppErrorException(ErrorCode.CONFIG_UNEXPECTED, `Status ${response.status} em ${path}`);
     }
 
     try {
       return { body: (await response.json()) as T, response };
     } catch {
-      throw new AppErrorException(ErrorCode.CONFIG_UNEXPECTED, 'Resposta inválida do Azure DevOps');
+      throw new AppErrorException(
+        ErrorCode.CONFIG_UNEXPECTED,
+        `Resposta inválida do Azure DevOps em ${path}`,
+      );
     }
   }
 }
