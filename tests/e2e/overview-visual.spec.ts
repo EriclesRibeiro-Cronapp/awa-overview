@@ -5,7 +5,7 @@ import { join } from 'node:path';
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('Overview preenchido mantém o layout de referência', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-overview-visual');
+  const userData = testInfo.outputPath(`user-data-overview-visual-1793653960061`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),

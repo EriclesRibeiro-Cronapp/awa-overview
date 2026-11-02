@@ -5,7 +5,7 @@ import { join } from 'node:path';
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-projects');
+  const userData = testInfo.outputPath(`user-data-projects-1793653960062`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),

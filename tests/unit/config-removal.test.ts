@@ -10,6 +10,7 @@ describe('removeConfiguration', () => {
       cacheKey: { clear: vi.fn(async () => void calls.push('cacheKey')) },
       overviewCache: { clear: vi.fn(async () => void calls.push('overviewCache')) },
       workItemsCache: { clear: vi.fn(async () => void calls.push('workItemsCache')) },
+      pullRequestsCache: { clear: vi.fn(async () => void calls.push('pullRequestsCache')) },
       config: { reset: vi.fn(async () => void calls.push('config')) },
     };
 
@@ -21,6 +22,7 @@ describe('removeConfiguration', () => {
       'cacheKey',
       'overviewCache',
       'workItemsCache',
+      'pullRequestsCache',
       'config',
     ]);
   });

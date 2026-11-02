@@ -8,8 +8,8 @@ import type { ProjectContextState } from './use-project-context';
 
 interface ProductShellProps {
   context: ProjectContextState;
-  activeId: 'overview' | 'work-items';
-  onSelect: (id: 'overview' | 'work-items') => void;
+  activeId: 'overview' | 'work-items' | 'pull-requests';
+  onSelect: (id: 'overview' | 'work-items' | 'pull-requests') => void;
   onConfigure: () => void;
   footer: ReactNode;
   children: ReactNode;

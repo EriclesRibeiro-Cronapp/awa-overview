@@ -15,7 +15,7 @@ type AxeWindow = Window & {
 };
 
 test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-work-items');
+  const userData = testInfo.outputPath(`user-data-work-items-1793653960063`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),

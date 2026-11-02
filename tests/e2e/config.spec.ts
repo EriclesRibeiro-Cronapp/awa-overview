@@ -4,7 +4,7 @@ import { join } from 'node:path';
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('primeira execução mostra configuração e ajuda do PAT', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data');
+  const userData = testInfo.outputPath(`user-data-1793653960060`);
   const app = await electron.launch({
     args: [mainEntry, `--user-data-dir=${userData}`],
   });
@@ -22,7 +22,7 @@ test('primeira execução mostra configuração e ajuda do PAT', async ({}, test
 });
 
 test('mostra erro de PAT inválido sem fechar a modal', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-invalid');
+  const userData = testInfo.outputPath(`user-data-invalid-1793653960060`);
   const app = await electron.launch({
     args: [mainEntry, `--user-data-dir=${userData}`],
   });
@@ -57,7 +57,7 @@ test('salva configuração válida quando credenciais de teste são fornecidas',
   const pat = process.env.AWA_E2E_PAT;
   test.skip(!organization || !pat, 'Defina AWA_E2E_ORG e AWA_E2E_PAT para o teste feliz');
 
-  const userData = testInfo.outputPath('user-data-valid');
+  const userData = testInfo.outputPath(`user-data-valid-1793653960060`);
   const app = await electron.launch({
     args: [mainEntry, `--user-data-dir=${userData}`],
   });

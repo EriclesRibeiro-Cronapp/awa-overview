@@ -5,6 +5,8 @@ import type {
   PipelineStatus,
   Project,
   PullRequestSummary,
+  PullRequestStatus,
+  PullRequestTableRow,
   Team,
   WorkItemSummary,
   WorkItemTableRow,
@@ -90,6 +92,7 @@ const MAX_TEAMS = 100;
 const WORK_ITEM_LIMIT = 3;
 const WORK_ITEM_TABLE_LIMIT = 2_000;
 const WORK_ITEM_BATCH = 200;
+const PULL_REQUEST_LIMIT = 1_000;
 const WORK_ITEM_FIELDS = [
   'System.Id',
   'System.WorkItemType',
@@ -284,6 +287,33 @@ export class AzureDevOpsClient {
     }
 
     return { items, truncated };
+  }
+
+  async listPullRequests(
+    organization: string,
+    pat: string,
+    projectId: string,
+  ): Promise<{ items: PullRequestTableRow[]; truncated: boolean }> {
+    const { body } = await this.requestWithResponse<PullRequestsResponse>(
+      organization,
+      `/${encodeURIComponent(projectId)}/_apis/git/pullrequests`,
+      pat,
+      { 'searchCriteria.status': 'all', $top: String(PULL_REQUEST_LIMIT) },
+      0,
+      API_VERSION,
+      { absolute: true },
+    );
+
+    const rows = (body.value ?? [])
+      .filter((pr) => Boolean(pr.pullRequestId && pr.title))
+      .map((pr) => mapPullRequestRow(pr, organization, projectId))
+      .filter((row): row is PullRequestTableRow => row !== null)
+      .sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+
+    return {
+      items: rows.slice(0, PULL_REQUEST_LIMIT),
+      truncated: rows.length >= PULL_REQUEST_LIMIT,
+    };
   }
 
   async getPullRequestNeedingAttention(
@@ -563,6 +593,37 @@ function mapWorkItemRow(
     changedAt: readString(fields['System.ChangedDate']) ?? '',
     url: `https://dev.azure.com/${encodeURIComponent(organization)}/${encodeURIComponent(project)}/_workitems/edit/${item.id}`,
   };
+}
+
+function mapPullRequestRow(
+  pr: NonNullable<PullRequestsResponse['value']>[number],
+  organization: string,
+  fallbackProject: string,
+): PullRequestTableRow | null {
+  if (!pr.pullRequestId || !pr.title) return null;
+
+  const project = pr.repository?.project?.name ?? fallbackProject;
+  const repositoryName = pr.repository?.name;
+  const url =
+    pr._links?.web?.href ??
+    (repositoryName
+      ? `https://dev.azure.com/${encodeURIComponent(organization)}/${encodeURIComponent(project)}/_git/${encodeURIComponent(repositoryName)}/pullrequest/${pr.pullRequestId}`
+      : '');
+
+  return {
+    id: pr.pullRequestId,
+    title: pr.title,
+    status: mapPullRequestStatus(pr.status),
+    project,
+    createdAt: pr.creationDate ?? '',
+    url,
+  };
+}
+
+function mapPullRequestStatus(status: string | undefined): PullRequestStatus {
+  return status === 'active' || status === 'completed' || status === 'abandoned'
+    ? status
+    : 'unknown';
 }
 
 function readAssignedTo(value: unknown): string | null {

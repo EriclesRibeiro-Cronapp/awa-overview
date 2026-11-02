@@ -1,6 +1,7 @@
 import type { ConfigView } from '@shared/contracts';
 import { useState } from 'react';
 import { OverviewPage } from '../overview/overview-page';
+import { PullRequestsPage } from '../pull-requests/pull-requests-page';
 import { WorkItemsPage } from '../work-items/work-items-page';
 import { useProjectContext } from './use-project-context';
 
@@ -11,7 +12,20 @@ interface ConfiguredAppProps {
 
 export function ConfiguredApp({ config, onConfigure }: ConfiguredAppProps) {
   const context = useProjectContext(config);
-  const [activeId, setActiveId] = useState<'overview' | 'work-items'>('overview');
+  const [activeId, setActiveId] = useState<
+    'overview' | 'work-items' | 'pull-requests'
+  >('overview');
+
+  if (activeId === 'pull-requests') {
+    return (
+      <PullRequestsPage
+        config={config}
+        context={context}
+        onConfigure={onConfigure}
+        onSelect={setActiveId}
+      />
+    );
+  }
 
   if (activeId === 'work-items') {
     return (

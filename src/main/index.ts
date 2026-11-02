@@ -10,6 +10,8 @@ import { initLogger, logFilePath } from './services/logger';
 import { OverviewCacheService } from './services/overview-cache-service';
 import { OverviewService } from './services/overview-service';
 import { ProjectsService } from './services/projects-service';
+import { PullRequestsCacheService } from './services/pull-requests-cache-service';
+import { PullRequestsService } from './services/pull-requests-service';
 import { WorkItemsCacheService } from './services/work-items-cache-service';
 import { WorkItemsService } from './services/work-items-service';
 import { registerIpcHandlers } from './ipc/handlers';
@@ -49,10 +51,12 @@ async function bootstrap(): Promise<void> {
   const cache = new CacheService(dataDir, cacheKey);
   const overviewCache = new OverviewCacheService(dataDir, cacheKey);
   const workItemsCache = new WorkItemsCacheService(dataDir, cacheKey);
+  const pullRequestsCache = new PullRequestsCacheService(dataDir, cacheKey);
   const client = new AzureDevOpsClient();
   const projects = new ProjectsService(client, cache);
   const overview = new OverviewService(client, overviewCache);
   const workItems = new WorkItemsService(client, workItemsCache);
+  const pullRequests = new PullRequestsService(client, pullRequestsCache);
   const diagnostics = new DiagnosticsService(dataDir, logFilePath(logsDir), async () => {
     const current = await config.get();
     return {
@@ -71,10 +75,12 @@ async function bootstrap(): Promise<void> {
     cacheKey,
     overviewCache,
     workItemsCache,
+    pullRequestsCache,
     client,
     projects,
     overview,
     workItems,
+    pullRequests,
     diagnostics,
     appVersion: app.getVersion(),
   });

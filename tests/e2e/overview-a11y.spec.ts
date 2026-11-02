@@ -15,7 +15,7 @@ type AxeWindow = Window & {
 };
 
 test('Overview preenchido não tem violações de acessibilidade', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-overview-a11y');
+  const userData = testInfo.outputPath(`user-data-overview-a11y-1793653960060`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),

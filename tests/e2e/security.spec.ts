@@ -5,7 +5,7 @@ const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('renderer roda com isolamento e sem Node', async ({}, testInfo) => {
   const app = await electron.launch({
-    args: [mainEntry, `--user-data-dir=${testInfo.outputPath('user-data-security')}`],
+    args: [mainEntry, `--user-data-dir=${testInfo.outputPath(`user-data-security-1793653960062`)}`],
   });
 
   try {

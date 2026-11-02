@@ -4,7 +4,7 @@ import { join } from 'node:path';
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('segunda instância não abre outra janela', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-single');
+  const userData = testInfo.outputPath(`user-data-single-1793653960062`);
   const first = await electron.launch({
     args: [mainEntry, `--user-data-dir=${userData}`],
   });

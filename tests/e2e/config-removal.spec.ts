@@ -5,7 +5,7 @@ import { join } from 'node:path';
 const mainEntry = join(process.cwd(), 'out/main/index.js');
 
 test('remove a configuração e volta ao estado inicial', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-removal');
+  const userData = testInfo.outputPath(`user-data-removal-1793653960060`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),

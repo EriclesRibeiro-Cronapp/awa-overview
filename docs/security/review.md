@@ -1,7 +1,7 @@
 # Revisão de segurança — 2026-11-02
 
-Escopo: features 001 (configuração e conexão), 002 (Overview) e 003 (Work items),
-aplicação Electron 45, Windows, instância única, read-only.
+Escopo: features 001 (configuração e conexão), 002 (Overview), 003 (Work items) e
+004 (Pull requests), aplicação Electron 45, Windows, instância única, read-only.
 
 ## Checklist
 
@@ -12,7 +12,7 @@ aplicação Electron 45, Windows, instância única, read-only.
 | PAT em cofre do SO | `safeStorage` (DPAPI/Keychain/libsecret); `CredentialsService` falha fechado | OK |
 | PAT não retorna ao renderer | IPC devolve apenas `patLast4`; `overview:load` não recebe PAT | OK |
 | PAT fora de logs/diagnóstico | `redactText`/`redactValue`; teste de diagnóstico verifica `[REDACTED_PAT]` | OK |
-| Cache cifrado em repouso | AES-256-GCM; caches de projetos, Overview e Work items separados | OK |
+| Cache cifrado em repouso | AES-256-GCM; caches de projetos, Overview, Work items e Pull requests separados | OK |
 | Remoção limpa PAT/cache/chave | `removeConfiguration`; teste de integração cobre também o cache do Overview | OK |
 | Renderer isolado | `contextIsolation=true`, `nodeIntegration=false`, `sandbox=true`; teste e2e | OK |
 | CSP restritiva | `src/main/security/csp.ts`; sem conteúdo remoto | OK |
@@ -41,5 +41,5 @@ aplicação Electron 45, Windows, instância única, read-only.
 - Adquirir certificado e configurar assinatura/notarização.
 - Validar `safeStorage` em Windows 10 e 11 reais.
 - Revisar escopos recomendados do PAT: Project and Team (Read), Work Items (Read),
-  Code (Read) e Build (Read).
+  Code (Read) e Build (Read). PRs exigem Code (Read).
 - Avaliar alerta quando o PAT tiver escopos de escrita (se a API permitir).

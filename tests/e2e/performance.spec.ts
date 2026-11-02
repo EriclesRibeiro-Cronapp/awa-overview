@@ -7,7 +7,7 @@ const mainEntry = join(process.cwd(), 'out/main/index.js');
 test('primeira execução fica pronta dentro do orçamento', async ({}, testInfo) => {
   const start = Date.now();
   const app = await electron.launch({
-    args: [mainEntry, `--user-data-dir=${testInfo.outputPath('user-data-perf-start')}`],
+    args: [mainEntry, `--user-data-dir=${testInfo.outputPath(`user-data-perf-start-1793653960061`)}`],
   });
 
   try {
@@ -16,11 +16,12 @@ test('primeira execução fica pronta dentro do orçamento', async ({}, testInfo
     expect(Date.now() - start).toBeLessThan(10_000);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 300));
   }
 });
 
 test('renderiza 100 projetos em menos de 5 segundos', async ({}, testInfo) => {
-  const userData = testInfo.outputPath('user-data-perf-projects');
+  const userData = testInfo.outputPath(`user-data-perf-projects-1793653960061`);
   await mkdir(userData, { recursive: true });
   await writeFile(
     join(userData, 'config.json'),
@@ -65,5 +66,6 @@ test('renderiza 100 projetos em menos de 5 segundos', async ({}, testInfo) => {
     expect(Date.now() - start).toBeLessThan(5_000);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 300));
   }
 });

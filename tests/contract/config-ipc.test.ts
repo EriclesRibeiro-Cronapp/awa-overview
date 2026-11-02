@@ -57,6 +57,7 @@ function buildDeps(overrides: Partial<IpcDependencies> = {}) {
     cacheKey: { clear: vi.fn(async () => undefined) },
     overviewCache: { clear: vi.fn(async () => undefined) },
     workItemsCache: { clear: vi.fn(async () => undefined) },
+    pullRequestsCache: { clear: vi.fn(async () => undefined) },
     client: {
       validateAccess: vi.fn(async () => ({ displayName: 'Tester' })),
     },
@@ -189,6 +190,7 @@ describe('config IPC contract', () => {
     expect(deps.cacheKey.clear).toHaveBeenCalledOnce();
     expect(deps.overviewCache.clear).toHaveBeenCalledOnce();
     expect(deps.workItemsCache.clear).toHaveBeenCalledOnce();
+    expect(deps.pullRequestsCache.clear).toHaveBeenCalledOnce();
   });
 
   it('remove credenciais, cache, chave e configuração', async () => {
@@ -203,6 +205,7 @@ describe('config IPC contract', () => {
     expect(deps.cacheKey.clear).toHaveBeenCalledOnce();
     expect(deps.overviewCache.clear).toHaveBeenCalledOnce();
     expect(deps.workItemsCache.clear).toHaveBeenCalledOnce();
+    expect(deps.pullRequestsCache.clear).toHaveBeenCalledOnce();
     expect(deps.config.reset).toHaveBeenCalledOnce();
   });
 });

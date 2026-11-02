@@ -19,6 +19,11 @@ import { emptyOverviewView, type OverviewService } from '../services/overview-se
 import type { ProjectsService } from '../services/projects-service';
 import type { WorkItemsCacheService } from '../services/work-items-cache-service';
 import { emptyWorkItemsView, type WorkItemsService } from '../services/work-items-service';
+import type { PullRequestsCacheService } from '../services/pull-requests-cache-service';
+import {
+  emptyPullRequestsView,
+  type PullRequestsService,
+} from '../services/pull-requests-service';
 
 export interface IpcDependencies {
   config: ConfigService;
@@ -27,10 +32,12 @@ export interface IpcDependencies {
   cacheKey: CacheKeyProvider;
   overviewCache: OverviewCacheService;
   workItemsCache: WorkItemsCacheService;
+  pullRequestsCache: PullRequestsCacheService;
   client: AzureDevOpsClient;
   projects: ProjectsService;
   overview: OverviewService;
   workItems: WorkItemsService;
+  pullRequests: PullRequestsService;
   diagnostics: DiagnosticsService;
   appVersion: string;
 }
@@ -57,6 +64,12 @@ const OverviewLoadSchema = z
   .optional();
 
 const WorkItemsLoadSchema = z
+  .object({
+    force: z.boolean().optional(),
+  })
+  .optional();
+
+const PullRequestsLoadSchema = z
   .object({
     force: z.boolean().optional(),
   })
@@ -107,6 +120,7 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
         await deps.cacheKey.clear();
         await deps.overviewCache.clear();
         await deps.workItemsCache.clear();
+        await deps.pullRequestsCache.clear();
         logEvent('config.organizationChanged', {
           from: previous.normalizedOrganization,
           to: organization,
@@ -173,6 +187,21 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       });
       return { ok: true, data };
     }, 'workItems:load');
+  });
+
+  ipcMain.handle('pullRequests:load', async (_event, raw?: unknown) => {
+    return runSafely(async () => {
+      const input = PullRequestsLoadSchema.parse(raw);
+      const current = await deps.config.get();
+      const context = await resolveProjectContext(deps, current);
+      if (!context) return { ok: true, data: emptyPullRequestsView() };
+
+      const data = await deps.pullRequests.load({
+        ...context,
+        force: input?.force ?? false,
+      });
+      return { ok: true, data };
+    }, 'pullRequests:load');
   });
 
   ipcMain.handle('app:openExternal', async (_event, raw: unknown) => {

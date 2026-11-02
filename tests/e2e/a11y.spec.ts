@@ -15,7 +15,7 @@ type AxeWindow = Window & {
 
 test('primeira execução não tem violações de acessibilidade', async ({}, testInfo) => {
   const app = await electron.launch({
-    args: [mainEntry, `--user-data-dir=${testInfo.outputPath('user-data-a11y')}`],
+    args: [mainEntry, `--user-data-dir=${testInfo.outputPath(`user-data-a11y-1793653960059`)}`],
   });
 
   try {

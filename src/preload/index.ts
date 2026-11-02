@@ -17,6 +17,9 @@ const api: IpcApi = {
   workItems: {
     load: (input) => ipcRenderer.invoke('workItems:load', input),
   },
+  pullRequests: {
+    load: (input) => ipcRenderer.invoke('pullRequests:load', input),
+  },
   session: {
     select: (input) => ipcRenderer.invoke('session:select', input),
   },

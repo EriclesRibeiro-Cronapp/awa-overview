@@ -149,6 +149,33 @@ export type WorkItemsLoadResult =
   | { ok: true; data: WorkItemsView }
   | { ok: false; error: AppError };
 
+export type PullRequestStatus = 'active' | 'completed' | 'abandoned' | 'unknown';
+
+export interface PullRequestTableRow {
+  id: number;
+  title: string;
+  status: PullRequestStatus;
+  project: string;
+  createdAt: string;
+  url: string;
+}
+
+export interface PullRequestsView {
+  context: OverviewContext | null;
+  items: PullRequestTableRow[];
+  truncated: boolean;
+  fetchedAt: string | null;
+  stale: boolean;
+}
+
+export interface PullRequestsLoadInput {
+  force?: boolean;
+}
+
+export type PullRequestsLoadResult =
+  | { ok: true; data: PullRequestsView }
+  | { ok: false; error: AppError };
+
 
 export interface OverviewLoadInput {
   force?: boolean;
@@ -185,6 +212,9 @@ export interface IpcApi {
   };
   workItems: {
     load(input?: WorkItemsLoadInput): Promise<WorkItemsLoadResult>;
+  };
+  pullRequests: {
+    load(input?: PullRequestsLoadInput): Promise<PullRequestsLoadResult>;
   };
   session: {
     select(input: SessionSelection): Promise<{ ok: boolean; error?: AppError }>;
