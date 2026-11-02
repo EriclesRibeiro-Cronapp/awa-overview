@@ -138,6 +138,21 @@ describe('config IPC contract', () => {
     expect(deps.config.setOrganization).not.toHaveBeenCalled();
   });
 
+  it('retorna erro específico para campos vazios', async () => {
+    const deps = buildDeps();
+    registerIpcHandlers(deps);
+
+    const semOrganizacao = await handlers.get('config:save')!({}, { organization: '', pat: 'x' });
+    const semPat = await handlers.get('config:save')!({}, { organization: 'demo', pat: '' });
+
+    expect(semOrganizacao).toMatchObject({
+      ok: false,
+      error: { code: ErrorCode.CONFIG_ORG_MISSING },
+    });
+    expect(semPat).toMatchObject({ ok: false, error: { code: ErrorCode.CONFIG_PAT_MISSING } });
+    expect(deps.client.validateAccess).not.toHaveBeenCalled();
+  });
+
   it('remove credenciais, cache, chave e configuração', async () => {
     const deps = buildDeps();
     registerIpcHandlers(deps);

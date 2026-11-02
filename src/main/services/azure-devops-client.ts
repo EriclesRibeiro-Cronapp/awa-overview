@@ -141,9 +141,17 @@ export class AzureDevOpsClient {
       );
     }
 
-    if (response.status === 401) throw new AppErrorException(ErrorCode.CONFIG_PAT_INVALID);
+    if (response.status === 401 || response.status === 203) {
+      throw new AppErrorException(ErrorCode.CONFIG_PAT_INVALID);
+    }
     if (response.status === 403) throw new AppErrorException(ErrorCode.CONFIG_FORBIDDEN);
     if (response.status === 404) throw new AppErrorException(ErrorCode.CONFIG_ORG_NOT_FOUND);
+
+    const contentType = response.headers.get('content-type')?.toLowerCase() ?? '';
+    if (contentType.includes('text/html')) {
+      // O Azure DevOps devolve a página de login (HTML) quando o PAT não autentica.
+      throw new AppErrorException(ErrorCode.CONFIG_PAT_INVALID);
+    }
 
     if (response.status === 429 || response.status >= 500) {
       if (attempt < this.maxRetries) {

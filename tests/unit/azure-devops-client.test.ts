@@ -100,6 +100,38 @@ describe('AzureDevOpsClient', () => {
     });
   });
 
+  it('trata a página de login 203 como PAT inválido', async () => {
+    const client = new AzureDevOpsClient(
+      async () =>
+        new Response('<html>Sign in</html>', {
+          status: 203,
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+        }),
+      1000,
+      0,
+    );
+
+    await expect(client.validate('demo', 'pat')).rejects.toMatchObject({
+      code: ErrorCode.CONFIG_PAT_INVALID,
+    });
+  });
+
+  it('trata HTML 200 de login como PAT inválido', async () => {
+    const client = new AzureDevOpsClient(
+      async () =>
+        new Response('<html>Sign in</html>', {
+          status: 200,
+          headers: { 'content-type': 'text/html' },
+        }),
+      1000,
+      0,
+    );
+
+    await expect(client.validateAccess('demo', 'pat')).rejects.toMatchObject({
+      code: ErrorCode.CONFIG_PAT_INVALID,
+    });
+  });
+
   it.each([
     [401, ErrorCode.CONFIG_PAT_INVALID],
     [403, ErrorCode.CONFIG_FORBIDDEN],

@@ -58,9 +58,16 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
 
   ipcMain.handle('config:save', async (_event, raw: unknown) => {
     return runSafely(async () => {
-      const input = SaveConfigSchema.parse(raw);
-      const organization = normalizeOrganization(input.organization);
-      const pat = input.pat.trim();
+      const parsed = SaveConfigSchema.safeParse(raw);
+      if (!parsed.success) {
+        const field = parsed.error.issues[0]?.path[0];
+        throw new AppErrorException(
+          field === 'pat' ? ErrorCode.CONFIG_PAT_MISSING : ErrorCode.CONFIG_ORG_MISSING,
+        );
+      }
+
+      const organization = normalizeOrganization(parsed.data.organization);
+      const pat = parsed.data.pat.trim();
       if (!pat) throw new AppErrorException(ErrorCode.CONFIG_PAT_MISSING);
 
       const user = await deps.client.validateAccess(organization, pat);
@@ -156,7 +163,12 @@ async function runSafely<T>(
     return await action();
   } catch (error) {
     const appError = toAppError(error);
-    logError(appError.code, appError.message, { operation });
+    const detail = error instanceof Error ? (error.stack ?? error.message) : String(error);
+    logError(appError.code, appError.message, {
+      operation,
+      detail,
+      ...(appError.details ? { details: appError.details } : {}),
+    });
     return { ok: false, error: appError };
   }
 }
