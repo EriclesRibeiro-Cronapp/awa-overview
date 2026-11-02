@@ -41,6 +41,12 @@ export class AzureDevOpsClient {
     return { displayName: data.authenticatedUser?.providerDisplayName };
   }
 
+  async validateAccess(organization: string, pat: string): Promise<{ displayName?: string }> {
+    const data = await this.request<ConnectionDataResponse>(organization, '/connectionData', pat);
+    await this.request<ProjectsResponse>(organization, '/projects', pat, { $top: '1' });
+    return { displayName: data.authenticatedUser?.providerDisplayName };
+  }
+
   async listProjects(organization: string, pat: string): Promise<Project[]> {
     const projects: Project[] = [];
     let continuationToken: string | undefined;

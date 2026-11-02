@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { ConfigView } from '@shared/contracts';
 import { Button, EmptyState } from './components';
 import { ConfigModal } from './features/config/config-modal';
+import { FirstRun } from './features/config/first-run';
 import { ptBR } from './i18n/pt-BR';
 
 export function App() {
@@ -52,11 +53,7 @@ export function App() {
             </EmptyState>
           </section>
         ) : (
-          <section className="status-card">
-            <h2>{ptBR.config.requiredTitle}</h2>
-            <p>{ptBR.config.requiredBody}</p>
-            <Button onClick={() => setModalOpen(true)}>{ptBR.config.save}</Button>
-          </section>
+          <FirstRun onConfigure={() => setModalOpen(true)} />
         )}
       </main>
 

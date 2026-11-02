@@ -72,24 +72,24 @@ configuração aceita, PAT mascarado e projetos carregados.
 
 ### Tests for User Story 1
 
-- [ ] T028 [P] [US1] Testar cifra/decifra e falha fechada do PAT em `tests/unit/credentials-service.test.ts`
-- [ ] T029 [P] [US1] Testar `config:get` e `config:save` em `tests/contract/config-ipc.test.ts`
-- [ ] T030 [P] [US1] Testar 401/403/404/429/rede na validação em `tests/integration/config-validation.test.ts`
+- [X] T028 [P] [US1] Testar cifra/decifra e falha fechada do PAT em `tests/unit/credentials-service.test.ts`
+- [X] T029 [P] [US1] Testar `config:get` e `config:save` em `tests/contract/config-ipc.test.ts`
+- [X] T030 [P] [US1] Testar 401/403/404/429/rede na validação em `tests/integration/config-validation.test.ts`
 
 ### Implementation for User Story 1
 
-- [ ] T031 [P] [US1] Implementar normalização e modelo da configuração em `src/main/services/config-service.ts`
-- [ ] T032 [US1] Implementar validação do PAT com `connectionData` e `projects?$top=1` em `src/main/services/azure-devops-client.ts`
-- [ ] T033 [US1] Implementar fluxo `config:save` (validar, cifrar, persistir, mascarar) em `src/main/ipc/handlers.ts`
-- [ ] T034 [US1] Implementar `config:get` retornando apenas `patLast4` em `src/main/ipc/handlers.ts`
-- [ ] T035 [P] [US1] Implementar a modal de configuração em `src/renderer/features/config/config-modal.tsx`
-- [ ] T036 [US1] Implementar estados de validação e mensagens de erro em `src/renderer/features/config/use-config-form.ts`
-- [ ] T037 [US1] Expor os métodos de configuração no preload em `src/preload/index.ts`
-- [ ] T038 [US1] Adicionar rótulos, foco e `aria-live` na modal em `src/renderer/features/config/config-modal.tsx`
-- [ ] T039 [US1] Registrar eventos de configuração sem segredos em `src/main/services/config-service.ts`
-- [ ] T040 [P] [US1] Implementar o estado de primeira execução/onboarding em `src/renderer/features/config/first-run.tsx`
-- [ ] T041 [P] [US1] Implementar ajuda de criação/revogação e escopos do PAT em `src/renderer/features/config/pat-help.tsx`
-- [ ] T042 [US1] Testar e2e do caminho feliz, PAT inválido e ajuda em `tests/e2e/config.spec.ts`
+- [X] T031 [P] [US1] Implementar normalização e modelo da configuração em `src/main/services/config-service.ts`
+- [X] T032 [US1] Implementar validação do PAT com `connectionData` e `projects?$top=1` em `src/main/services/azure-devops-client.ts`
+- [X] T033 [US1] Implementar fluxo `config:save` (validar, cifrar, persistir, mascarar) em `src/main/ipc/handlers.ts`
+- [X] T034 [US1] Implementar `config:get` retornando apenas `patLast4` em `src/main/ipc/handlers.ts`
+- [X] T035 [P] [US1] Implementar a modal de configuração em `src/renderer/features/config/config-modal.tsx`
+- [X] T036 [US1] Implementar estados de validação e mensagens de erro em `src/renderer/features/config/use-config-form.ts`
+- [X] T037 [US1] Expor os métodos de configuração no preload em `src/preload/index.ts`
+- [X] T038 [US1] Adicionar rótulos, foco e `aria-live` na modal em `src/renderer/features/config/config-modal.tsx`
+- [X] T039 [US1] Registrar eventos de configuração sem segredos em `src/main/services/config-service.ts`
+- [X] T040 [P] [US1] Implementar o estado de primeira execução/onboarding em `src/renderer/features/config/first-run.tsx`
+- [X] T041 [P] [US1] Implementar ajuda de criação/revogação e escopos do PAT em `src/renderer/features/config/pat-help.tsx`
+- [X] T042 [US1] Testar e2e do caminho feliz, PAT inválido e ajuda em `tests/e2e/config.spec.ts`
 
 **Checkpoint**: US1 funcional e testável isoladamente.
 

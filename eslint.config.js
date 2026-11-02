@@ -47,4 +47,19 @@ export default tseslint.config(
       globals: globals.node,
     },
   },
+  {
+    files: ['tests/e2e/**/*.ts'],
+    rules: {
+      'no-empty-pattern': 'off',
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
 );

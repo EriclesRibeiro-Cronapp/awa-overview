@@ -62,7 +62,7 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       const pat = input.pat.trim();
       if (!pat) throw new AppErrorException(ErrorCode.CONFIG_PAT_MISSING);
 
-      const user = await deps.client.validate(organization, pat);
+      const user = await deps.client.validateAccess(organization, pat);
       const { patLast4 } = await deps.credentials.save(pat);
       await deps.config.setOrganization(organization, 'configured');
       logEvent('config.saved', { organization });

@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react';
 import type { ConfigView } from '@shared/contracts';
 import { Button, Input, Modal } from '../../components';
 import { ptBR } from '../../i18n/pt-BR';
+import { PatHelp } from './pat-help';
+import { useConfigForm } from './use-config-form';
 
 interface ConfigModalProps {
   open: boolean;
@@ -11,28 +12,7 @@ interface ConfigModalProps {
 }
 
 export function ConfigModal({ open, config, onClose, onSaved }: ConfigModalProps) {
-  const [organization, setOrganization] = useState(config?.organization ?? '');
-  const [pat, setPat] = useState('');
-  const [error, setError] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
-    event.preventDefault();
-    setError(null);
-    setSaving(true);
-    try {
-      const result = await window.api.config.save({ organization, pat });
-      if (!result.ok) {
-        setError(result.error.message);
-        return;
-      }
-      onSaved();
-    } catch {
-      setError(ptBR.errors.unexpected);
-    } finally {
-      setSaving(false);
-    }
-  }
+  const form = useConfigForm(config, onSaved);
 
   return (
     <Modal
@@ -41,24 +21,29 @@ export function ConfigModal({ open, config, onClose, onSaved }: ConfigModalProps
       onClose={onClose}
       footer={
         <>
-          <Button variant="ghost" onClick={onClose} disabled={saving}>
+          <Button variant="ghost" onClick={onClose} disabled={form.saving}>
             Cancelar
           </Button>
-          <Button type="submit" form="config-form" disabled={saving}>
-            {saving ? ptBR.config.saving : ptBR.config.save}
+          <Button type="submit" form="config-form" disabled={form.saving}>
+            {form.saving ? ptBR.config.saving : ptBR.config.save}
           </Button>
         </>
       }
     >
-      <form id="config-form" onSubmit={handleSubmit} noValidate>
+      <form id="config-form" onSubmit={form.handleSubmit} aria-busy={form.saving} noValidate>
+        {form.error ? (
+          <p className="error" role="alert">
+            {form.error}
+          </p>
+        ) : null}
         <Input
           label={ptBR.config.organization}
           name="organization"
           placeholder={ptBR.config.organizationPlaceholder}
-          value={organization}
-          onChange={(event) => setOrganization(event.target.value)}
+          value={form.organization}
+          onChange={(event) => form.setOrganization(event.target.value)}
           autoComplete="off"
-          disabled={saving}
+          disabled={form.saving}
           required
         />
         <Input
@@ -66,22 +51,14 @@ export function ConfigModal({ open, config, onClose, onSaved }: ConfigModalProps
           name="pat"
           type="password"
           placeholder={ptBR.config.patPlaceholder}
-          value={pat}
-          onChange={(event) => setPat(event.target.value)}
+          value={form.pat}
+          onChange={(event) => form.setPat(event.target.value)}
           autoComplete="off"
           spellCheck={false}
-          disabled={saving}
+          disabled={form.saving}
           required
-          error={error ?? undefined}
         />
-        <details>
-          <summary>{ptBR.config.help}</summary>
-          <p>
-            Crie um PAT em Azure DevOps → User settings → Personal access tokens, com escopos de
-            leitura para Project and Team, Work Items, Code e Build. Revogue o token quando não for
-            mais necessário.
-          </p>
-        </details>
+        <PatHelp />
       </form>
     </Modal>
   );
