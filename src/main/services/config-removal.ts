@@ -26,6 +26,10 @@ export interface RemovablePullRequestsCache {
   clear(): Promise<void>;
 }
 
+export interface RemovablePipelinesCache {
+  clear(): Promise<void>;
+}
+
 export interface RemovalDependencies {
   config: RemovableConfig;
   credentials: RemovableCredentials;
@@ -34,6 +38,7 @@ export interface RemovalDependencies {
   overviewCache: RemovableOverviewCache;
   workItemsCache: RemovableWorkItemsCache;
   pullRequestsCache: RemovablePullRequestsCache;
+  pipelinesCache: RemovablePipelinesCache;
 }
 
 export async function removeConfiguration(deps: RemovalDependencies): Promise<void> {
@@ -43,5 +48,6 @@ export async function removeConfiguration(deps: RemovalDependencies): Promise<vo
   await deps.overviewCache.clear();
   await deps.workItemsCache.clear();
   await deps.pullRequestsCache.clear();
+  await deps.pipelinesCache.clear();
   await deps.config.reset();
 }

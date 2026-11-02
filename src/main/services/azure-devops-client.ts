@@ -3,6 +3,7 @@ import type {
   PipelineResult,
   PipelineRunSummary,
   PipelineStatus,
+  PipelineTableRow,
   Project,
   PullRequestSummary,
   PullRequestStatus,
@@ -64,14 +65,20 @@ interface PullRequestsResponse {
 interface BuildsResponse {
   value?: Array<{
     id?: number;
+    buildNumber?: string;
     status?: string;
     result?: string;
     startTime?: string;
+    finishTime?: string;
     queueTime?: string;
-    definition?: { name?: string };
+    definition?: { id?: number; name?: string; description?: string };
     project?: { name?: string };
     _links?: { web?: { href?: string } };
   }>;
+}
+
+interface BuildDefinitionsResponse {
+  value?: Array<{ id?: number; description?: string }>;
 }
 
 interface RequestOptions {
@@ -93,6 +100,7 @@ const WORK_ITEM_LIMIT = 3;
 const WORK_ITEM_TABLE_LIMIT = 2_000;
 const WORK_ITEM_BATCH = 200;
 const PULL_REQUEST_LIMIT = 1_000;
+const PIPELINE_LIMIT = 500;
 const WORK_ITEM_FIELDS = [
   'System.Id',
   'System.WorkItemType',
@@ -313,6 +321,54 @@ export class AzureDevOpsClient {
     return {
       items: rows.slice(0, PULL_REQUEST_LIMIT),
       truncated: rows.length >= PULL_REQUEST_LIMIT,
+    };
+  }
+
+  async listPipelines(
+    organization: string,
+    pat: string,
+    projectId: string,
+  ): Promise<{ items: PipelineTableRow[]; truncated: boolean }> {
+    const { body } = await this.requestWithResponse<BuildsResponse>(
+      organization,
+      `/${encodeURIComponent(projectId)}/_apis/build/builds`,
+      pat,
+      { $top: String(PIPELINE_LIMIT), queryOrder: 'finishTimeDescending' },
+      0,
+      API_VERSION,
+      { absolute: true },
+    );
+
+    const definitions = await this.requestWithResponse<BuildDefinitionsResponse>(
+      organization,
+      `/${encodeURIComponent(projectId)}/_apis/build/definitions`,
+      pat,
+      { $top: '1000' },
+      0,
+      API_VERSION,
+      { absolute: true },
+    ).catch(() => null);
+
+    const descriptions = new Map<number, string>();
+    for (const definition of definitions?.body.value ?? []) {
+      if (definition.id && definition.description) {
+        descriptions.set(definition.id, definition.description);
+      }
+    }
+
+    const builds = (body.value ?? [])
+      .filter((build) => Boolean(build.id))
+      .map((build) => mapPipelineRow(build, projectId, descriptions))
+      .filter((row): row is PipelineTableRow => row !== null)
+      .sort(
+        (a, b) =>
+          Date.parse(b.finishedAt ?? b.startedAt ?? '') -
+          Date.parse(a.finishedAt ?? a.startedAt ?? ''),
+      );
+
+    return {
+      items: builds.slice(0, PIPELINE_LIMIT),
+      truncated: builds.length >= PIPELINE_LIMIT,
     };
   }
 
@@ -592,6 +648,42 @@ function mapWorkItemRow(
     assignedTo: readAssignedTo(fields['System.AssignedTo']),
     changedAt: readString(fields['System.ChangedDate']) ?? '',
     url: `https://dev.azure.com/${encodeURIComponent(organization)}/${encodeURIComponent(project)}/_workitems/edit/${item.id}`,
+  };
+}
+
+function mapPipelineRow(
+  build: NonNullable<BuildsResponse['value']>[number],
+  fallbackProject: string,
+  descriptions: Map<number, string>,
+): PipelineTableRow | null {
+  if (!build.id) return null;
+  const definitionId = build.definition?.id;
+  const description =
+    (definitionId ? descriptions.get(definitionId) : undefined) ??
+    build.definition?.description ??
+    build.buildNumber ??
+    null;
+  const startedAt = build.startTime ?? build.queueTime ?? null;
+  const finishedAt = build.finishTime ?? null;
+  const durationSeconds =
+    startedAt && finishedAt
+      ? (new Date(finishedAt).getTime() - new Date(startedAt).getTime()) / 1000
+      : null;
+
+  return {
+    id: build.id,
+    name: build.definition?.name ?? 'Pipeline',
+    description,
+    result: mapPipelineResult(build.result),
+    status: mapPipelineStatus(build.status),
+    project: build.project?.name ?? fallbackProject,
+    startedAt,
+    finishedAt,
+    durationSeconds:
+      durationSeconds !== null && Number.isFinite(durationSeconds) && durationSeconds >= 0
+        ? Math.round(durationSeconds)
+        : null,
+    url: build._links?.web?.href ?? '',
   };
 }
 

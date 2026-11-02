@@ -1103,5 +1103,240 @@ textarea {
   opacity: 0.6;
 }
 
+/* Pipelines */
+.pipelines-page {
+  max-width: 860px;
+}
+
+.pipelines-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin: 0 0 var(--space-28);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+}
+
+.pipelines-filters {
+  display: flex;
+  height: 28px;
+  align-items: center;
+}
+
+.pipelines-search {
+  display: flex;
+  width: 499px;
+  max-width: 100%;
+  flex: 0 0 499px;
+  align-items: center;
+  gap: var(--space-8);
+  border-bottom: 1px solid transparent;
+  color: var(--color-content-hover);
+}
+
+.pipelines-search:focus-within {
+  border-bottom-color: var(--color-content-primary);
+}
+
+.pipelines-search-input {
+  width: 100%;
+  min-width: 0;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-content-primary);
+  font-size: var(--font-size-12);
+}
+
+.pipelines-search-input::placeholder {
+  color: var(--color-content-hover);
+}
+
+.pipelines-search-input:focus-visible {
+  outline: none;
+}
+
+.pipelines-truncated {
+  margin: var(--space-8) 0 0;
+}
+
+.pipelines-empty {
+  margin: var(--space-20) 0 0;
+}
+
+.pipelines-table-scroll {
+  height: 188px;
+  margin-top: var(--space-16);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.pipelines-table-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.pipelines-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.pipelines-table .col-pipeline-name {
+  width: 28%;
+}
+
+.pipelines-table .col-pipeline-details {
+  width: 27%;
+}
+
+.pipelines-table .col-pipeline-executed {
+  width: 35%;
+}
+
+.pipelines-table .col-pipeline-access {
+  width: 10%;
+}
+
+.pipelines-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 47px;
+  padding: 0 var(--space-8) 0 0;
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-content-hover);
+  font-size: var(--font-size-12);
+  font-weight: 700;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.pipelines-table tbody tr {
+  height: 47px;
+}
+
+.pipelines-table tbody td {
+  height: 47px;
+  padding: 0 var(--space-8) 0 0;
+  border: 0;
+  color: var(--color-content-primary);
+  font-size: var(--font-size-12);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.pipelines-table tbody td:last-child {
+  padding-right: 0;
+}
+
+.pipeline-name-cell {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.pipeline-name {
+  overflow: hidden;
+  color: var(--color-content-primary);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipeline-status-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.pipeline-status-success {
+  color: #8a6d00;
+}
+
+.pipeline-status-success .icon {
+  color: #8a6d00;
+}
+
+.pipeline-status-failure {
+  color: #b00020;
+}
+
+.pipeline-status-failure .icon {
+  color: #b00020;
+}
+
+.pipeline-status-warning {
+  color: #6b5a00;
+}
+
+.pipeline-status-warning .icon {
+  color: #6b5a00;
+}
+
+.pipeline-status-info {
+  color: #005a9e;
+}
+
+.pipeline-status-info .icon {
+  color: #005a9e;
+}
+
+.pipeline-status-muted {
+  color: var(--color-content-hover);
+}
+
+.pipeline-status-muted .icon {
+  color: var(--color-content-hover);
+}
+
+.pipeline-details {
+  display: block;
+  overflow: hidden;
+  color: var(--color-content-primary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pipeline-executed {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--color-content-hover);
+  white-space: nowrap;
+}
+
+.pipeline-executed .icon {
+  color: var(--color-content-hover);
+}
+
+.pipelines-access {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-4);
+  background: transparent;
+  color: var(--color-content-hover);
+  cursor: pointer;
+}
+
+.pipelines-access:hover {
+  background: var(--color-border-subtle);
+}
+
+.pipelines-access:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+
 
 

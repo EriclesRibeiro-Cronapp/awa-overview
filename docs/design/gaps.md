@@ -34,6 +34,8 @@ sobre blocos `fe:auto` defasados.
 | G-25 | Export `19:237` da tela Work items sem título/abas, divergente da análise manual | Layout da tela pode ficar ambíguo | Seguir a análise manual revisada em 01/11 (título, resumo, filtros e tabela) | `screens.md`, `assets` | Resolvido na 003 |
 | G-26 | Larguras fixas dos filtros (46/92/57/54) truncam valores longos | “Concluído”/“Em andamento” ficam cortados no select | Ampliar os selects para 70/120/110/80 e validar no Figma | `screens.md` | Resolvido na 003 |
 | G-27 | Tela Pull requests sem screenshot/export próprio | Detalhes visuais dependem só da análise manual | Reutilizar a estrutura de Work items e registrar a decisão | `screens.md`, `assets` | Resolvido na 004 |
+| G-28 | Tela Pipelines sem screenshot/export próprio | Detalhes visuais dependem só da análise manual | Reutilizar a estrutura das tabelas e registrar a decisão | `screens.md`, `assets` | Resolvido na 005 |
+| G-29 | Amarelo `#FFCC00` de sucesso não passa AA para ícone | Status pode ficar invisível para baixa visão | Usar tom escurecido `#8A6D00` e manter ícone + rótulo | `screens.md`, `components.md` | Resolvido na 005 |
 
 ## Regras
 

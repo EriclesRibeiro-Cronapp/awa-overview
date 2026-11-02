@@ -11,6 +11,7 @@ describe('removeConfiguration', () => {
       overviewCache: { clear: vi.fn(async () => void calls.push('overviewCache')) },
       workItemsCache: { clear: vi.fn(async () => void calls.push('workItemsCache')) },
       pullRequestsCache: { clear: vi.fn(async () => void calls.push('pullRequestsCache')) },
+      pipelinesCache: { clear: vi.fn(async () => void calls.push('pipelinesCache')) },
       config: { reset: vi.fn(async () => void calls.push('config')) },
     };
 
@@ -23,6 +24,7 @@ describe('removeConfiguration', () => {
       'overviewCache',
       'workItemsCache',
       'pullRequestsCache',
+      'pipelinesCache',
       'config',
     ]);
   });

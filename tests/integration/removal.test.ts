@@ -8,6 +8,7 @@ import { ConfigService } from '../../src/main/services/config-service';
 import { removeConfiguration } from '../../src/main/services/config-removal';
 import { CredentialsService } from '../../src/main/services/credentials-service';
 import { OverviewCacheService } from '../../src/main/services/overview-cache-service';
+import { PipelinesCacheService } from '../../src/main/services/pipelines-cache-service';
 import { PullRequestsCacheService } from '../../src/main/services/pull-requests-cache-service';
 import { WorkItemsCacheService } from '../../src/main/services/work-items-cache-service';
 
@@ -44,6 +45,7 @@ describe('removal integration', () => {
     const overviewCache = new OverviewCacheService(dir, cacheKey);
     const workItemsCache = new WorkItemsCacheService(dir, cacheKey);
     const pullRequestsCache = new PullRequestsCacheService(dir, cacheKey);
+    const pipelinesCache = new PipelinesCacheService(dir, cacheKey);
 
     await config.setOrganization('demo');
     await credentials.save('figd_secret_1234');
@@ -88,6 +90,19 @@ describe('removal integration', () => {
       items: [],
       truncated: false,
     });
+    await pipelinesCache.write({
+      schemaVersion: 1,
+      contextKey: 'demo|p1',
+      organization: 'demo',
+      projectId: 'p1',
+      projectName: 'Projeto',
+      teamId: null,
+      teamName: null,
+      fetchedAt: new Date().toISOString(),
+      ttlSeconds: 300,
+      items: [],
+      truncated: false,
+    });
     await cacheKey.getKey();
 
     await removeConfiguration({
@@ -98,6 +113,7 @@ describe('removal integration', () => {
       overviewCache,
       workItemsCache,
       pullRequestsCache,
+      pipelinesCache,
     });
 
     expect((await config.get()).status).toBe('unconfigured');
@@ -106,6 +122,7 @@ describe('removal integration', () => {
     expect(await overviewCache.read()).toBeNull();
     expect(await workItemsCache.read()).toBeNull();
     expect(await pullRequestsCache.read()).toBeNull();
+    expect(await pipelinesCache.read()).toBeNull();
     await expect(access(join(dir, 'cache.key'))).rejects.toBeTruthy();
   });
 });

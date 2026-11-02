@@ -21,7 +21,7 @@ interface WorkItemsPageProps {
   config: ConfigView;
   context: ProjectContextState;
   onConfigure: () => void;
-  onSelect: (id: 'overview' | 'work-items' | 'pull-requests') => void;
+  onSelect: (id: 'overview' | 'work-items' | 'pull-requests' | 'pipelines') => void;
 }
 
 export function WorkItemsPage({

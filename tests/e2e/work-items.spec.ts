@@ -33,6 +33,8 @@ test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) =>
 
   const app = await electron.launch({ args: [mainEntry, `--user-data-dir=${userData}`] });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     await app.evaluate(({ ipcMain }) => {
       ipcMain.removeHandler('projects:list');
@@ -159,5 +161,6 @@ test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) =>
     await expect(window.locator('.work-items-summary-value')).toHaveText(['4', '1', '2', '1']);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

@@ -31,5 +31,6 @@ test('primeira execução não tem violações de acessibilidade', async ({}, te
     expect(results.violations).toEqual([]);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

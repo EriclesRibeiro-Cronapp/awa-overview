@@ -10,13 +10,16 @@ test('primeira execução fica pronta dentro do orçamento', async ({}, testInfo
     args: [mainEntry, `--user-data-dir=${testInfo.outputPath(`user-data-perf-start-1793653960061`)}`],
   });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     const window = await app.firstWindow();
     await expect(window.getByLabel('Organização')).toBeVisible({ timeout: 10_000 });
     expect(Date.now() - start).toBeLessThan(10_000);
   } finally {
     await app.close();
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 });
 
@@ -66,6 +69,7 @@ test('renderiza 100 projetos em menos de 5 segundos', async ({}, testInfo) => {
     expect(Date.now() - start).toBeLessThan(5_000);
   } finally {
     await app.close();
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 });

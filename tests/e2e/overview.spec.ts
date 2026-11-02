@@ -56,6 +56,8 @@ async function launchConfigured(
 
   const app = await electron.launch({ args: [mainEntry, `--user-data-dir=${userData}`] });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   await app.evaluate(({ ipcMain }, payload) => {
     const { projectId, workItem, pullRequest, pipeline } = payload;
     ipcMain.removeHandler('projects:list');
@@ -135,6 +137,7 @@ test('mostra os três cards, atualiza e exibe staleness', async ({}, testInfo) =
     await expect(window.getByText('#145673')).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });
 
@@ -191,6 +194,7 @@ test('mostra as mensagens vazias documentadas', async ({}, testInfo) => {
     await expect(window.getByText('Dados desatualizados')).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });
 
@@ -204,5 +208,6 @@ test('orienta a selecionar um projeto quando não há contexto', async ({}, test
     ).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

@@ -25,6 +25,8 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
     args: [mainEntry, `--user-data-dir=${userData}`],
   });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     await app.evaluate(({ ipcMain }) => {
       ipcMain.removeHandler('projects:list');
@@ -140,5 +142,6 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
     await expect(window.getByText('#145672')).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

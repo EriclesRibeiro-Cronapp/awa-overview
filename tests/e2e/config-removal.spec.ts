@@ -37,6 +37,7 @@ test('remove a configuração e volta ao estado inicial', async ({}, testInfo) =
     await expect(window.getByText('Configuração necessária')).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 
   await expect(access(join(userData, 'config.json'))).rejects.toBeTruthy();

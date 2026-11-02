@@ -176,6 +176,35 @@ export type PullRequestsLoadResult =
   | { ok: true; data: PullRequestsView }
   | { ok: false; error: AppError };
 
+export interface PipelineTableRow {
+  id: number;
+  name: string;
+  description: string | null;
+  result: PipelineResult;
+  status: PipelineStatus;
+  project: string;
+  startedAt: string | null;
+  finishedAt: string | null;
+  durationSeconds: number | null;
+  url: string;
+}
+
+export interface PipelinesView {
+  context: OverviewContext | null;
+  items: PipelineTableRow[];
+  truncated: boolean;
+  fetchedAt: string | null;
+  stale: boolean;
+}
+
+export interface PipelinesLoadInput {
+  force?: boolean;
+}
+
+export type PipelinesLoadResult =
+  | { ok: true; data: PipelinesView }
+  | { ok: false; error: AppError };
+
 
 export interface OverviewLoadInput {
   force?: boolean;
@@ -215,6 +244,9 @@ export interface IpcApi {
   };
   pullRequests: {
     load(input?: PullRequestsLoadInput): Promise<PullRequestsLoadResult>;
+  };
+  pipelines: {
+    load(input?: PipelinesLoadInput): Promise<PipelinesLoadResult>;
   };
   session: {
     select(input: SessionSelection): Promise<{ ok: boolean; error?: AppError }>;

@@ -8,6 +8,8 @@ test('renderer roda com isolamento e sem Node', async ({}, testInfo) => {
     args: [mainEntry, `--user-data-dir=${testInfo.outputPath(`user-data-security-1793653960062`)}`],
   });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     const window = await app.firstWindow();
     const preferences = await app.evaluate(({ BrowserWindow }) => {
@@ -26,5 +28,6 @@ test('renderer roda com isolamento e sem Node', async ({}, testInfo) => {
     expect(nodeVisible).toBe(false);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

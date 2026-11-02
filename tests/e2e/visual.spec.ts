@@ -16,5 +16,6 @@ test('primeira execução mantém o layout de referência', async ({}, testInfo)
     });
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

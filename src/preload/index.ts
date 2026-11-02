@@ -20,6 +20,9 @@ const api: IpcApi = {
   pullRequests: {
     load: (input) => ipcRenderer.invoke('pullRequests:load', input),
   },
+  pipelines: {
+    load: (input) => ipcRenderer.invoke('pipelines:load', input),
+  },
   session: {
     select: (input) => ipcRenderer.invoke('session:select', input),
   },

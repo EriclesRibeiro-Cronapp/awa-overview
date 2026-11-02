@@ -23,6 +23,8 @@ test('Overview preenchido mantém o layout de referência', async ({}, testInfo)
 
   const app = await electron.launch({ args: [mainEntry, `--user-data-dir=${userData}`] });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     await app.evaluate(({ ipcMain }) => {
       ipcMain.removeHandler('projects:list');
@@ -107,5 +109,6 @@ test('Overview preenchido mantém o layout de referência', async ({}, testInfo)
     });
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

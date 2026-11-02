@@ -33,6 +33,8 @@ test('abre Pull requests, mostra tabela e filtros', async ({}, testInfo) => {
 
   const app = await electron.launch({ args: [mainEntry, `--user-data-dir=${userData}`] });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     await app.evaluate(({ ipcMain }) => {
       ipcMain.removeHandler('projects:list');
@@ -142,5 +144,6 @@ test('abre Pull requests, mostra tabela e filtros', async ({}, testInfo) => {
     await expect(window.getByText('!54678')).toHaveCount(0);
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

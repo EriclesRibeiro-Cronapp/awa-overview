@@ -9,6 +9,8 @@ test('primeira execução mostra configuração e ajuda do PAT', async ({}, test
     args: [mainEntry, `--user-data-dir=${userData}`],
   });
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
   try {
     const window = await app.firstWindow();
     await expect(window.getByRole('dialog')).toBeVisible();
@@ -18,6 +20,7 @@ test('primeira execução mostra configuração e ajuda do PAT', async ({}, test
     await expect(window.getByText(/Personal access tokens/)).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });
 
@@ -49,6 +52,7 @@ test('mostra erro de PAT inválido sem fechar a modal', async ({}, testInfo) => 
     await expect(window.getByRole('dialog')).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });
 
@@ -72,5 +76,6 @@ test('salva configuração válida quando credenciais de teste são fornecidas',
     await expect(window.getByText(organization as string)).toBeVisible();
   } finally {
     await app.close();
+    await new Promise((resolve) => setTimeout(resolve, 700));
   }
 });

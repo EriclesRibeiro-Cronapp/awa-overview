@@ -24,6 +24,8 @@ import {
   emptyPullRequestsView,
   type PullRequestsService,
 } from '../services/pull-requests-service';
+import type { PipelinesCacheService } from '../services/pipelines-cache-service';
+import { emptyPipelinesView, type PipelinesService } from '../services/pipelines-service';
 
 export interface IpcDependencies {
   config: ConfigService;
@@ -33,11 +35,13 @@ export interface IpcDependencies {
   overviewCache: OverviewCacheService;
   workItemsCache: WorkItemsCacheService;
   pullRequestsCache: PullRequestsCacheService;
+  pipelinesCache: PipelinesCacheService;
   client: AzureDevOpsClient;
   projects: ProjectsService;
   overview: OverviewService;
   workItems: WorkItemsService;
   pullRequests: PullRequestsService;
+  pipelines: PipelinesService;
   diagnostics: DiagnosticsService;
   appVersion: string;
 }
@@ -70,6 +74,12 @@ const WorkItemsLoadSchema = z
   .optional();
 
 const PullRequestsLoadSchema = z
+  .object({
+    force: z.boolean().optional(),
+  })
+  .optional();
+
+const PipelinesLoadSchema = z
   .object({
     force: z.boolean().optional(),
   })
@@ -121,6 +131,7 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
         await deps.overviewCache.clear();
         await deps.workItemsCache.clear();
         await deps.pullRequestsCache.clear();
+        await deps.pipelinesCache.clear();
         logEvent('config.organizationChanged', {
           from: previous.normalizedOrganization,
           to: organization,
@@ -202,6 +213,21 @@ export function registerIpcHandlers(deps: IpcDependencies): void {
       });
       return { ok: true, data };
     }, 'pullRequests:load');
+  });
+
+  ipcMain.handle('pipelines:load', async (_event, raw?: unknown) => {
+    return runSafely(async () => {
+      const input = PipelinesLoadSchema.parse(raw);
+      const current = await deps.config.get();
+      const context = await resolveProjectContext(deps, current);
+      if (!context) return { ok: true, data: emptyPipelinesView() };
+
+      const data = await deps.pipelines.load({
+        ...context,
+        force: input?.force ?? false,
+      });
+      return { ok: true, data };
+    }, 'pipelines:load');
   });
 
   ipcMain.handle('app:openExternal', async (_event, raw: unknown) => {
