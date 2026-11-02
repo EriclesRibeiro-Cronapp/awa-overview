@@ -32,6 +32,6 @@
 ## Notes
 
 - Recursos verificados: `awa-logo.png` 95×12, `subtract-line.svg`, `close-line.svg`.
-- Premissa crítica: "sprint" foi interpretado como o seletor **Time** existente.
-- Janela fixa em 900×700 nesta feature.
-- Pronta para `/speckit.plan` após confirmação das premissas.
+- O segundo seletor é **Time (equipe)**; não há seletor de Sprint/Iteration.
+- Janela fixa em **900×700, não redimensionável**, sem maximizar.
+- Pronta para `/speckit.plan`.

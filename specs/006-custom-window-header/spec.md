@@ -57,17 +57,17 @@ configurações, minimizar e fechar; confirmar que não há seletores no header.
    **Then** a modal de configuração abre como hoje.
 3. **Given** o header, **When** ele é exibido, **Then** não há seletor de projeto nem
    de time nele.
-4. **Given** o logo carregado, **When** a janela é redimensionada ou o app reabre,
-   **Then** a logo não distorce e mantém a proporção.
+4. **Given** o logo carregado, **When** o app reabre, **Then** a logo não distorce e
+   mantém a proporção.
 
 ---
 
 ### User Story 3 - Contexto no footer e largura total (Priority: P3)
 
-Os seletores de projeto e time (chamado de sprint no pedido) ficam no footer, à
-direita. À esquerda ficam o ícone de atualização, o horário "Atualizado em..." e o
-indicador de dados desatualizados. A janela tem 900px de largura e o conteúdo ocupa
-toda a área disponível, sem faixa vazia à direita.
+Os seletores de projeto e time ficam no footer, à direita. À esquerda ficam o ícone
+de atualização, o horário "Atualizado em..." e o indicador de dados desatualizados.
+A janela tem 900px de largura, não é redimensionável, e o conteúdo ocupa toda a área
+disponível, sem faixa vazia à direita.
 
 **Why priority**: mantém o contexto acessível em todas as telas e elimina o espaço
 vazio causado pela largura anterior.
@@ -77,8 +77,8 @@ verificar que o conteúdo vai até a margem direita de 20px.
 
 **Acceptance Scenarios**:
 
-1. **Given** o app aberto, **When** a janela é exibida, **Then** a largura é 900px e
-   o conteúdo ocupa a área entre as margens de 20px.
+1. **Given** o app aberto, **When** a janela é exibida, **Then** a largura é 900px,
+   a janela não é redimensionável e o conteúdo ocupa a área entre as margens de 20px.
 2. **Given** o footer, **When** ele é exibido, **Then** há um grupo à esquerda com
    refresh + atualização e um grupo à direita com projeto + time, claramente separados.
 3. **Given** o seletor de projeto, **When** o usuário troca o projeto,
@@ -112,8 +112,9 @@ verificar que o conteúdo vai até a margem direita de 20px.
 
 - **FR-001**: A janela principal DEVE ser criada sem frame nativo no Windows
   (`frame: false`), removendo barra de título, borda e controles nativos.
-- **FR-002**: A janela DEVE abrir em **900×700px** nesta feature, com o conteúdo
-  ocupando as margens de 20px (860px úteis), sem faixa vazia à direita.
+- **FR-002**: A janela DEVE abrir em **900×700px**, ser **não redimensionável** nesta
+  feature e manter o conteúdo nas margens de 20px (860px úteis), sem faixa vazia à
+  direita.
 - **FR-003**: O header DEVE exibir a logo oficial `awa-logo.png` em **95×12px**, com
   texto alternativo "AWA Overview"; a logo NÃO DEVE ser distorcida.
 - **FR-004**: O header DEVE manter o acesso às configurações e exibir, à direita, os
@@ -176,10 +177,9 @@ verificar que o conteúdo vai até a margem direita de 20px.
 
 ## Assumptions
 
-- O segundo seletor do footer é o **Time (equipe)** já existente, chamado de "sprint"
-  no pedido; se o usuário quiser um seletor real de Sprint/Iteration, isso será uma
-  feature separada (nova consulta e novo filtro).
-- A janela fica fixa em 900×700 nesta feature, sem maximizar nem redimensionar; isso
+- O segundo seletor do footer é o **Time (equipe)** já existente; não há seletor de
+  Sprint/Iteration nesta feature.
+- A janela fica fixa em **900×700**, **não redimensionável**, sem maximizar. Isso
   garante o layout documentado e a ausência de faixa vazia. Redimensionamento pode ser
   uma feature futura.
 - O botão de configurações permanece no header, conforme o design.
