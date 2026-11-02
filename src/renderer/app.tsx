@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { ConfigView } from '@shared/contracts';
-import { Button, EmptyState } from './components';
+import { Button } from './components';
 import { ConfigModal } from './features/config/config-modal';
 import { FirstRun } from './features/config/first-run';
+import { ProjectsPanel } from './features/projects/projects-panel';
 import { ptBR } from './i18n/pt-BR';
 
 export function App() {
@@ -43,15 +44,7 @@ export function App() {
         {config === null ? (
           <p>{ptBR.app.loading}</p>
         ) : configured ? (
-          <section className="status-card">
-            <h2>{config.organization}</h2>
-            <p>
-              {ptBR.config.maskedPat}: ••••{config.patLast4 ?? '----'}
-            </p>
-            <EmptyState title={ptBR.projects.project}>
-              {ptBR.projects.selectProject}
-            </EmptyState>
-          </section>
+          <ProjectsPanel config={config} />
         ) : (
           <FirstRun onConfigure={() => setModalOpen(true)} />
         )}

@@ -80,8 +80,9 @@ export class ConfigService {
     const current = await this.get();
     await this.save({
       ...current,
-      selectedProjectId: selection.projectId ?? current.selectedProjectId,
-      selectedTeamId: selection.teamId ?? current.selectedTeamId,
+      selectedProjectId:
+        selection.projectId !== undefined ? selection.projectId : current.selectedProjectId,
+      selectedTeamId: selection.teamId !== undefined ? selection.teamId : current.selectedTeamId,
     });
   }
 

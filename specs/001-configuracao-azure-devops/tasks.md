@@ -105,21 +105,21 @@ projeto selecionado → somente times daquele projeto.
 
 ### Tests for User Story 2
 
-- [ ] T043 [P] [US2] Testar contratos `projects:list` e `teams:list` em `tests/contract/projects-ipc.test.ts`
-- [ ] T044 [P] [US2] Testar paginação, cache e mapeamento de times em `tests/integration/projects-service.test.ts`
-- [ ] T045 [P] [US2] Testar e2e dos seletores em `tests/e2e/projects.spec.ts`
+- [X] T043 [P] [US2] Testar contratos `projects:list` e `teams:list` em `tests/contract/projects-ipc.test.ts`
+- [X] T044 [P] [US2] Testar paginação, cache e mapeamento de times em `tests/integration/projects-service.test.ts`
+- [X] T045 [P] [US2] Testar e2e dos seletores em `tests/e2e/projects.spec.ts`
 
 ### Implementation for User Story 2
 
-- [ ] T046 [US2] Implementar listagem de projetos com paginação em `src/main/services/projects-service.ts`
-- [ ] T047 [US2] Implementar listagem de times por projeto em `src/main/services/projects-service.ts`
-- [ ] T048 [US2] Implementar snapshot de cache, TTL e staleness em `src/main/services/cache-service.ts`
-- [ ] T049 [US2] Implementar canais `projects:list` e `teams:list` em `src/main/ipc/handlers.ts`
-- [ ] T050 [P] [US2] Implementar seletor de projetos em `src/renderer/features/projects/project-selector.tsx`
-- [ ] T051 [P] [US2] Implementar seletor de times e estado vazio em `src/renderer/features/projects/team-selector.tsx`
-- [ ] T052 [US2] Persistir projeto e time selecionados em `src/main/services/config-service.ts`
-- [ ] T053 [US2] Implementar canal `session:select` em `src/main/ipc/handlers.ts`
-- [ ] T054 [US2] Implementar indicador de dados desatualizados em `src/renderer/features/projects/staleness-badge.tsx`
+- [X] T046 [US2] Implementar listagem de projetos com paginação em `src/main/services/projects-service.ts`
+- [X] T047 [US2] Implementar listagem de times por projeto em `src/main/services/projects-service.ts`
+- [X] T048 [US2] Implementar snapshot de cache, TTL e staleness em `src/main/services/cache-service.ts`
+- [X] T049 [US2] Implementar canais `projects:list` e `teams:list` em `src/main/ipc/handlers.ts`
+- [X] T050 [P] [US2] Implementar seletor de projetos em `src/renderer/features/projects/project-selector.tsx`
+- [X] T051 [P] [US2] Implementar seletor de times e estado vazio em `src/renderer/features/projects/team-selector.tsx`
+- [X] T052 [US2] Persistir projeto e time selecionados em `src/main/services/config-service.ts`
+- [X] T053 [US2] Implementar canal `session:select` em `src/main/ipc/handlers.ts`
+- [X] T054 [US2] Implementar indicador de dados desatualizados em `src/renderer/features/projects/staleness-badge.tsx`
 
 **Checkpoint**: US1 e US2 funcionam independentemente.
 
