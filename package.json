@@ -1,6 +1,6 @@
 {
   "name": "awa-overview",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Aplicação desktop read-only para centralizar informações do Azure DevOps",
   "main": "out/main/index.js",
