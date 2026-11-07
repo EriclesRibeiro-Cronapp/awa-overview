@@ -9,11 +9,13 @@
     AND [System.AssignedTo] = @Me
     AND [System.State] NOT IN ('Closed', 'Done', 'Removed')
     [AND [System.AreaPath] UNDER '<areaPath>']
-  ORDER BY [Microsoft.VSTS.Common.Priority] ASC, [System.ChangedDate] DESC
+  ORDER BY [System.ChangedDate] DESC
   ```
 - Campo adicional: `Microsoft.VSTS.Common.Priority`.
-- Buscar até 10 IDs; lote de detalhes existente.
-- Prioridade ausente/0 vai para o fim; fallback `ChangedDate DESC`.
+- Selecionar os **10 primeiros IDs** por `ChangedDate` descendente; lote de detalhes
+  existente.
+- Depois, ordenar esses 10 por prioridade numérica crescente (1 primeiro); itens sem
+  prioridade/0 vão para o fim, com fallback `ChangedDate DESC`.
 
 ## Pull requests
 

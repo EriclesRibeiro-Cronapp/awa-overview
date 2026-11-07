@@ -29,8 +29,9 @@ Cada card mantém estados independentes de loading/erro/stale.
 | `priority` | number \| null | `Microsoft.VSTS.Common.Priority`; usado na ordenação |
 | `url` | string | HTTPS permitido |
 
-Ordenação: prioridade numérica crescente (1 primeiro); itens sem prioridade usam
-`changedAt` descendente como fallback.
+Seleção: os 10 work items **mais recentes** do usuário por `changedAt` descendente.
+Ordenação final dos 10: prioridade numérica crescente (1 primeiro); itens sem
+prioridade usam `changedAt` descendente como fallback.
 
 ## PullRequestSummary
 
@@ -61,29 +62,21 @@ descendente.
 | `pullRequests` | PullRequestSummary[] |
 | `pipelines` | PipelineRunSummary[] |
 
-## HoverCardCopy
+## Componentes adiados
 
-Constante editorial, sem interpolação de quantidade:
-
-| Card | Texto fixo |
-|---|---|
-| Work items | `Últimos 10 work items associados a você por prioridade` |
-| Pipelines | `Últimos 10 pipelines ordenado por data de inicialização.` |
-| Pull requests | `Últimos 10 pull requests relacionados a você.` |
-
-O texto permanece com “10” mesmo quando o array tem 0, 1 ou 9 itens.
+Hover Card e Tooltip são dependências instaladas, mas não têm entidades, wrappers,
+triggers ou conteúdo nesta feature. A integração do Hover Card nos ícones `spam-line`
+e qualquer tooltip serão definidos em feature futura.
 
 ## Wrappers Radix
 
 | Wrapper | Responsabilidade |
 |---|---|
 | `RadixDialog` | Portal/overlay/content/título/fechamento; mantém a API de `Modal` |
-| `RadixHoverCard` | Trigger focável, portal e conteúdo textual |
 | `RadixScrollArea` | Viewport/scrollbar do corpo do card |
 | `RadixSelect` | Trigger, portal, itens e sentinela `__all__` |
 | `RadixSeparator` | Separador horizontal decorativo de 1px |
 | `RadixTabs` | Root/List/Trigger/Content; valor controlado |
-| `RadixTooltip` | Primitive disponível, sem triggers nesta feature |
 
 ## Regras de migração
 
@@ -92,4 +85,4 @@ O texto permanece com “10” mesmo quando o array tem 0, 1 ou 9 itens.
 - Portais acima do titlebar/footer/overlay; controles com `no-drag`.
 - Select não recebe valor vazio; `__all__` é mapeado para “todos”.
 - Scroll Area mantém o tamanho do card e esconde a barra visual quando necessário.
-- Tooltip não cria UI até existir um local mapeado.
+- Hover Card e Tooltip não criam UI nem wrappers nesta feature.

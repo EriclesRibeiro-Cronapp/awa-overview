@@ -25,31 +25,27 @@
   controles da janela.
 - **Rationale**: foco preso, restauração e leitor de tela são o principal ganho.
 
-### 3. Hover Card
+### 3. Hover Card — adiado
 
-- **Decisão**: Hover Card textual fixo, sem lista de itens.
-- Textos exatos:
-  - Work items: `Últimos 10 work items associados a você por prioridade`
-  - Pipelines: `Últimos 10 pipelines ordenado por data de inicialização.`
-  - Pull requests: `Últimos 10 pull requests relacionados a você.`
-- O número **10 é fixo**, mesmo com 0, 1 ou 9 itens.
-- Trigger: o próprio ícone `spam-line`, envolvido por um botão acessível; abre por
-  hover e foco.
-- **Rationale**: o card não deve inventar conteúdo nem recalcular o texto; o board
-  carrega até 10 itens, mas o texto é editorial e fixo.
-- **Visual**: reutilizar o estilo do popover `Aviso` (fundo `#FBFBFB`, raio 4px,
-  padding 8px, texto 12px, sombra/tokens existentes).
+- **Decisão**: instalar `@radix-ui/react-hover-card`, mas não integrar nem renderizar
+  Hover Card nesta feature.
+- Nenhum trigger, texto, estilo ou teste visual de Hover Card faz parte do escopo.
+- A integração nos ícones `spam-line` será uma feature futura, com decisão de design
+  própria.
+- **Rationale**: evita criar um componente visual sem referência completa no Figma e
+  mantém o escopo desta feature focado na migração invisível e nos 10 itens.
 
 ### 4. Overview com até 10 itens
 
-- **Work items**: até 10 atribuídos ao usuário; ordenar por
-  `Microsoft.VSTS.Common.Priority` (1 primeiro), com fallback `ChangedDate DESC`;
-  incluir o campo de prioridade na consulta.
+- **Work items**: selecionar os **10 mais recentes atribuídos** por
+  `System.ChangedDate DESC` e depois ordenar esses 10 por
+  `Microsoft.VSTS.Common.Priority` (1 primeiro); itens sem prioridade vão para o fim,
+  com fallback `ChangedDate DESC`. Incluir o campo de prioridade na consulta.
 - **Pull requests**: até 10 ativos relacionados ao usuário (revisor ou autor),
   ordenados por `creationDate DESC`.
 - **Pipelines**: até 10 do projeto, ordenados por `startTime DESC`.
-- **Rationale**: o board e o Hover Card precisam ser coerentes; o Scroll Area só faz
-  sentido com mais de um item por card.
+- **Rationale**: o texto editorial do board fala em “últimos 10”, mas a ordem visual
+  deve respeitar prioridade.
 - **Alternativas**: manter 3/1/1 e ajustar o texto (rejeitado pelo usuário).
 
 ### 5. Cache v2
@@ -65,7 +61,7 @@
 ### 6. Scroll Area
 
 - Usar `ScrollArea.Root/Viewport/Scrollbar/Thumb` no corpo dos três cards.
-- Cabeçalho, ícone, Hover Card e Separator ficam fora da área rolável.
+- Cabeçalho, ícone e Separator ficam fora da área rolável.
 - Card Work items mantém 326×550; PR/Pipeline mantêm 526×271.
 - Esconder a barra visual quando o design não a prevê, mantendo rolagem por wheel,
   trackpad e teclado; o viewport é focável quando necessário.
@@ -99,12 +95,12 @@
 - **Rationale**: substituir a implementação manual mantendo o comportamento e o
   `aria-selected` correto.
 
-### 10. Tooltip
+### 10. Tooltip — instalado sem consumidor
 
-- Instalar `@radix-ui/react-tooltip` e manter a primitive pronta, sem triggers
-  visuais nesta feature.
-- Nenhum tooltip novo será inventado.
-- **Rationale**: atende ao pedido sem criar UI não mapeada.
+- Instalar `@radix-ui/react-tooltip`, mas não criar wrapper, provider ou triggers nesta
+  feature.
+- Nenhum tooltip novo será inventado; o pacote fica disponível para uma feature futura.
+- **Rationale**: atende ao pedido sem UI não mapeada e sem código morto.
 
 ### 11. Preservação visual e testes
 
@@ -112,8 +108,8 @@
   footer ou janela 900×700.
 - Snapshots existentes são o gate; se houver diferença inevitável, justificar e
   atualizar apenas o snapshot afetado.
-- Testes: wrappers Radix, fluxos de Dialog/Select/Tabs, Hover Card, scroll, dados de
-  10 itens, axe e e2e.
+- Testes: wrappers Radix, fluxos de Dialog/Select/Tabs, scroll, dados de 10 itens, axe
+  e e2e.
 - Portais e foco requerem `z-index` acima do titlebar e `no-drag` nos controles.
 
 ## Riscos
@@ -123,9 +119,8 @@
 | Radix alterar markup/estilo | Wrappers com classes atuais; snapshots |
 | Portal abaixo de overlay/titlebar | z-index explícito; teste visual/e2e |
 | Select dentro do titlebar/footer interferir no drag | `no-drag` no trigger |
-| Hover Card com foco/teclado | Trigger focável; teste |
 | 10 itens alterarem cache antigo | schema v2; ignorar v1 |
 | Prioridade ausente | fallback ChangedDate |
 | PRs relacionados ultrapassarem limite | consultar top 100 e filtrar revisor/autor |
 | Scrollbar visível no design | esconder visual; manter rolagem |
-| Tooltip virar código morto | instalar primitive; usar provider apenas quando houver trigger |
+| Hover Card/Tooltip virarem escopo acidental | instalar apenas os pacotes; sem wrappers/triggers |

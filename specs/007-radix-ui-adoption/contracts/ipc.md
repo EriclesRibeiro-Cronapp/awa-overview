@@ -37,7 +37,8 @@ interface OverviewViewV2 {
 - Cada card mantém `ok`, `data`, `stale` e `fetchedAt`; erro continua por card.
 - O renderer não envia organização, PAT, projeto ou time.
 - Cache de Overview v1 é ignorado; o novo snapshot é `schemaVersion: 2`.
-- O Hover Card não consome IPC adicional; usa texto editorial fixo.
+- Hover Card e Tooltip não consomem IPC adicional nesta feature; estão apenas
+  instalados.
 - Nenhum PAT, header ou URL interna é retornado.
 - `force=true` mantém semântica atual.
 

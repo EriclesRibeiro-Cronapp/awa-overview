@@ -38,6 +38,7 @@ sobre blocos `fe:auto` defasados.
 | G-29 | Amarelo `#FFCC00` de sucesso não passa AA para ícone | Status pode ficar invisível para baixa visão | Usar tom escurecido `#8A6D00` e manter ícone + rótulo | `screens.md`, `components.md` | Resolvido na 005 |
 | G-30 | Vermelho `#DF4444` em texto de erro tem contraste 4,02:1 | Mensagens de erro podem falhar AA | Usar `#B00020` para texto; manter `#DF4444` em bordas/ícones | `behavior.md` | Resolvido na auditoria de cores |
 | G-31 | Frame nativo do Windows e seletores no header | Barra nativa ocupa espaço e o header não é arrastável | Remover frame, criar titlebar customizado e mover seletores para o footer | Decisão do usuário em 02/11 | Resolvido na 006 |
+| G-32 | Hover Card e Tooltip sem design/consumidor definidos | Integração visual poderia inventar comportamento | Instalar as primitives e tratar a integração em feature futura | Spec 007 | Adiado |
 
 ## Regras
 

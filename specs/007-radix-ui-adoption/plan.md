@@ -7,13 +7,13 @@
 ## Summary
 
 Migrar os controles interativos do AWA Overview para primitives Radix UI —
-Dialog, Hover Card, Scroll Area, Select, Separator, Tabs e Tooltip — sem alterar o
-visual atual. A Overview passa a carregar até 10 itens de cada categoria, com Scroll
-Area nos cards, e o Hover Card dos ícones `spam-line` exibe um texto fixo em “10”,
-independentemente da quantidade de itens disponível.
+Dialog, Scroll Area, Select, Separator e Tabs — sem alterar o visual atual. A Overview
+passa a carregar até 10 itens de cada categoria, com Scroll Area nos cards. Hover Card
+e Tooltip serão apenas instalados, sem integração visual nesta feature; o Hover Card
+dos ícones `spam-line` será uma feature futura.
 
 Não serão usados Tailwind, shadcn ou uma biblioteca visual completa. Os componentes
-Radix serão encapsulados com as classes, tokens e padrões atuais.
+Radix em uso serão encapsulados com as classes, tokens e padrões atuais.
 
 ## Technical Context
 
@@ -37,13 +37,13 @@ PRs relacionados e pipelines.
 **Project Type**: desktop-app (Electron main + preload + renderer).
 
 **Performance Goals**: manter a Overview responsiva; Scroll Area com 10 itens sem
-layout shift; abertura de Hover Card/Select/Dialog sem bloquear a UI.
+layout shift; abertura de Select/Dialog sem bloquear a UI.
 
 **Constraints**: zero mudança visual; WCAG 2.2 AA; sem Tailwind/shadcn; sem troca de
 ícones; janela/titlebar/footer atuais preservados; read-only; PAT fora da UI.
 
 **Scale/Scope**: até 10 work items, 10 PRs e 10 pipelines por Overview; 4 abas;
-modais de configuração/remoção; 6 selects; três Hover Cards.
+modais de configuração/remoção; 6 selects; Hover Card e Tooltip apenas instalados.
 
 ## Constitution Check
 
@@ -94,13 +94,12 @@ src/
 │       └── overview-cache-service.ts   # schemaVersion 2
 ├── renderer/
 │   ├── components/
-│   │   └── radix/                      # wrappers Dialog, HoverCard, ScrollArea,
-│   │                                   # Select, Separator, Tabs, Tooltip
+│   │   └── radix/                      # wrappers Dialog, ScrollArea,
+│   │                                   # Select, Separator, Tabs
 │   ├── features/
-│   │   ├── overview/                   # cards, 10 itens, Scroll Area, Hover Card
+│   │   ├── overview/                   # cards, 10 itens, Scroll Area
 │   │   ├── shell/                      # Tabs Radix e layout atual
 │   │   └── projects/                   # selects Radix
-│   ├── i18n/pt-BR.ts                   # textos fixos dos Hover Cards
 │   └── styles/global.css               # classes visuais preservadas
 └── shared/
     └── contracts/index.ts              # OverviewView com arrays
@@ -117,10 +116,10 @@ no main, atrás do IPC.
 
 ## Phase 0: Research
 
-Saída em [research.md](./research.md). Decisões: pacotes Radix individuais, Hover
-Card textual fixo, dados de até 10 itens, prioridade, PRs relacionados, cache v2,
-Scroll Area, Select com sentinela, Tabs com conteúdo, Tooltip sem uso visual e
-preservação de snapshots.
+Saída em [research.md](./research.md). Decisões: pacotes Radix individuais, dados de
+até 10 itens (10 mais recentes, ordenados por prioridade), PRs relacionados, cache v2,
+Scroll Area, Select com sentinela, Tabs com conteúdo e Hover Card/Tooltip apenas
+instalados.
 
 ## Phase 1: Design
 
@@ -134,7 +133,7 @@ preservação de snapshots.
 | Gate | Status | Observação |
 |---|---|---|
 | Visual preservado | PASS | Wrappers usam as mesmas classes/tokens; snapshots como gate |
-| Acessibilidade | PASS | Radix Dialog/Select/Tabs/HoverCard; axe |
+| Acessibilidade | PASS | Radix Dialog/Select/Tabs/ScrollArea; axe |
 | Read-only | PASS | Nenhuma alteração de escrita |
 | PAT | PASS | Nenhum dado sensível nos componentes |
 | Cache | PASS | Schema v2 com arrays; invalidação preservada |

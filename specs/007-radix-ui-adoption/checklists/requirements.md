@@ -30,9 +30,11 @@
 
 ## Notes
 
-- O texto do Hover Card é fixo em "10", mesmo com 0, 1 ou 9 itens.
+- Hover Card e Tooltip ficam **apenas instalados**, sem integração nesta feature.
 - A Overview carrega **até** 10 itens por categoria.
+- Work items: 10 mais recentes atribuídos por `ChangedDate`, depois ordenados por
+  prioridade.
 - PRs relacionados = revisor ou autor.
-- Tooltip fica instalado, mas sem uso visual nesta feature.
+- Tooltip não tem wrapper/provider consumidor.
 - Não haverá Tailwind, shadcn ou troca de ícones.
 - Pronta para `/speckit.plan`.
