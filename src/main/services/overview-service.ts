@@ -61,14 +61,14 @@ export class OverviewService {
         fallback ? { data: fallback.workItems, fetchedAt: fallback.fetchedAt } : null,
         now,
       );
-      const pullRequestResult = toCard<PullRequestSummary | null>(
+      const pullRequestsResult = toCard<PullRequestSummary[]>(
         rejected,
-        fallback ? { data: fallback.pullRequest, fetchedAt: fallback.fetchedAt } : null,
+        fallback ? { data: fallback.pullRequests, fetchedAt: fallback.fetchedAt } : null,
         now,
       );
-      const pipelineResult = toCard<PipelineRunSummary | null>(
+      const pipelinesResult = toCard<PipelineRunSummary[]>(
         rejected,
-        fallback ? { data: fallback.pipeline, fetchedAt: fallback.fetchedAt } : null,
+        fallback ? { data: fallback.pipelines, fetchedAt: fallback.fetchedAt } : null,
         now,
       );
       logEvent('overview.identityFailed', {
@@ -76,28 +76,28 @@ export class OverviewService {
         projectId: input.projectId,
         code: toAppError(identityResult.error).code,
       });
-      return buildView(context, workItemsResult, pullRequestResult, pipelineResult);
+      return buildView(context, workItemsResult, pullRequestsResult, pipelinesResult);
     }
 
-    let [workItems, pullRequest, pipeline] = await Promise.allSettled([
+    let [workItems, pullRequests, pipelines] = await Promise.allSettled([
       this.client.listAssignedWorkItems(
         input.organization,
         input.pat,
         input.projectId,
         input.teamId,
       ),
-      this.client.getPullRequestNeedingAttention(
+      this.client.listRelatedPullRequests(
         input.organization,
         input.pat,
         input.projectId,
         identityResult.identity,
       ),
-      this.client.getLatestPipelineRun(input.organization, input.pat, input.projectId),
+      this.client.listRecentPipelineRuns(input.organization, input.pat, input.projectId),
     ]);
 
     workItems = normalizeUnauthorized(workItems);
-    pullRequest = normalizeUnauthorized(pullRequest);
-    pipeline = normalizeUnauthorized(pipeline);
+    pullRequests = normalizeUnauthorized(pullRequests);
+    pipelines = normalizeUnauthorized(pipelines);
 
     const now = new Date().toISOString();
     const fallback = cachedMatches ? cached : null;
@@ -107,21 +107,21 @@ export class OverviewService {
       fallback ? { data: fallback.workItems, fetchedAt: fallback.fetchedAt } : null,
       now,
     );
-    const pullRequestResult = toCard<PullRequestSummary | null>(
-      pullRequest,
-      fallback ? { data: fallback.pullRequest, fetchedAt: fallback.fetchedAt } : null,
+    const pullRequestsResult = toCard<PullRequestSummary[]>(
+      pullRequests,
+      fallback ? { data: fallback.pullRequests, fetchedAt: fallback.fetchedAt } : null,
       now,
     );
-    const pipelineResult = toCard<PipelineRunSummary | null>(
-      pipeline,
-      fallback ? { data: fallback.pipeline, fetchedAt: fallback.fetchedAt } : null,
+    const pipelinesResult = toCard<PipelineRunSummary[]>(
+      pipelines,
+      fallback ? { data: fallback.pipelines, fetchedAt: fallback.fetchedAt } : null,
       now,
     );
 
     for (const [card, result] of [
       ['workItems', workItems],
-      ['pullRequest', pullRequest],
-      ['pipeline', pipeline],
+      ['pullRequests', pullRequests],
+      ['pipelines', pipelines],
     ] as const) {
       if (result.status === 'rejected') {
         const error = toAppError(result.reason);
@@ -137,11 +137,11 @@ export class OverviewService {
 
     if (
       workItems.status === 'fulfilled' &&
-      pullRequest.status === 'fulfilled' &&
-      pipeline.status === 'fulfilled'
+      pullRequests.status === 'fulfilled' &&
+      pipelines.status === 'fulfilled'
     ) {
       await this.cache.write({
-        schemaVersion: 1,
+        schemaVersion: 2,
         contextKey,
         organization: input.organization,
         projectId: input.projectId,
@@ -151,12 +151,12 @@ export class OverviewService {
         fetchedAt: now,
         ttlSeconds: this.ttlSeconds,
         workItems: workItems.value,
-        pullRequest: pullRequest.value,
-        pipeline: pipeline.value,
+        pullRequests: pullRequests.value,
+        pipelines: pipelines.value,
       });
     }
 
-    const view = buildView(context, workItemsResult, pullRequestResult, pipelineResult);
+    const view = buildView(context, workItemsResult, pullRequestsResult, pipelinesResult);
     logEvent('overview.loaded', {
       organization: input.organization,
       projectId: input.projectId,
@@ -173,8 +173,8 @@ export function emptyOverviewView(): OverviewView {
   return {
     context: null,
     workItems: { ok: true, data: [], stale: false, fetchedAt: timestamp },
-    pullRequest: { ok: true, data: null, stale: false, fetchedAt: timestamp },
-    pipeline: { ok: true, data: null, stale: false, fetchedAt: timestamp },
+    pullRequests: { ok: true, data: [], stale: false, fetchedAt: timestamp },
+    pipelines: { ok: true, data: [], stale: false, fetchedAt: timestamp },
     fetchedAt: null,
     stale: false,
   };
@@ -203,15 +203,15 @@ function viewFromSnapshot(snapshot: OverviewSnapshot, context: OverviewContext):
       stale: false,
       fetchedAt: snapshot.fetchedAt,
     },
-    pullRequest: {
+    pullRequests: {
       ok: true,
-      data: snapshot.pullRequest,
+      data: snapshot.pullRequests,
       stale: false,
       fetchedAt: snapshot.fetchedAt,
     },
-    pipeline: {
+    pipelines: {
       ok: true,
-      data: snapshot.pipeline,
+      data: snapshot.pipelines,
       stale: false,
       fetchedAt: snapshot.fetchedAt,
     },
@@ -253,11 +253,11 @@ function toCard<T>(
 function buildView(
   context: OverviewContext,
   workItems: CardResult<WorkItemSummary[]>,
-  pullRequest: CardResult<PullRequestSummary | null>,
-  pipeline: CardResult<PipelineRunSummary | null>,
+  pullRequests: CardResult<PullRequestSummary[]>,
+  pipelines: CardResult<PipelineRunSummary[]>,
 ): OverviewView {
   const timestamps: string[] = [];
-  for (const card of [workItems, pullRequest, pipeline]) {
+  for (const card of [workItems, pullRequests, pipelines]) {
     if (card.ok) timestamps.push(card.fetchedAt);
   }
   timestamps.sort((a, b) => Date.parse(b) - Date.parse(a));
@@ -265,9 +265,9 @@ function buildView(
   return {
     context,
     workItems,
-    pullRequest,
-    pipeline,
+    pullRequests,
+    pipelines,
     fetchedAt: timestamps[0] ?? null,
-    stale: [workItems, pullRequest, pipeline].some((card) => card.ok && card.stale),
+    stale: [workItems, pullRequests, pipelines].some((card) => card.ok && card.stale),
   };
 }

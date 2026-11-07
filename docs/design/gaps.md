@@ -28,7 +28,7 @@ sobre blocos `fe:auto` defasados.
 | G-19 | Sem comportamento de cópia/exibição do PAT | Risco de exposição | Mascarar, não recopiar e nunca reexibir | `screens.md`, segurança | Aceito na constituição |
 | G-20 | Proteção visual e substituição do cofre | Exposição acidental do PAT em tela | Feature futura para mascarar, substituir valores e evitar vazamento visual | Decisão do usuário em 02/11 | Planejado |
 | G-21 | Rótulos "Project products" e "Time" sem semântica documentada | Seletor de projeto/time pode ser interpretado de outra forma | Reutilizar os seletores de projeto e time da feature 001 no cabeçalho | `screens.md` | Resolvido na 002 |
-| G-22 | Limite de itens por card não documentado | Cards podem transbordar ou esconder itens | Adotar o conteúdo do Figma: até 3 work items, 1 PR e 1 pipeline | `screens.md` | Resolvido na 002 |
+| G-22 | Limite de itens por card não documentado | Cards podem transbordar ou esconder itens | Adotar o conteúdo do Figma (3/1/1) e evoluir na 007 para até 10 itens por categoria com Scroll Area | `screens.md` | Resolvido na 007: até 10 work items, 10 PRs e 10 pipelines |
 | G-23 | Estados de loading/erro dos cards não desenhados | Cards podem ficar em branco ou bloquear a tela | Estados independentes por card, com retry e preservação dos demais | `screens.md` | Resolvido na 002 |
 | G-24 | PAT sem escopo de Work Items/Build retorna 401 nesses endpoints | Cards falham mesmo com token válido | Distinguir identidade válida de falta de escopo e orientar o usuário | Overview | Resolvido na 002 |
 | G-25 | Export `19:237` da tela Work items sem título/abas, divergente da análise manual | Layout da tela pode ficar ambíguo | Seguir a análise manual revisada em 01/11 (título, resumo, filtros e tabela) | `screens.md`, `assets` | Resolvido na 003 |
@@ -38,7 +38,7 @@ sobre blocos `fe:auto` defasados.
 | G-29 | Amarelo `#FFCC00` de sucesso não passa AA para ícone | Status pode ficar invisível para baixa visão | Usar tom escurecido `#8A6D00` e manter ícone + rótulo | `screens.md`, `components.md` | Resolvido na 005 |
 | G-30 | Vermelho `#DF4444` em texto de erro tem contraste 4,02:1 | Mensagens de erro podem falhar AA | Usar `#B00020` para texto; manter `#DF4444` em bordas/ícones | `behavior.md` | Resolvido na auditoria de cores |
 | G-31 | Frame nativo do Windows e seletores no header | Barra nativa ocupa espaço e o header não é arrastável | Remover frame, criar titlebar customizado e mover seletores para o footer | Decisão do usuário em 02/11 | Resolvido na 006 |
-| G-32 | Hover Card e Tooltip sem design/consumidor definidos | Integração visual poderia inventar comportamento | Instalar as primitives e tratar a integração em feature futura | Spec 007 | Adiado |
+| G-32 | Hover Card e Tooltip sem design/consumidor definidos | Integração visual poderia inventar comportamento | Instalar as primitives e tratar a integração em feature futura | Spec 007 | Adiado: dependências instaladas na 007, sem UI/consumidores |
 
 ## Regras
 

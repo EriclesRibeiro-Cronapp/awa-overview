@@ -4,6 +4,11 @@ import type { WorkItemTableRow } from '@shared/contracts';
 import { WorkItemsFilters } from '../../src/renderer/features/work-items/work-items-filter-bar';
 import { EMPTY_WORK_ITEMS_FILTERS } from '../../src/renderer/features/work-items/work-items-filters';
 
+function chooseStatus(value: string) {
+  fireEvent.click(screen.getByRole('combobox', { name: 'Status' }));
+  fireEvent.click(screen.getByRole('option', { name: value }));
+}
+
 const items: WorkItemTableRow[] = [
   {
     id: 1,
@@ -31,7 +36,7 @@ describe('barra de filtros', () => {
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'item' } });
     expect(onChange).toHaveBeenCalledWith({ ...EMPTY_WORK_ITEMS_FILTERS, search: 'item' });
 
-    fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'inProgress' } });
+    chooseStatus('Em andamento');
     expect(onChange).toHaveBeenCalledWith({
       ...EMPTY_WORK_ITEMS_FILTERS,
       status: 'inProgress',

@@ -63,8 +63,8 @@ test('abre Pull requests, mostra tabela e filtros', async ({}, testInfo) => {
             teamName: 'Time A',
           },
           workItems: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
-          pullRequest: { ok: true, data: null, stale: false, fetchedAt: new Date().toISOString() },
-          pipeline: { ok: true, data: null, stale: false, fetchedAt: new Date().toISOString() },
+          pullRequests: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
+          pipelines: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
           fetchedAt: new Date().toISOString(),
           stale: false,
         },
@@ -140,7 +140,8 @@ test('abre Pull requests, mostra tabela e filtros', async ({}, testInfo) => {
     await expect(window.getByText('!54679')).toHaveCount(0);
 
     await window.getByRole('searchbox').fill('');
-    await window.getByLabel('Status').selectOption('completed');
+    await window.getByLabel('Status').click();
+    await window.getByRole('option', { name: 'Concluído' }).click();
     await expect(window.getByText('!54679')).toBeVisible();
     await expect(window.getByText('!54678')).toHaveCount(0);
   } finally {

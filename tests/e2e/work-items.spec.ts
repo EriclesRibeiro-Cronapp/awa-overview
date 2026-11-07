@@ -63,8 +63,8 @@ test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) =>
             teamName: 'Time A',
           },
           workItems: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
-          pullRequest: { ok: true, data: null, stale: false, fetchedAt: new Date().toISOString() },
-          pipeline: { ok: true, data: null, stale: false, fetchedAt: new Date().toISOString() },
+          pullRequests: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
+          pipelines: { ok: true, data: [], stale: false, fetchedAt: new Date().toISOString() },
           fetchedAt: new Date().toISOString(),
           stale: false,
         },
@@ -156,7 +156,8 @@ test('abre Work items, mostra resumo, tabela e filtros', async ({}, testInfo) =>
     await expect(window.getByText('Nightly regression suite across all supported browsers and locales')).toHaveCount(0);
 
     await window.getByRole('searchbox').fill('');
-    await window.getByLabel('Status').selectOption('done');
+    await window.getByLabel('Status').click();
+    await window.getByRole('option', { name: 'Concluído' }).click();
     await expect(window.getByText('Concluído item')).toBeVisible();
     await expect(window.getByText('Nightly regression suite across all supported browsers and locales')).toHaveCount(0);
     await expect(window.locator('.work-items-summary-value')).toHaveText(['4', '1', '2', '1']);

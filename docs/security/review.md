@@ -1,8 +1,8 @@
 # Revisão de segurança — 2026-11-02
 
 Escopo: features 001 (configuração e conexão), 002 (Overview), 003 (Work items),
-004 (Pull requests), 005 (Pipelines) e 006 (header/janela), aplicação Electron 45,
-Windows, instância única, read-only.
+004 (Pull requests), 005 (Pipelines), 006 (header/janela) e 007 (Radix/Overview
+com 10 itens), aplicação Electron 45, Windows, instância única, read-only.
 
 ## Checklist
 
@@ -25,6 +25,8 @@ Windows, instância única, read-only.
 | Controles de janela restritos | `window:minimize`/`window:close` no main; preload expõe apenas essas operações | OK |
 | Janela sem frame nativo | `frame:false`, 900×700 não redimensionável, sem maximizar; controles próprios | OK |
 | Logo e ícones locais | `awa-logo.png` e SVGs empacotados; nenhuma imagem remota | OK |
+| Radix sem rede ou segredos | Primitives apenas no renderer; nenhum PAT/dado sensível passa por portais ou props Radix | OK |
+| Cache de Overview v2 | Schema 2 com arrays; cache v1 é descartado e recriado | OK |
 
 ## Riscos residuais
 

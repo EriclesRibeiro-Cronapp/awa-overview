@@ -1,4 +1,5 @@
 import type { Team } from '@shared/contracts';
+import { RadixSelect } from '../../components/radix/select';
 import { ptBR } from '../../i18n/pt-BR';
 
 interface TeamSelectorProps {
@@ -19,20 +20,22 @@ export function TeamSelector({
   return (
     <div className="selector">
       <label htmlFor="team-selector">{ptBR.projects.team}</label>
-      <select
+      <RadixSelect
         id="team-selector"
-        className="select"
         value={value ?? ''}
-        onChange={(event) => onChange(event.target.value)}
-        disabled={disabled || loading || teams.length === 0}
-      >
-        <option value="">{loading ? ptBR.app.loading : ptBR.projects.selectTeam}</option>
-        {teams.map((team) => (
-          <option key={team.id} value={team.id}>
-            {team.name}
-          </option>
-        ))}
-      </select>
+        onChange={onChange}
+        placeholder={loading ? ptBR.app.loading : ptBR.projects.selectTeam}
+        ariaLabel={ptBR.projects.team}
+        loading={loading}
+        disabled={disabled || teams.length === 0}
+        options={[
+          {
+            value: '',
+            label: loading ? ptBR.app.loading : ptBR.projects.selectTeam,
+          },
+          ...teams.map((team) => ({ value: team.id, label: team.name })),
+        ]}
+      />
       {!loading && !disabled && teams.length === 0 ? (
         <span className="muted">{ptBR.projects.noTeams}</span>
       ) : null}

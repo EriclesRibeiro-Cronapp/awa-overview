@@ -46,14 +46,25 @@ npm run test:e2e
 
 ## Critérios de aceite
 
-- [ ] Radix Dialog/Scroll Area/Select/Separator/Tabs em uso.
-- [ ] Hover Card e Tooltip instalados, sem UI nesta feature.
-- [ ] Overview com até 10 itens por categoria.
-- [ ] 10 work items = mais recentes atribuídos, ordenados por prioridade.
-- [ ] Nenhuma mudança visual não justificada.
-- [ ] Snapshots e axe aprovados.
-- [ ] Nenhum PAT exposto ou escrita no Azure DevOps.
-- [ ] Features 001–006 sem regressões.
+- [X] Radix Dialog/Scroll Area/Select/Separator/Tabs em uso.
+- [X] Hover Card e Tooltip instalados, sem UI nesta feature.
+- [X] Overview com até 10 itens por categoria.
+- [X] 10 work items = mais recentes atribuídos, ordenados por prioridade.
+- [X] Nenhuma mudança visual não justificada.
+- [X] Snapshots e axe aprovados.
+- [X] Nenhum PAT exposto ou escrita no Azure DevOps.
+- [X] Features 001–006 sem regressões.
+
+## Resultado da implementação
+
+- 2026-11-06: 162 testes unitários/integração/contrato passando, 57 arquivos.
+- Cobertura: 88,79% statements, 72,35% branches, 93,02% functions,
+  92,89% lines.
+- E2E: 25 passando e 1 skip (credenciais reais), incluindo 10 itens,
+  Scroll Area, portais, teclado e axe.
+- Snapshots visuais existentes mantidos sem atualização.
+- Hover Card e Tooltip continuam apenas como dependências instaladas; a
+  integração (incluindo o texto fixo “10” no Hover Card) fica para feature futura.
 
 ## Observações
 

@@ -1,6 +1,7 @@
 import type { WorkItemTableRow } from '@shared/contracts';
 import { classifyWorkItemState, type WorkItemStateGroup } from '@shared/work-items';
 import { Icon } from '../../components';
+import { RadixSelect } from '../../components/radix/select';
 import { ptBR } from '../../i18n/pt-BR';
 import { uniqueOptions, type WorkItemsFilters } from './work-items-filters';
 
@@ -87,20 +88,14 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
     <label className="work-items-filter">
       <span className="visually-hidden">{label}</span>
-      <select
-        className="work-items-filter-select"
+      <RadixSelect
         value={value}
-        onChange={(event) => onChange(event.target.value)}
-        aria-label={label}
-      >
-        <option value="">{label}</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-      <Icon name="arrow-down-s-line" size={16} />
+        onChange={onChange}
+        placeholder={label}
+        ariaLabel={label}
+        className="work-items-filter-select"
+        options={[{ value: '', label }, ...options]}
+      />
     </label>
   );
 }

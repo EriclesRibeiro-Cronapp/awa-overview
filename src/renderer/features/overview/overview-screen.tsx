@@ -50,12 +50,12 @@ export function OverviewScreen({ context, overview }: OverviewScreenProps) {
       />
       <div className="overview-right">
         <PipelineCard
-          card={data?.pipeline}
+          card={data?.pipelines}
           loading={overview.isLoading}
           onRetry={overview.refresh}
         />
         <PullRequestCard
-          card={data?.pullRequest}
+          card={data?.pullRequests}
           loading={overview.isLoading}
           onRetry={overview.refresh}
         />

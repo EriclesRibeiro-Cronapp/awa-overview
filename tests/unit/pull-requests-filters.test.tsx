@@ -3,6 +3,11 @@ import { describe, expect, it, vi } from 'vitest';
 import { PullRequestsFilters } from '../../src/renderer/features/pull-requests/pull-requests-filter-bar';
 import { EMPTY_PULL_REQUESTS_FILTERS } from '../../src/renderer/features/pull-requests/pull-requests-filters';
 
+function chooseStatus(value: string) {
+  fireEvent.click(screen.getByRole('combobox', { name: 'Status' }));
+  fireEvent.click(screen.getByRole('option', { name: value }));
+}
+
 describe('filtros de Pull requests', () => {
   it('emite busca e status', () => {
     const onChange = vi.fn();
@@ -19,7 +24,7 @@ describe('filtros de Pull requests', () => {
       search: '!54678',
     });
 
-    fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'completed' } });
+    chooseStatus('Concluído');
     expect(onChange).toHaveBeenCalledWith({
       ...EMPTY_PULL_REQUESTS_FILTERS,
       status: 'completed',

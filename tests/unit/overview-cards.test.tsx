@@ -13,6 +13,7 @@ const workItem: WorkItemSummary = {
   project: 'Projeto Teste',
   assignedTo: 'Ericles Ribeiro',
   changedAt: '2026-11-02T10:00:00.000Z',
+  priority: 1,
   url: 'https://dev.azure.com/demo/Projeto/_workitems/edit/145672',
 };
 
@@ -76,12 +77,12 @@ describe('cards do Overview', () => {
 
   it('mostra o pull request e a mensagem vazia', () => {
     const { rerender } = render(
-      <PullRequestCard card={card(pullRequest)} loading={false} onRetry={vi.fn()} />,
+      <PullRequestCard card={card([pullRequest])} loading={false} onRetry={vi.fn()} />,
     );
     expect(screen.getByText('!5378')).toBeInTheDocument();
     expect(screen.getByText('Aguardando aprovação')).toBeInTheDocument();
 
-    rerender(<PullRequestCard card={card(null)} loading={false} onRetry={vi.fn()} />);
+    rerender(<PullRequestCard card={card([])} loading={false} onRetry={vi.fn()} />);
     expect(
       screen.getByText('No open pull requests need your attention.'),
     ).toBeInTheDocument();
@@ -89,12 +90,12 @@ describe('cards do Overview', () => {
 
   it('mostra o pipeline com status e a mensagem vazia', () => {
     const { rerender } = render(
-      <PipelineCard card={card(pipeline)} loading={false} onRetry={vi.fn()} />,
+      <PipelineCard card={card([pipeline])} loading={false} onRetry={vi.fn()} />,
     );
     expect(screen.getByText('Sucesso')).toBeInTheDocument();
     expect(screen.getByText('Nightly')).toBeInTheDocument();
 
-    rerender(<PipelineCard card={card(null)} loading={false} onRetry={vi.fn()} />);
+    rerender(<PipelineCard card={card([])} loading={false} onRetry={vi.fn()} />);
     expect(
       screen.getByText('No recent pipeline runs were found for your projects.'),
     ).toBeInTheDocument();

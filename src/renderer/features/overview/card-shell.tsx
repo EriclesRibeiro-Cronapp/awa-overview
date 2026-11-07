@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { Icon } from '../../components';
+import { RadixScrollArea } from '../../components/radix/scroll-area';
+import { RadixSeparator } from '../../components/radix/separator';
 import { ptBR } from '../../i18n/pt-BR';
 
 interface CardShellProps {
@@ -19,8 +21,8 @@ export function CardShell({ id, title, icon, children }: CardShellProps) {
         </h2>
         <Icon name="spam-line" size={16} label={ptBR.overview.info} />
       </header>
-      <div className="card-divider" />
-      <div className="card-body">{children}</div>
+      <RadixSeparator className="card-divider" />
+      <RadixScrollArea className="card-body">{children}</RadixScrollArea>
     </section>
   );
 }

@@ -62,6 +62,7 @@ export interface WorkItemSummary {
   project: string;
   assignedTo: string | null;
   changedAt: string;
+  priority: number | null;
   url: string;
 }
 
@@ -108,8 +109,8 @@ export type CardResult<T> =
 export interface OverviewView {
   context: OverviewContext | null;
   workItems: CardResult<WorkItemSummary[]>;
-  pullRequest: CardResult<PullRequestSummary | null>;
-  pipeline: CardResult<PipelineRunSummary | null>;
+  pullRequests: CardResult<PullRequestSummary[]>;
+  pipelines: CardResult<PipelineRunSummary[]>;
   fetchedAt: string | null;
   stale: boolean;
 }

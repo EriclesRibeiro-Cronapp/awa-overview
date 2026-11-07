@@ -7,7 +7,7 @@ import type {
 import { EncryptedJsonStore, type CacheKeyProvider } from './encrypted-json-store';
 
 export interface OverviewSnapshot {
-  schemaVersion: 1;
+  schemaVersion: 2;
   contextKey: string;
   organization: string;
   projectId: string;
@@ -17,8 +17,8 @@ export interface OverviewSnapshot {
   fetchedAt: string;
   ttlSeconds: number;
   workItems: WorkItemSummary[];
-  pullRequest: PullRequestSummary | null;
-  pipeline: PipelineRunSummary | null;
+  pullRequests: PullRequestSummary[];
+  pipelines: PipelineRunSummary[];
 }
 
 export class OverviewCacheService {
@@ -30,7 +30,7 @@ export class OverviewCacheService {
 
   async read(): Promise<OverviewSnapshot | null> {
     const snapshot = await this.store.read();
-    return snapshot?.schemaVersion === 1 ? snapshot : null;
+    return snapshot?.schemaVersion === 2 ? snapshot : null;
   }
 
   async write(snapshot: OverviewSnapshot): Promise<void> {

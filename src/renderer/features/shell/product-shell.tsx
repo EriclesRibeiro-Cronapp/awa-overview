@@ -1,10 +1,14 @@
 import type { ReactNode } from 'react';
-import { ProductTabs } from './product-tabs';
+import {
+  RadixTabsContent,
+  RadixTabsRoot,
+} from '../../components/radix/tabs';
+import { ProductTabs, type ProductTabId } from './product-tabs';
 import { WindowTitleBar } from './window-title-bar';
 
 interface ProductShellProps {
-  activeId: 'overview' | 'work-items' | 'pull-requests' | 'pipelines';
-  onSelect: (id: 'overview' | 'work-items' | 'pull-requests' | 'pipelines') => void;
+  activeId: ProductTabId;
+  onSelect: (id: ProductTabId) => void;
   onConfigure: () => void;
   footer: ReactNode;
   children: ReactNode;
@@ -23,9 +27,16 @@ export function ProductShell({
 
       <div className="product-divider" />
 
-      <ProductTabs activeId={activeId} onSelect={onSelect} />
-
-      <main className="product-content">{children}</main>
+      <RadixTabsRoot
+        className="product-tabs-root"
+        value={activeId}
+        onValueChange={(value) => onSelect(value as ProductTabId)}
+      >
+        <ProductTabs activeId={activeId} />
+        <RadixTabsContent className="product-content" value={activeId}>
+          {children}
+        </RadixTabsContent>
+      </RadixTabsRoot>
 
       {footer}
     </div>

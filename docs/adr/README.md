@@ -30,6 +30,7 @@ análise; até lá, o item permanece como proposta.
 | [0009](0009-so-e-atualizacao.md) | Sistemas operacionais e atualização | Aceito | Empacotamento |
 | [0010](0010-armazenamento-pat.md) | Armazenamento seguro do PAT | Aceito | Configuração |
 | [0011](0011-wiql-read-only.md) | Consultas somente leitura com WIQL | Aceito | Overview |
+| [0012](0012-radix-ui-incremental.md) | Radix UI incremental | Aceito | Componentes/interações |
 
 ## Como criar uma ADR
 

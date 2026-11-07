@@ -11,7 +11,7 @@ const keyProvider = {
 
 function snapshot(overrides: Partial<OverviewSnapshot> = {}): OverviewSnapshot {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     contextKey: 'demo|p1|t1',
     organization: 'demo',
     projectId: 'p1',
@@ -21,8 +21,8 @@ function snapshot(overrides: Partial<OverviewSnapshot> = {}): OverviewSnapshot {
     fetchedAt: new Date().toISOString(),
     ttlSeconds: 300,
     workItems: [],
-    pullRequest: null,
-    pipeline: null,
+    pullRequests: [],
+    pipelines: [],
     ...overrides,
   };
 }
@@ -57,11 +57,11 @@ describe('OverviewCacheService', () => {
     expect(cache.isFresh(value, Date.parse('2026-11-02T10:05:00.000Z'))).toBe(false);
   });
 
-  it('ignora schema desconhecido', async () => {
+  it('descarta cache v1 e schema desconhecido', async () => {
     const dir = await mkdtemp(join(tmpdir(), 'awa-overview-cache-'));
     dirs.push(dir);
     const cache = new OverviewCacheService(dir, keyProvider);
-    await cache.write(snapshot({ schemaVersion: 2 as unknown as 1 }));
+    await cache.write(snapshot({ schemaVersion: 1 as unknown as 2 }));
 
     expect(await cache.read()).toBeNull();
   });

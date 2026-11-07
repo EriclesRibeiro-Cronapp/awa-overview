@@ -56,6 +56,7 @@ interface PullRequestsResponse {
     status?: string;
     isDraft?: boolean;
     creationDate?: string;
+    createdBy?: { id?: string };
     repository?: { name?: string; project?: { name?: string } };
     reviewers?: Array<{ id?: string; vote?: number; displayName?: string }>;
     _links?: { web?: { href?: string } };
@@ -96,7 +97,7 @@ const API_VERSION = '7.1';
 const CONNECTION_DATA_API_VERSION = '7.1-preview.1';
 const MAX_PAGES = 20;
 const MAX_TEAMS = 100;
-const WORK_ITEM_LIMIT = 3;
+const WORK_ITEM_LIMIT = 10;
 const WORK_ITEM_TABLE_LIMIT = 2_000;
 const WORK_ITEM_BATCH = 200;
 const PULL_REQUEST_LIMIT = 1_000;
@@ -109,6 +110,7 @@ const WORK_ITEM_FIELDS = [
   'System.TeamProject',
   'System.AssignedTo',
   'System.ChangedDate',
+  'Microsoft.VSTS.Common.Priority',
 ].join(',');
 const WORK_ITEM_TABLE_FIELDS = [
   ...WORK_ITEM_FIELDS.split(','),
@@ -248,9 +250,11 @@ export class AzureDevOpsClient {
     );
 
     const byId = new Map((body.value ?? []).map((item) => [item.id, item]));
-    return ids
+    const items = ids
       .map((id) => mapWorkItem(byId.get(id), organization, projectId))
       .filter((item): item is WorkItemSummary => item !== null);
+
+    return items.sort(compareWorkItemsByPriority);
   }
 
   async listWorkItems(
@@ -372,6 +376,40 @@ export class AzureDevOpsClient {
     };
   }
 
+  async listRelatedPullRequests(
+    organization: string,
+    pat: string,
+    projectId: string,
+    identity?: AzureIdentity,
+    limit = 10,
+  ): Promise<PullRequestSummary[]> {
+    const user = identity ?? (await this.getIdentity(organization, pat));
+    if (!user.id) return [];
+
+    const { body } = await this.requestWithResponse<PullRequestsResponse>(
+      organization,
+      `/${encodeURIComponent(projectId)}/_apis/git/pullrequests`,
+      pat,
+      { 'searchCriteria.status': 'active', $top: '100' },
+      0,
+      API_VERSION,
+      { absolute: true },
+    );
+
+    return (body.value ?? [])
+      .filter((pr) => {
+        if (!pr.pullRequestId || !pr.title) return false;
+        if (pr.status && pr.status !== 'active') return false;
+        const isAuthor = pr.createdBy?.id === user.id;
+        const isReviewer = (pr.reviewers ?? []).some((reviewer) => reviewer.id === user.id);
+        return isAuthor || isReviewer;
+      })
+      .sort((a, b) => Date.parse(b.creationDate ?? '') - Date.parse(a.creationDate ?? ''))
+      .slice(0, limit)
+      .map((pr) => mapPullRequestSummary(pr, organization, projectId, user.id))
+      .filter((pr): pr is PullRequestSummary => pr !== null);
+  }
+
   async getPullRequestNeedingAttention(
     organization: string,
     pat: string,
@@ -461,6 +499,48 @@ export class AzureDevOpsClient {
       startedAt: build.startTime ?? build.queueTime ?? null,
       url: build._links?.web?.href ?? '',
     };
+  }
+
+  async listRecentPipelineRuns(
+    organization: string,
+    pat: string,
+    projectId: string,
+    limit = 10,
+  ): Promise<PipelineRunSummary[]> {
+    let body: BuildsResponse;
+
+    try {
+      const response = await this.requestWithResponse<BuildsResponse>(
+        organization,
+        `/${encodeURIComponent(projectId)}/_apis/build/builds`,
+        pat,
+        { $top: String(limit), queryOrder: 'startTimeDescending' },
+        0,
+        API_VERSION,
+        { absolute: true },
+      );
+      body = response.body;
+    } catch (error) {
+      if (!(error instanceof AppErrorException) || error.code !== ErrorCode.CONFIG_UNEXPECTED) {
+        throw error;
+      }
+      const fallback = await this.requestWithResponse<BuildsResponse>(
+        organization,
+        `/${encodeURIComponent(projectId)}/_apis/build/builds`,
+        pat,
+        { $top: '20', queryOrder: 'finishTimeDescending' },
+        0,
+        API_VERSION,
+        { absolute: true },
+      );
+      body = fallback.body;
+    }
+
+    return (body.value ?? [])
+      .map((build) => mapPipelineRunSummary(build, projectId))
+      .filter((run): run is PipelineRunSummary => run !== null)
+      .sort((a, b) => Date.parse(b.startedAt ?? '') - Date.parse(a.startedAt ?? ''))
+      .slice(0, limit);
   }
 
   private async requestConnectionData(
@@ -712,6 +792,42 @@ function mapPullRequestRow(
   };
 }
 
+function mapPullRequestSummary(
+  pr: NonNullable<PullRequestsResponse['value']>[number],
+  organization: string,
+  fallbackProject: string,
+  userId: string,
+): PullRequestSummary | null {
+  const base = mapPullRequestRow(pr, organization, fallbackProject);
+  if (!base) return null;
+
+  const myVote = (pr.reviewers ?? []).find((item) => item.id === userId)?.vote;
+  const status = pr.isDraft
+    ? 'Rascunho'
+    : myVote === 0 || myVote === -5
+      ? 'Aguardando aprovação'
+      : 'Ativo';
+
+  return { ...base, status };
+}
+
+function mapPipelineRunSummary(
+  build: NonNullable<BuildsResponse['value']>[number],
+  fallbackProject: string,
+): PipelineRunSummary | null {
+  if (!build.id) return null;
+
+  return {
+    id: build.id,
+    name: build.definition?.name ?? 'Pipeline',
+    result: mapPipelineResult(build.result),
+    status: mapPipelineStatus(build.status),
+    project: build.project?.name ?? fallbackProject,
+    startedAt: build.startTime ?? build.queueTime ?? null,
+    url: build._links?.web?.href ?? '',
+  };
+}
+
 function mapPullRequestStatus(status: string | undefined): PullRequestStatus {
   return status === 'active' || status === 'completed' || status === 'abandoned'
     ? status
@@ -747,8 +863,22 @@ function mapWorkItem(
     project,
     assignedTo,
     changedAt: readString(fields['System.ChangedDate']) ?? '',
+    priority: readPriority(fields['Microsoft.VSTS.Common.Priority']),
     url: `https://dev.azure.com/${encodeURIComponent(organization)}/${encodeURIComponent(project)}/_workitems/edit/${item.id}`,
   };
+}
+
+function readPriority(value: unknown): number | null {
+  const priority =
+    typeof value === 'number' ? value : typeof value === 'string' ? Number(value) : Number.NaN;
+  return Number.isFinite(priority) && priority > 0 ? priority : null;
+}
+
+function compareWorkItemsByPriority(a: WorkItemSummary, b: WorkItemSummary): number {
+  const aPriority = a.priority ?? Number.POSITIVE_INFINITY;
+  const bPriority = b.priority ?? Number.POSITIVE_INFINITY;
+  if (aPriority !== bPriority) return aPriority - bPriority;
+  return Date.parse(b.changedAt) - Date.parse(a.changedAt);
 }
 
 function readString(value: unknown): string | null {

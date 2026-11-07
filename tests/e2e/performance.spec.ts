@@ -66,7 +66,8 @@ test('renderiza 100 projetos em menos de 5 segundos', async ({}, testInfo) => {
     await window.reload();
     const start = Date.now();
     await expect(window.getByLabel('Projeto')).toBeVisible({ timeout: 10_000 });
-    await expect(window.getByLabel('Projeto').locator('option')).toHaveCount(101);
+    await window.getByLabel('Projeto').click();
+    await expect(window.getByRole('option')).toHaveCount(101);
 
     expect(Date.now() - start).toBeLessThan(5_000);
   } finally {

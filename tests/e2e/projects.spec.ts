@@ -72,21 +72,22 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
                 project: 'Projeto Um',
                 assignedTo: 'Ericles',
                 changedAt: '2026-11-02T10:00:00.000Z',
+                priority: 2,
                 url: 'https://dev.azure.com/demo/Projeto%20Um/_workitems/edit/145672',
               },
             ],
           },
-          pullRequest: {
+          pullRequests: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: null,
+            data: [],
           },
-          pipeline: {
+          pipelines: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: null,
+            data: [],
           },
           fetchedAt: new Date().toISOString(),
           stale: false,
@@ -128,16 +129,18 @@ test('seleciona projeto e time e carrega o Overview', async ({}, testInfo) => {
     await expect(window.getByRole('button', { name: 'Configurações' })).toBeVisible();
 
     await expect(window.getByLabel('Projeto')).toBeVisible();
-    await window.getByLabel('Projeto').selectOption('p1');
+    await window.getByLabel('Projeto').click();
+    await window.getByRole('option', { name: 'Projeto Um' }).click();
     await expect(window.getByLabel('Time')).toBeVisible();
-    await window.getByLabel('Time').selectOption('t1');
+    await window.getByLabel('Time').click();
+    await window.getByRole('option', { name: 'Time A' }).click();
 
     await expect(window.getByText('#145672')).toBeVisible();
 
     await window.getByRole('tab', { name: 'Overview' }).click();
     await expect(window.getByRole('heading', { name: 'Work items' })).toBeVisible();
-    await expect(window.getByLabel('Projeto')).toHaveValue('p1');
-    await expect(window.getByLabel('Time')).toHaveValue('t1');
+    await expect(window.getByLabel('Projeto')).toContainText('Projeto Um');
+    await expect(window.getByLabel('Time')).toContainText('Time A');
 
     await window.getByRole('tab', { name: 'Work items' }).click();
     await expect(window.getByText('#145672')).toBeVisible();

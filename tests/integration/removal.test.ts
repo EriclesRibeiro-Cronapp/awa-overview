@@ -51,7 +51,7 @@ describe('removal integration', () => {
     await credentials.save('figd_secret_1234');
     await cache.write(snapshot);
     await overviewCache.write({
-      schemaVersion: 1,
+      schemaVersion: 2,
       contextKey: 'demo|p1|',
       organization: 'demo',
       projectId: 'p1',
@@ -61,8 +61,8 @@ describe('removal integration', () => {
       fetchedAt: new Date().toISOString(),
       ttlSeconds: 300,
       workItems: [],
-      pullRequest: null,
-      pipeline: null,
+      pullRequests: [],
+      pipelines: [],
     });
     await workItemsCache.write({
       schemaVersion: 1,

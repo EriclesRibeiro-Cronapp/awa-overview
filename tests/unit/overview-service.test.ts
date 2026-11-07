@@ -17,6 +17,7 @@ const workItem: WorkItemSummary = {
   project: 'Projeto',
   assignedTo: 'Ericles',
   changedAt: '2026-11-02T10:00:00.000Z',
+  priority: 2,
   url: 'https://dev.azure.com/demo/Projeto/_workitems/edit/1',
 };
 
@@ -51,7 +52,7 @@ const input = {
 
 function snapshot(overrides: Partial<OverviewSnapshot> = {}): OverviewSnapshot {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     contextKey: 'demo|p1|t1',
     organization: 'demo',
     projectId: 'p1',
@@ -61,8 +62,8 @@ function snapshot(overrides: Partial<OverviewSnapshot> = {}): OverviewSnapshot {
     fetchedAt: '2026-11-02T10:00:00.000Z',
     ttlSeconds: 300,
     workItems: [workItem],
-    pullRequest,
-    pipeline,
+    pullRequests: [pullRequest],
+    pipelines: [pipeline],
     ...overrides,
   };
 }
@@ -80,8 +81,8 @@ function fakeClient(overrides: Partial<Record<keyof AzureDevOpsClient, unknown>>
   return {
     getIdentity: vi.fn(async () => ({ id: 'user-1', displayName: 'Ericles' })),
     listAssignedWorkItems: vi.fn(async () => [workItem]),
-    getPullRequestNeedingAttention: vi.fn(async () => pullRequest),
-    getLatestPipelineRun: vi.fn(async () => pipeline),
+    listRelatedPullRequests: vi.fn(async () => [pullRequest]),
+    listRecentPipelineRuns: vi.fn(async () => [pipeline]),
     ...overrides,
   } as unknown as AzureDevOpsClient;
 }
@@ -130,7 +131,7 @@ describe('OverviewService', () => {
   it('retorna erro por card quando não há cache', async () => {
     const cache = fakeCache(null);
     const client = fakeClient({
-      getLatestPipelineRun: vi.fn(async () => {
+      listRecentPipelineRuns: vi.fn(async () => {
         throw new AppErrorException(ErrorCode.CONFIG_FORBIDDEN);
       }),
     });
@@ -138,7 +139,7 @@ describe('OverviewService', () => {
 
     const view = await service.load(input);
 
-    expect(view.pipeline).toMatchObject({
+    expect(view.pipelines).toMatchObject({
       ok: false,
       error: { code: ErrorCode.CONFIG_FORBIDDEN },
     });

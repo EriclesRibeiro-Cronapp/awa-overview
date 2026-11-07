@@ -1,4 +1,5 @@
 import { Icon } from '../../components';
+import { RadixSelect } from '../../components/radix/select';
 import { ptBR } from '../../i18n/pt-BR';
 import type { PullRequestsFilters } from './pull-requests-filters';
 
@@ -24,23 +25,24 @@ export function PullRequestsFilters({ filters, onChange }: PullRequestsFiltersPr
 
       <label className="pull-requests-filter">
         <span className="visually-hidden">{ptBR.pullRequests.filterStatus}</span>
-        <select
-          className="pull-requests-filter-select"
+        <RadixSelect
           value={filters.status}
-          onChange={(event) =>
+          onChange={(value) =>
             onChange({
               ...filters,
-              status: event.target.value as PullRequestsFilters['status'],
+              status: value as PullRequestsFilters['status'],
             })
           }
-          aria-label={ptBR.pullRequests.filterStatus}
-        >
-          <option value="all">{ptBR.pullRequests.filterStatus}</option>
-          <option value="active">{ptBR.pullRequests.statusActive}</option>
-          <option value="completed">{ptBR.pullRequests.statusCompleted}</option>
-          <option value="abandoned">{ptBR.pullRequests.statusAbandoned}</option>
-        </select>
-        <Icon name="arrow-down-s-line" size={16} />
+          placeholder={ptBR.pullRequests.filterStatus}
+          ariaLabel={ptBR.pullRequests.filterStatus}
+          className="pull-requests-filter-select"
+          options={[
+            { value: 'all', label: ptBR.pullRequests.filterStatus },
+            { value: 'active', label: ptBR.pullRequests.statusActive },
+            { value: 'completed', label: ptBR.pullRequests.statusCompleted },
+            { value: 'abandoned', label: ptBR.pullRequests.statusAbandoned },
+          ]}
+        />
       </label>
     </section>
   );

@@ -57,15 +57,15 @@ function buildDeps(overrides: Record<string, unknown> = {}, projectId: string | 
       load: vi.fn(async () => ({
         context: null,
         workItems: { ok: true, data: [], stale: false, fetchedAt: '2026-11-02T10:00:00.000Z' },
-        pullRequest: {
+        pullRequests: {
           ok: true,
-          data: null,
+          data: [],
           stale: false,
           fetchedAt: '2026-11-02T10:00:00.000Z',
         },
-        pipeline: {
+        pipelines: {
           ok: true,
-          data: null,
+          data: [],
           stale: false,
           fetchedAt: '2026-11-02T10:00:00.000Z',
         },
@@ -112,6 +112,24 @@ describe('overview IPC contract', () => {
       teamName: 'Time A',
       force: true,
     });
+  });
+
+  it('mantém o contrato v2 com arrays de work items, pull requests e pipelines', async () => {
+    const deps = buildDeps();
+    registerIpcHandlers(deps);
+
+    const result = (await handlers.get('overview:load')!({}, {})) as {
+      ok: true;
+      data: {
+        workItems: { data: unknown[] };
+        pullRequests: { data: unknown[] };
+        pipelines: { data: unknown[] };
+      };
+    };
+
+    expect(Array.isArray(result.data.workItems.data)).toBe(true);
+    expect(Array.isArray(result.data.pullRequests.data)).toBe(true);
+    expect(Array.isArray(result.data.pipelines.data)).toBe(true);
   });
 
   it('retorna CFG-001 sem organização', async () => {

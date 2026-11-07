@@ -12,6 +12,7 @@ const workItem = {
   project: 'Projeto Teste',
   assignedTo: 'Ericles Ribeiro',
   changedAt: '2026-11-02T10:00:00.000Z',
+  priority: 2,
   url: 'https://dev.azure.com/demo/Projeto%20Teste/_workitems/edit/145672',
 };
 
@@ -99,17 +100,17 @@ async function launchConfigured(
             fetchedAt: new Date().toISOString(),
             data: items,
           },
-          pullRequest: {
+          pullRequests: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: pullRequest,
+            data: [pullRequest],
           },
-          pipeline: {
+          pipelines: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: pipeline,
+            data: [pipeline],
           },
           fetchedAt: new Date().toISOString(),
           stale: false,
@@ -164,17 +165,17 @@ test('mostra as mensagens vazias documentadas', async ({}, testInfo) => {
             fetchedAt: new Date().toISOString(),
             data: [],
           },
-          pullRequest: {
+          pullRequests: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: null,
+            data: [],
           },
-          pipeline: {
+          pipelines: {
             ok: true,
             stale: false,
             fetchedAt: new Date().toISOString(),
-            data: null,
+            data: [],
           },
           fetchedAt: new Date().toISOString(),
           stale: true,

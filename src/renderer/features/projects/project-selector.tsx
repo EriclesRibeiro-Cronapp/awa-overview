@@ -1,4 +1,5 @@
 import type { Project } from '@shared/contracts';
+import { RadixSelect } from '../../components/radix/select';
 import { ptBR } from '../../i18n/pt-BR';
 
 interface ProjectSelectorProps {
@@ -19,20 +20,22 @@ export function ProjectSelector({
   return (
     <div className="selector">
       <label htmlFor="project-selector">{ptBR.projects.project}</label>
-      <select
+      <RadixSelect
         id="project-selector"
-        className="select"
         value={value ?? ''}
-        onChange={(event) => onChange(event.target.value)}
-        disabled={disabled || loading || projects.length === 0}
-      >
-        <option value="">{loading ? ptBR.app.loading : ptBR.projects.selectProject}</option>
-        {projects.map((project) => (
-          <option key={project.id} value={project.id}>
-            {project.name}
-          </option>
-        ))}
-      </select>
+        onChange={onChange}
+        placeholder={loading ? ptBR.app.loading : ptBR.projects.selectProject}
+        ariaLabel={ptBR.projects.project}
+        loading={loading}
+        disabled={disabled || projects.length === 0}
+        options={[
+          {
+            value: '',
+            label: loading ? ptBR.app.loading : ptBR.projects.selectProject,
+          },
+          ...projects.map((project) => ({ value: project.id, label: project.name })),
+        ]}
+      />
     </div>
   );
 }

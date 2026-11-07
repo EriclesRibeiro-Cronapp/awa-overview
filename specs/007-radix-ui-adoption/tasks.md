@@ -10,9 +10,9 @@
 
 **Purpose**: dependências Radix, documentação e classes de camada.
 
-- [ ] T001 Adicionar as dependências Radix (`@radix-ui/react-dialog`, `@radix-ui/react-scroll-area`, `@radix-ui/react-select`, `@radix-ui/react-separator`, `@radix-ui/react-tabs`, `@radix-ui/react-hover-card`, `@radix-ui/react-tooltip`) em `package.json` e `package-lock.json`; Hover Card e Tooltip ficam apenas instalados, sem integração.
-- [ ] T002 [P] Criar a ADR `docs/adr/0012-radix-ui-incremental.md` e atualizar `docs/adr/README.md` com a decisão.
-- [ ] T003 [P] Adicionar classes de portal/z-index e `no-drag` em `src/renderer/styles/global.css`, sem alteração visual.
+- [X] T001 Adicionar as dependências Radix (`@radix-ui/react-dialog`, `@radix-ui/react-scroll-area`, `@radix-ui/react-select`, `@radix-ui/react-separator`, `@radix-ui/react-tabs`, `@radix-ui/react-hover-card`, `@radix-ui/react-tooltip`) em `package.json` e `package-lock.json`; Hover Card e Tooltip ficam apenas instalados, sem integração.
+- [X] T002 [P] Criar a ADR `docs/adr/0012-radix-ui-incremental.md` e atualizar `docs/adr/README.md` com a decisão.
+- [X] T003 [P] Adicionar classes de portal/z-index e `no-drag` em `src/renderer/styles/global.css`, sem alteração visual.
 
 ---
 
@@ -20,9 +20,9 @@
 
 **Purpose**: base compartilhada dos wrappers e dos testes Radix.
 
-- [ ] T004 [P] Adicionar suporte a portais Radix no setup de testes em `tests/setup.ts` (ResizeObserver, scrollIntoView e foco).
-- [ ] T005 [P] Criar `src/renderer/components/radix/portal.tsx` com o portal compartilhado acima do titlebar/overlay.
-- [ ] T006 Criar `src/renderer/components/radix/index.ts` como barrel público dos wrappers.
+- [X] T004 [P] Adicionar suporte a portais Radix no setup de testes em `tests/setup.ts` (ResizeObserver, scrollIntoView e foco).
+- [X] T005 [P] Criar `src/renderer/components/radix/portal.tsx` com o portal compartilhado acima do titlebar/overlay.
+- [X] T006 Criar `src/renderer/components/radix/index.ts` como barrel público dos wrappers.
 
 **Checkpoint**: dependências, portal e setup de testes prontos.
 
@@ -36,25 +36,25 @@
 
 ### Tests for User Story 1
 
-- [ ] T007 [P] [US1] Testar foco, ESC, restauração e fechamento do Dialog em `tests/unit/radix-dialog.test.tsx`.
-- [ ] T008 [P] [US1] Testar opções, sentinela `__all__`, teclado e persistência do Select em `tests/unit/radix-select.test.tsx`.
-- [ ] T009 [P] [US1] Testar aba ativa e navegação por setas do Tabs em `tests/unit/radix-tabs.test.tsx`.
-- [ ] T010 [P] [US1] Testar Separator horizontal, 1px e token atual em `tests/unit/radix-separator.test.tsx`.
+- [X] T007 [P] [US1] Testar foco, ESC, restauração e fechamento do Dialog em `tests/unit/radix-dialog.test.tsx`.
+- [X] T008 [P] [US1] Testar opções, sentinela `__all__`, teclado e persistência do Select em `tests/unit/radix-select.test.tsx`.
+- [X] T009 [P] [US1] Testar aba ativa e navegação por setas do Tabs em `tests/unit/radix-tabs.test.tsx`.
+- [X] T010 [P] [US1] Testar Separator horizontal, 1px e token atual em `tests/unit/radix-separator.test.tsx`.
 
 ### Implementation for User Story 1
 
-- [ ] T011 [US1] Implementar `src/renderer/components/radix/dialog.tsx` e substituir o interior de `src/renderer/components/Modal.tsx`, preservando a API atual.
-- [ ] T012 [US1] Implementar `src/renderer/components/radix/select.tsx` e migrar `src/renderer/features/projects/project-selector.tsx`, `src/renderer/features/projects/team-selector.tsx`, `src/renderer/features/work-items/work-items-filter-bar.tsx` e `src/renderer/features/pull-requests/pull-requests-filter-bar.tsx`.
-- [ ] T013 [US1] Implementar `src/renderer/components/radix/tabs.tsx` e refatorar `src/renderer/features/shell/product-tabs.tsx`, `src/renderer/features/shell/product-shell.tsx` e `src/renderer/features/shell/configured-app.tsx` para Root/List/Trigger/Content.
-- [ ] T014 [US1] Implementar `src/renderer/components/radix/separator.tsx` e usá-lo em `src/renderer/features/overview/card-shell.tsx`.
-- [ ] T015 [US1] Ajustar CSS dos wrappers em `src/renderer/styles/global.css` para paridade visual e portais acima do titlebar.
-- [ ] T016 [US1] Atualizar os testes existentes afetados:
+- [X] T011 [US1] Implementar `src/renderer/components/radix/dialog.tsx` e substituir o interior de `src/renderer/components/Modal.tsx`, preservando a API atual.
+- [X] T012 [US1] Implementar `src/renderer/components/radix/select.tsx` e migrar `src/renderer/features/projects/project-selector.tsx`, `src/renderer/features/projects/team-selector.tsx`, `src/renderer/features/work-items/work-items-filter-bar.tsx` e `src/renderer/features/pull-requests/pull-requests-filter-bar.tsx`.
+- [X] T013 [US1] Implementar `src/renderer/components/radix/tabs.tsx` e refatorar `src/renderer/features/shell/product-tabs.tsx`, `src/renderer/features/shell/product-shell.tsx` e `src/renderer/features/shell/configured-app.tsx` para Root/List/Trigger/Content.
+- [X] T014 [US1] Implementar `src/renderer/components/radix/separator.tsx` e usá-lo em `src/renderer/features/overview/card-shell.tsx`.
+- [X] T015 [US1] Ajustar CSS dos wrappers em `src/renderer/styles/global.css` para paridade visual e portais acima do titlebar.
+- [X] T016 [US1] Atualizar os testes existentes afetados:
   `tests/unit/config-modal.test.tsx`, `tests/unit/work-items-filters.test.tsx`,
   `tests/unit/pull-requests-filters.test.tsx`, `tests/e2e/config.spec.ts`,
   `tests/e2e/projects.spec.ts`, `tests/e2e/work-items.spec.ts`,
   `tests/e2e/pull-requests.spec.ts` e `tests/e2e/window-header.spec.ts`.
-- [ ] T017 [US1] Adicionar e2e de Dialog, Select, Tabs e Separator em `tests/e2e/radix-controls.spec.ts`.
-- [ ] T018 [US1] Adicionar e2e de camadas de portal (Select no footer, Dialog sobre o board e portal acima do titlebar) em `tests/e2e/radix-portals.spec.ts`.
+- [X] T017 [US1] Adicionar e2e de Dialog, Select, Tabs e Separator em `tests/e2e/radix-controls.spec.ts`.
+- [X] T018 [US1] Adicionar e2e de camadas de portal (Select no footer, Dialog sobre o board e portal acima do titlebar) em `tests/e2e/radix-portals.spec.ts`.
 
 **Checkpoint**: US1 funcional e visualmente equivalente.
 
@@ -68,21 +68,21 @@
 
 ### Tests for User Story 2
 
-- [ ] T019 [P] [US2] Testar contrato IPC v2, arrays e limite de 10 em `tests/contract/overview-ipc.test.ts`.
-- [ ] T020 [P] [US2] Testar seleção dos 10 mais recentes, prioridade, PRs relacionados e pipelines em `tests/unit/azure-devops-overview-ten.test.ts`.
-- [ ] T021 [P] [US2] Testar cache `schemaVersion: 2` e serviço com arrays em `tests/unit/overview-service.test.ts` e `tests/unit/overview-cache.test.ts`.
-- [ ] T022 [P] [US2] Testar Scroll Area com 10 itens em `tests/unit/radix-scroll-area.test.tsx`.
+- [X] T019 [P] [US2] Testar contrato IPC v2, arrays e limite de 10 em `tests/contract/overview-ipc.test.ts`.
+- [X] T020 [P] [US2] Testar seleção dos 10 mais recentes, prioridade, PRs relacionados e pipelines em `tests/unit/azure-devops-overview-ten.test.ts`.
+- [X] T021 [P] [US2] Testar cache `schemaVersion: 2` e serviço com arrays em `tests/unit/overview-service.test.ts` e `tests/unit/overview-cache.test.ts`.
+- [X] T022 [P] [US2] Testar Scroll Area com 10 itens em `tests/unit/radix-scroll-area.test.tsx`.
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] Atualizar `src/shared/contracts/index.ts`: `OverviewView` com `workItems[]`, `pullRequests[]` e `pipelines[]` de até 10 itens e `WorkItemSummary.priority`.
-- [ ] T024 [US2] Atualizar `src/main/services/azure-devops-client.ts`: selecionar os **10 mais recentes** work items atribuídos por `ChangedDate`, depois ordenar por prioridade; buscar até 10 PRs relacionados (revisor/autor) e até 10 pipelines por `startedAt`.
-- [ ] T025 [US2] Atualizar `src/main/services/overview-cache-service.ts` e `src/main/services/overview-service.ts` para `schemaVersion: 2` e arrays de até 10 itens.
-- [ ] T026 [US2] Atualizar `src/main/ipc/handlers.ts` e `src/preload/index.ts` para o novo shape do Overview.
-- [ ] T027 [US2] Implementar `src/renderer/components/radix/scroll-area.tsx` com viewport, barra oculta e rolagem por teclado.
-- [ ] T028 [US2] Atualizar `src/renderer/features/overview/overview-screen.tsx`, `src/renderer/features/overview/work-items-card.tsx`, `src/renderer/features/overview/pull-request-card.tsx` e `src/renderer/features/overview/pipeline-card.tsx` para arrays de até 10 itens com Scroll Area.
-- [ ] T029 [US2] Atualizar estados vazios/erro/plural e textos em `src/renderer/i18n/pt-BR.ts`.
-- [ ] T030 [US2] Adicionar e2e de 10 itens e rolagem em `tests/e2e/overview-ten-items.spec.ts`.
+- [X] T023 [US2] Atualizar `src/shared/contracts/index.ts`: `OverviewView` com `workItems[]`, `pullRequests[]` e `pipelines[]` de até 10 itens e `WorkItemSummary.priority`.
+- [X] T024 [US2] Atualizar `src/main/services/azure-devops-client.ts`: selecionar os **10 mais recentes** work items atribuídos por `ChangedDate`, depois ordenar por prioridade; buscar até 10 PRs relacionados (revisor/autor) e até 10 pipelines por `startedAt`.
+- [X] T025 [US2] Atualizar `src/main/services/overview-cache-service.ts` e `src/main/services/overview-service.ts` para `schemaVersion: 2` e arrays de até 10 itens.
+- [X] T026 [US2] Atualizar `src/main/ipc/handlers.ts` e `src/preload/index.ts` para o novo shape do Overview.
+- [X] T027 [US2] Implementar `src/renderer/components/radix/scroll-area.tsx` com viewport, barra oculta e rolagem por teclado.
+- [X] T028 [US2] Atualizar `src/renderer/features/overview/overview-screen.tsx`, `src/renderer/features/overview/work-items-card.tsx`, `src/renderer/features/overview/pull-request-card.tsx` e `src/renderer/features/overview/pipeline-card.tsx` para arrays de até 10 itens com Scroll Area.
+- [X] T029 [US2] Atualizar estados vazios/erro/plural e textos em `src/renderer/i18n/pt-BR.ts`.
+- [X] T030 [US2] Adicionar e2e de 10 itens e rolagem em `tests/e2e/overview-ten-items.spec.ts`.
 
 **Checkpoint**: Overview com até 10 itens, cache v2 e Scroll Area.
 
@@ -90,17 +90,17 @@
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T031 [P] Atualizar `docs/design/gaps.md`, `docs/security/review.md` e `specs/007-radix-ui-adoption/quickstart.md` com o resultado da migração; registrar que Hover Card e Tooltip ficam para feature futura.
-- [ ] T032 [P] Adicionar auditoria axe dos novos fluxos em `tests/e2e/radix-a11y.spec.ts`.
-- [ ] T033 [P] Atualizar, somente se inevitável, os snapshots visuais:
+- [X] T031 [P] Atualizar `docs/design/gaps.md`, `docs/security/review.md` e `specs/007-radix-ui-adoption/quickstart.md` com o resultado da migração; registrar que Hover Card e Tooltip ficam para feature futura.
+- [X] T032 [P] Adicionar auditoria axe dos novos fluxos em `tests/e2e/radix-a11y.spec.ts`.
+- [X] T033 [P] Atualizar, somente se inevitável, os snapshots visuais:
   `tests/e2e/visual.spec.ts-snapshots/config-first-run-win32.png`,
   `tests/e2e/overview-visual.spec.ts-snapshots/overview-filled-win32.png`,
   `tests/e2e/work-items.spec.ts-snapshots/work-items-filled-win32.png`,
   `tests/e2e/pull-requests.spec.ts-snapshots/pull-requests-filled-win32.png`,
   `tests/e2e/pipelines.spec.ts-snapshots/pipelines-filled-win32.png`.
-- [ ] T034 [P] Adicionar teste de performance com 10 itens/scroll em `tests/e2e/overview-radix-performance.spec.ts`.
-- [ ] T035 Rodar `npm run lint`, `npm run typecheck`, `npm test`, `npm run test:coverage`, `npm run build` e `npm run test:e2e` usando os scripts de `package.json`.
-- [ ] T036 Fazer o commit da feature 007 e atualizar `specs/007-radix-ui-adoption/tasks.md`.
+- [X] T034 [P] Adicionar teste de performance com 10 itens/scroll em `tests/e2e/overview-radix-performance.spec.ts`.
+- [X] T035 Rodar `npm run lint`, `npm run typecheck`, `npm test`, `npm run test:coverage`, `npm run build` e `npm run test:e2e` usando os scripts de `package.json`.
+- [X] T036 Fazer o commit da feature 007 e atualizar `specs/007-radix-ui-adoption/tasks.md`.
 
 ---
 

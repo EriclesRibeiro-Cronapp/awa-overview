@@ -6,7 +6,7 @@ import { ExternalLink } from './external-link';
 import { formatDateTime } from './format';
 
 interface PullRequestCardProps {
-  card: CardResult<PullRequestSummary | null> | undefined;
+  card: CardResult<PullRequestSummary[]> | undefined;
   loading: boolean;
   onRetry: () => void;
 }
@@ -20,7 +20,7 @@ export function PullRequestCard({ card, loading, onRetry }: PullRequestCardProps
 }
 
 function renderContent(
-  card: CardResult<PullRequestSummary | null> | undefined,
+  card: CardResult<PullRequestSummary[]> | undefined,
   loading: boolean,
   onRetry: () => void,
 ) {
@@ -36,30 +36,35 @@ function renderContent(
       </>
     );
   }
-  if (!card.data) return <CardMessage>{ptBR.overview.emptyPullRequests}</CardMessage>;
+  if (card.data.length === 0) {
+    return <CardMessage>{ptBR.overview.emptyPullRequests}</CardMessage>;
+  }
 
-  const item = card.data;
   return (
-    <article className="card-item">
-      <div className="item-heading">
-        <span className="item-id">!{item.id}</span>
-        <span className="item-title">{item.title}</span>
-      </div>
-      <div className="meta-grid">
-        <div className="meta-field">
-          <span className="meta-label">{ptBR.overview.createdAt}</span>
-          <span className="meta-value">{formatDateTime(item.createdAt)}</span>
-        </div>
-        <div className="meta-field">
-          <span className="meta-label">{ptBR.overview.project}</span>
-          <span className="meta-value">{item.project}</span>
-        </div>
-        <div className="meta-field">
-          <span className="meta-label">{ptBR.overview.status}</span>
-          <span className="meta-value">{item.status}</span>
-        </div>
-      </div>
-      <ExternalLink url={item.url}>{ptBR.overview.openInAzure}</ExternalLink>
-    </article>
+    <div className="card-list">
+      {card.data.map((item) => (
+        <article className="card-item" key={item.id}>
+          <div className="item-heading">
+            <span className="item-id">!{item.id}</span>
+            <span className="item-title">{item.title}</span>
+          </div>
+          <div className="meta-grid">
+            <div className="meta-field">
+              <span className="meta-label">{ptBR.overview.createdAt}</span>
+              <span className="meta-value">{formatDateTime(item.createdAt)}</span>
+            </div>
+            <div className="meta-field">
+              <span className="meta-label">{ptBR.overview.project}</span>
+              <span className="meta-value">{item.project}</span>
+            </div>
+            <div className="meta-field">
+              <span className="meta-label">{ptBR.overview.status}</span>
+              <span className="meta-value">{item.status}</span>
+            </div>
+          </div>
+          <ExternalLink url={item.url}>{ptBR.overview.openInAzure}</ExternalLink>
+        </article>
+      ))}
+    </div>
   );
 }
